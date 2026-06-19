@@ -43,10 +43,10 @@ a{color:inherit;text-decoration:none}
 .nav-cta:hover{background:var(--cyan)!important;color:var(--bg)!important}
 .nav-toggle{display:none;background:none;border:none;color:var(--text-bright);font-size:1.5rem;cursor:pointer}
 
-/* HERO */
+/* HERO - Full horizontal image display */
 .hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:120px 0 80px}
-.hero-bg{position:absolute;inset:0;background:url('https://res.cloudinary.com/de5casjbu/image/upload/v1781868693/Gemini_Generated_Image_q9bke7q9bke7q9bk_hafbep.png') center/cover;opacity:0.18}
-.hero-bg::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 0%,var(--bg) 70%)}
+.hero-bg{position:absolute;inset:0;background:url('https://res.cloudinary.com/de5casjbu/image/upload/v1781868693/Gemini_Generated_Image_q9bke7q9bke7q9bk_hafbep.png') center center/cover no-repeat;opacity:0.35}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,14,26,0.85) 0%,rgba(10,14,26,0.6) 50%,rgba(10,14,26,0.75) 100%)}
 .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(6,214,214,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(6,214,214,0.04) 1px,transparent 1px);background-size:60px 60px}
 .hero-content{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1.2fr;gap:60px;align-items:center}
 .hero-img-wrap{position:relative;max-width:400px;margin:0 auto}
@@ -75,8 +75,8 @@ a{color:inherit;text-decoration:none}
 
 /* ABOUT */
 .about-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:80px;align-items:center}
-.about-img{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);position:relative}
-.about-img img{width:100%;height:480px;object-fit:cover}
+.about-img{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);position:relative;background:var(--card)}
+.about-img img{width:100%;height:480px;object-fit:cover;display:block}
 .about-content h2{font-size:clamp(2rem,3.5vw,2.8rem);color:var(--text-bright);margin-bottom:20px}
 .about-content h2 span{color:var(--cyan)}
 .about-content p{color:var(--text-dim);margin-bottom:16px;font-size:1.02rem}
@@ -315,7 +315,7 @@ a{color:inherit;text-decoration:none}
   <div class="container">
     <div class="about-grid">
       <div class="about-img fade-up">
-        <img src="https://res.cloudinary.com/de5casjbu/image/upload/v1781868693/LINKIDIN_xy3shx.png" alt="Engineering workspace">
+        <img src="https://res.cloudinary.com/de5casjbu/image/upload/v1781868693/LINKIDIN_xy3shx.png" alt="Abdu Demle Melaku - LinkedIn Profile">
       </div>
       <div class="about-content fade-up">
         <div class="section-label">About Me</div>
@@ -329,7 +329,7 @@ a{color:inherit;text-decoration:none}
             <div><div class="about-info-label">Location</div><div class="about-info-value">Addis Ababa, Ethiopia</div></div>
           </div>
           <div class="about-info-item">
-            <div class="about-info-icon"></div>
+            <div class="about-info-icon">🎂</div>
             <div><div class="about-info-label">Born</div><div class="about-info-value">August 14, 2000</div></div>
           </div>
           <div class="about-info-item">
@@ -485,10 +485,10 @@ a{color:inherit;text-decoration:none}
       <div class="lang-grid">
         <div class="lang-card fade-up">
           <h4>Amharic</h4>
-          <div class="lang-type">MOTHER TONGUE</div>
+          <div class="lang-type">MOTHER TONGUE · NATIVE</div>
           <div class="lang-level"><span class="lang-level-label">Listening</span><div class="lang-level-bar"><div class="lang-level-fill" style="width:100%"></div></div><span class="lang-level-val">C2</span></div>
           <div class="lang-level"><span class="lang-level-label">Reading</span><div class="lang-level-bar"><div class="lang-level-fill" style="width:100%"></div></div><span class="lang-level-val">C2</span></div>
-          <div class="lang-level"><span class="lang-level-label">Writing</span><div class="lang-level-bar"><div class="lang-level-fill" style="width:90%"></div></div><span class="lang-level-val">C1</span></div>
+          <div class="lang-level"><span class="lang-level-label">Writing</span><div class="lang-level-bar"><div class="lang-level-fill" style="width:100%"></div></div><span class="lang-level-val">C2</span></div>
           <div class="lang-level"><span class="lang-level-label">Spoken Prod.</span><div class="lang-level-bar"><div class="lang-level-fill" style="width:100%"></div></div><span class="lang-level-val">C2</span></div>
           <div class="lang-level"><span class="lang-level-label">Spoken Int.</span><div class="lang-level-bar"><div class="lang-level-fill" style="width:100%"></div></div><span class="lang-level-val">C2</span></div>
         </div>
@@ -497,9 +497,9 @@ a{color:inherit;text-decoration:none}
           <div class="lang-type">PROFESSIONAL WORKING</div>
           <div class="lang-level"><span class="lang-level-label">Listening</span><div class="lang-level-bar"><div class="lang-level-fill" style="width:100%"></div></div><span class="lang-level-val">C2</span></div>
           <div class="lang-level"><span class="lang-level-label">Reading</span><div class="lang-level-bar"><div class="lang-level-fill" style="width:100%"></div></div><span class="lang-level-val">C2</span></div>
-          <div class="lang-level"><span class="lang-level-label">Writing</span><div class="lang-level-bar"><div class="lang-level-fill" style="width:90%"></div></div><span class="lang-level-val">C1</span></div>
-          <div class="lang-level"><span class="lang-level-label">Spoken Prod.</span><div class="lang-level-bar"><div class="lang-level-fill" style="width:90%"></div></div><span class="lang-level-val">C1</span></div>
-          <div class="lang-level"><span class="lang-level-label">Spoken Int.</span><div class="lang-level-bar"><div class="lang-level-fill" style="width:90%"></div></div><span class="lang-level-val">C1</span></div>
+          <div class="lang-level"><span class="lang-level-label">Writing</span><div class="lang-level-bar"><div class="lang-level-fill" style="width:85%"></div></div><span class="lang-level-val">C1</span></div>
+          <div class="lang-level"><span class="lang-level-label">Spoken Prod.</span><div class="lang-level-bar"><div class="lang-level-fill" style="width:85%"></div></div><span class="lang-level-val">C1</span></div>
+          <div class="lang-level"><span class="lang-level-label">Spoken Int.</span><div class="lang-level-bar"><div class="lang-level-fill" style="width:85%"></div></div><span class="lang-level-val">C1</span></div>
         </div>
       </div>
     </div>
@@ -537,7 +537,7 @@ a{color:inherit;text-decoration:none}
         <div class="project-body">
           <h3>YUNTH — Urea Production Plant</h3>
           <div class="project-client">Qinghai Yuntianhua International Fertilizer Co., Ltd</div>
-          <div class="project-meta"><span>📍 Qinghai, China</span><span>⚖ 600,000 t/yr</span><span>🔢 ENCOSC26KJ102</span></div>
+          <div class="project-meta"><span> Qinghai, China</span><span> 600,000 t/yr</span><span>🔢 ENCOSC26KJ102</span></div>
           <p>Large-scale urea fertilizer production facility. One of the largest capacity projects in the portfolio with significant piping design contribution for the 600,000 tons/year urea plant.</p>
           <div class="project-products"><span class="product-tag">Urea</span><span class="product-tag">Fertilizer</span></div>
         </div>
@@ -567,7 +567,7 @@ a{color:inherit;text-decoration:none}
         <div class="project-body">
           <h3>QIXIANG — Steam Generation Facility</h3>
           <div class="project-client">Zibo Qixiang Tengda Chemical Co., Ltd</div>
-          <div class="project-meta"><span>📍 Zibo, China</span><span>⚖ 3,360,000 t/yr</span><span>🔢 S20251023</span></div>
+          <div class="project-meta"><span>📍 Zibo, China</span><span>⚖ 3,360,000 t/yr</span><span> S20251023</span></div>
           <p>Major steam generation facility with 75% design contribution. High-capacity energy infrastructure supporting chemical production operations with 3.36 million tons annual capacity.</p>
           <div class="project-products"><span class="product-tag">Steam</span><span class="product-tag">Energy</span></div>
         </div>
@@ -582,7 +582,7 @@ a{color:inherit;text-decoration:none}
         <div class="project-body">
           <h3>YUXIANGHY — Nitric Acid Waste Heat Recovery</h3>
           <div class="project-client">Xinjiang Yuxiang Poplar Chemical Co., Ltd</div>
-          <div class="project-meta"><span>📍 Xinjiang, China</span><span>🌱 20,000 t CO₂ reduction</span><span>🔢 ENCOSC25005</span></div>
+          <div class="project-meta"><span>📍 Xinjiang, China</span><span>🌱 20,000 t CO₂ reduction</span><span> ENCOSC25005</span></div>
           <p>Complete 100% design for nitric acid waste heat recovery system. Environmental sustainability project reducing 20,000 tons of CO₂ emissions annually through energy recovery technology.</p>
           <div class="project-products"><span class="product-tag">Waste Heat Recovery</span><span class="product-tag">CO₂ Reduction</span></div>
         </div>
@@ -612,7 +612,7 @@ a{color:inherit;text-decoration:none}
         <div class="project-body">
           <h3>SANMING — Lithium Hexafluorophosphate</h3>
           <div class="project-client">Fujian Sanming Runxiang New Materials Co., Ltd</div>
-          <div class="project-meta"><span>📍 Fujian, China</span><span>⚖ 50 t/yr</span><span>🔢 ENCOSC25061</span></div>
+          <div class="project-meta"><span>📍 Fujian, China</span><span>⚖ 50 t/yr</span><span> ENCOSC25061</span></div>
           <p>Complete 100% design for lithium hexafluorophosphate production — a critical electrolyte material for lithium-ion batteries. High-value specialty chemical facility for EV battery supply chain.</p>
           <div class="project-products"><span class="product-tag">LiPF₆</span><span class="product-tag">Battery Materials</span></div>
         </div>
@@ -627,7 +627,7 @@ a{color:inherit;text-decoration:none}
         <div class="project-body">
           <h3>HAIFENG — Triethylene & Tetraethylene Glycol</h3>
           <div class="project-client">Yibin Haifeng Herui Co., Ltd</div>
-          <div class="project-meta"><span>📍 Yibin, China</span><span>⚖ 50K + 100K t/yr</span><span>🔢 ENCO25174</span></div>
+          <div class="project-meta"><span> Yibin, China</span><span> 50K + 100K t/yr</span><span>🔢 ENCO25174</span></div>
           <p>Complete 100% design for dual glycol production: Triethylene Glycol (50,000 t/yr) and Tetraethylene Glycol (100,000 t/yr). Multi-product chemical facility for industrial solvent production.</p>
           <div class="project-products"><span class="product-tag">Triethylene Glycol</span><span class="product-tag">Tetraethylene Glycol</span></div>
         </div>
@@ -672,7 +672,7 @@ a{color:inherit;text-decoration:none}
         <div class="project-body">
           <h3>SHICHENGSHOU — Soil Remediation Agent</h3>
           <div class="project-client">Sichuan Shichengshou Ecological Technology Co., Ltd</div>
-          <div class="project-meta"><span>📍 Sichuan, China</span><span>⚖ 60,000 t/yr</span><span>🔢 ENCOSC24062</span></div>
+          <div class="project-meta"><span>📍 Sichuan, China</span><span>⚖ 60,000 t/yr</span><span> ENCOSC24062</span></div>
           <p>20% design contribution for soil remediation agent production facility. Environmental technology project supporting ecological restoration with 60,000 tons annual capacity.</p>
           <div class="project-products"><span class="product-tag">Soil Remediation</span><span class="product-tag">Ecological</span></div>
         </div>
@@ -717,7 +717,7 @@ a{color:inherit;text-decoration:none}
         <div class="project-body">
           <h3>QICHUANG — Fine Chemicals (Phenylhydrazine)</h3>
           <div class="project-client">Wuhai Qichuang New Materials Technology Co., Ltd</div>
-          <div class="project-meta"><span> Wuhai, China</span><span>⚖ 3,000 t/yr</span><span>🔢 ENCOSC23059</span></div>
+          <div class="project-meta"><span>📍 Wuhai, China</span><span>⚖ 3,000 t/yr</span><span>🔢 ENCOSC23059</span></div>
           <p>20% design contribution for fine chemicals production including phenylhydrazine. Specialty chemical manufacturing facility for pharmaceutical and agrochemical intermediates.</p>
           <div class="project-products"><span class="product-tag">Phenylhydrazine</span><span class="product-tag">Fine Chemicals</span></div>
         </div>
@@ -732,7 +732,7 @@ a{color:inherit;text-decoration:none}
         <div class="project-body">
           <h3>HAILIANG — DMTDA & DETDA Diamines</h3>
           <div class="project-client">Shandong Hailiang New Materials Co., Ltd</div>
-          <div class="project-meta"><span> Shandong, China</span><span> 2.5K + 4K t/yr</span><span>🔢 ENCOSC22004</span></div>
+          <div class="project-meta"><span>📍 Shandong, China</span><span>⚖ 2.5K + 4K t/yr</span><span>🔢 ENCOSC22004</span></div>
           <p>Complete 100% design for dual diamine production: Dimethylthiotoluenediamine (2,500 t/yr) and Diethyltoluenediamine (4,000 t/yr). Critical polyurethane curing agents for industrial applications.</p>
           <div class="project-products"><span class="product-tag">DMTDA</span><span class="product-tag">DETDA</span></div>
         </div>
@@ -747,7 +747,7 @@ a{color:inherit;text-decoration:none}
         <div class="project-body">
           <h3>HECHANG — Crude Anthracene Plant</h3>
           <div class="project-client">Hubei Hechang New Energy Materials Co., Ltd</div>
-          <div class="project-meta"><span>📍 Hubei, China</span><span> 10,000 t/yr</span><span>🔢 ENCOSC22070</span></div>
+          <div class="project-meta"><span>📍 Hubei, China</span><span>⚖ 10,000 t/yr</span><span>🔢 ENCOSC22070</span></div>
           <p>Complete 100% design for crude anthracene production facility. Polycyclic aromatic hydrocarbon used in dyes, pigments, and advanced materials for energy applications.</p>
           <div class="project-products"><span class="product-tag">Crude Anthracene</span><span class="product-tag">Energy Materials</span></div>
         </div>
@@ -762,7 +762,7 @@ a{color:inherit;text-decoration:none}
         <div class="project-body">
           <h3>SHUZHONG — Pepsin & Pancreatin Production</h3>
           <div class="project-client">Sichuan Shuzhong Pharmaceutical Chemical Co., Ltd</div>
-          <div class="project-meta"><span>📍 Sichuan, China</span><span>⚖ 12 + 120 t/yr</span><span> ENCOSC22108</span></div>
+          <div class="project-meta"><span> Sichuan, China</span><span> 12 + 120 t/yr</span><span>🔢 ENCOSC22108</span></div>
           <p>20% design contribution for pharmaceutical enzyme production: Pepsin (12 t/yr) and Pancreatin (120 t/yr). Biotech pharmaceutical facility for digestive enzyme manufacturing.</p>
           <div class="project-products"><span class="product-tag">Pepsin</span><span class="product-tag">Pancreatin</span></div>
         </div>
@@ -777,7 +777,7 @@ a{color:inherit;text-decoration:none}
         <div class="project-body">
           <h3>HUAYI — Caustic Soda & PVC Oxychlorination</h3>
           <div class="project-client">Shanghaichem Engineering Incorporation</div>
-          <div class="project-meta"><span> Shanghai, China</span><span>⚖ 1,300,000 t/yr</span><span>🔢 0215-20-200-A03-00</span></div>
+          <div class="project-meta"><span>📍 Shanghai, China</span><span>⚖ 1,300,000 t/yr</span><span>🔢 0215-20-200-A03-00</span></div>
           <p>60% design contribution for one of the largest projects in the portfolio. Major chlor-alkali and PVC oxychlorination complex with 1.3 million tons annual capacity — flagship project.</p>
           <div class="project-products"><span class="product-tag">Caustic Soda</span><span class="product-tag">PVC</span><span class="product-tag">Oxychlorination</span></div>
         </div>
@@ -851,7 +851,7 @@ a{color:inherit;text-decoration:none}
           <div><h4>LinkedIn</h4><p>linkedin.com/in/abdu-demle-melaku-571b0b246</p></div>
         </div>
         <div class="contact-item">
-          <div class="contact-icon"></div>
+          <div class="contact-icon">🌐</div>
           <div><h4>Company</h4><p>www.crtec-et.com</p></div>
         </div>
       </div>
