@@ -1,2180 +1,766 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abdu Demle Melaku - Mechanical Engineer</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/fontsource-poppins@5.0.8/index.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary-color: #0f172a;
-            --secondary-color: #1e293b;
-            --accent-color: #3b82f6;
-            --accent-hover: #2563eb;
-            --gold-color: #f59e0b;
-            --light-color: #f8fafc;
-            --text-dark: #1e293b;
-            --text-muted: #64748b;
-            --text-light: #94a3b8;
-            --gradient-1: linear-gradient(135deg, #3b82f6, #06b6d4);
-            --gradient-2: linear-gradient(135deg, #0f172a, #1e293b);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            color: var(--text-dark);
-            overflow-x: hidden;
-            line-height: 1.7;
-        }
-
-        /* Loader */
-        .loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--primary-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10000;
-            transition: opacity 0.5s ease;
-        }
-
-        .loader.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .loader-spinner {
-            width: 50px;
-            height: 50px;
-            border: 3px solid rgba(59, 130, 246, 0.2);
-            border-top-color: var(--accent-color);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* Navigation */
-        .navbar {
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1rem 0;
-            transition: all 0.3s ease;
-            z-index: 1000;
-        }
-
-        .navbar.scrolled {
-            padding: 0.5rem 0;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
-        }
-
-        .navbar-brand {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: white !important;
-            letter-spacing: 1px;
-        }
-
-        .navbar-brand span {
-            color: var(--accent-color);
-        }
-
-        .nav-link {
-            color: rgba(255,255,255,0.8) !important;
-            font-weight: 500;
-            padding: 0.5rem 1rem !important;
-            transition: all 0.3s ease;
-            position: relative;
-            font-size: 0.95rem;
-        }
-
-        .nav-link:hover, .nav-link.active {
-            color: var(--accent-color) !important;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: var(--accent-color);
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-        }
-
-        .nav-link:hover::after, .nav-link.active::after {
-            width: 80%;
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        .nav-menu {
-            display: flex;
-            align-items: center;
-        }
-
-        @media (max-width: 992px) {
-            .mobile-menu-btn {
-                display: block;
-            }
-            .nav-menu {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: var(--primary-color);
-                padding: 1rem;
-                flex-direction: column;
-            }
-            .nav-menu.active {
-                display: flex;
-            }
-        }
-
-        /* Hero Section */
-        .hero-section {
-            min-height: 100vh;
-            background: var(--gradient-2);
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(59,130,246,0.05)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-subtitle {
-            color: var(--accent-color);
-            font-size: 1.1rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero-title {
-            font-size: 3.5rem;
-            font-weight: 800;
-            color: white;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease 0.2s both;
-        }
-
-        .hero-title span {
-            color: var(--accent-color);
-        }
-
-        .hero-description {
-            color: var(--text-light);
-            font-size: 1.1rem;
-            max-width: 550px;
-            margin-bottom: 2rem;
-            animation: fadeInUp 1s ease 0.4s both;
-        }
-
-        .hero-btn {
-            background: var(--gradient-1);
-            color: white;
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: inline-block;
-            animation: fadeInUp 1s ease 0.6s both;
-            border: none;
-            cursor: pointer;
-        }
-
-        .hero-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
-            color: white;
-        }
-
-        .hero-btn-outline {
-            background: transparent;
-            border: 2px solid var(--accent-color);
-            color: var(--accent-color);
-            margin-left: 1rem;
-        }
-
-        .hero-btn-outline:hover {
-            background: var(--accent-color);
-            color: white;
-            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
-        }
-
-        .hero-image {
-            animation: fadeInRight 1s ease 0.8s both;
-            position: relative;
-        }
-
-        .hero-image-wrapper {
-            position: relative;
-            display: inline-block;
-        }
-
-        .hero-image-wrapper::before {
-            content: '';
-            position: absolute;
-            top: -15px;
-            left: -15px;
-            right: 15px;
-            bottom: 15px;
-            border: 3px solid var(--accent-color);
-            border-radius: 20px;
-            z-index: -1;
-        }
-
-        .hero-image img {
-            border-radius: 20px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
-            max-width: 100%;
-            height: 500px;
-            object-fit: cover;
-        }
-
-        .floating-shapes {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            overflow: hidden;
-        }
-
-        .shape {
-            position: absolute;
-            border-radius: 50%;
-            opacity: 0.1;
-        }
-
-        .shape-1 {
-            width: 300px;
-            height: 300px;
-            background: var(--accent-color);
-            top: -100px;
-            right: -50px;
-            animation: float 8s ease-in-out infinite;
-        }
-
-        .shape-2 {
-            width: 200px;
-            height: 200px;
-            background: #fff;
-            bottom: 100px;
-            left: -50px;
-            animation: float 6s ease-in-out infinite reverse;
-        }
-
-        .shape-3 {
-            width: 150px;
-            height: 150px;
-            background: var(--accent-color);
-            bottom: -50px;
-            right: 200px;
-            animation: float 7s ease-in-out infinite;
-        }
-
-        .hero-badges {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
-            animation: fadeInUp 1s ease 0.8s both;
-        }
-
-        .hero-badge {
-            background: rgba(59, 130, 246, 0.1);
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            color: var(--accent-color);
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        /* Section Styles */
-        .section {
-            padding: 100px 0;
-        }
-
-        .section-dark {
-            background: var(--primary-color);
-            color: white;
-        }
-
-        .section-light {
-            background: var(--light-color);
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-header h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-header h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: var(--accent-color);
-        }
-
-        .section-header p {
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 1.5rem auto 0;
-        }
-
-        .section-dark .section-header p {
-            color: var(--text-light);
-        }
-
-        /* About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-image {
-            position: relative;
-        }
-
-        .about-image img {
-            border-radius: 20px;
-            width: 100%;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
-            height: 500px;
-            object-fit: cover;
-        }
-
-        .about-image::before {
-            content: '';
-            position: absolute;
-            top: -20px;
-            left: -20px;
-            right: 20px;
-            bottom: 20px;
-            border: 3px solid var(--accent-color);
-            border-radius: 20px;
-            z-index: -1;
-        }
-
-        .about-text h3 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary-color);
-        }
-
-        .about-text p {
-            color: var(--text-muted);
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-        }
-
-        .about-info-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .about-info-item {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-
-        .about-info-item i {
-            color: var(--accent-color);
-            width: 20px;
-        }
-
-        .about-info-item strong {
-            color: var(--text-dark);
-            font-weight: 600;
-        }
-
-        .about-info-item span {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        /* Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .skill-card {
-            background: white;
-            border-radius: 20px;
-            padding: 2.5rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(0,0,0,0.05);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .skill-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient-1);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .skill-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .skill-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
-        }
-
-        .skill-icon {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(6, 182, 212, 0.1));
-            border-radius: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            color: var(--accent-color);
-            font-size: 1.8rem;
-        }
-
-        .skill-card h4 {
-            font-size: 1.1rem;
-            margin-bottom: 0.8rem;
-            color: var(--primary-color);
-        }
-
-        .skill-card p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
-
-        .skill-progress {
-            margin-top: 1.5rem;
-        }
-
-        .skill-bar {
-            height: 6px;
-            background: #e2e8f0;
-            border-radius: 3px;
-            overflow: hidden;
-        }
-
-        .skill-bar-fill {
-            height: 100%;
-            background: var(--gradient-1);
-            border-radius: 3px;
-            transition: width 1.5s ease;
-            width: 0;
-        }
-
-        .skill-bar-fill.animated {
-            width: var(--width);
-        }
-
-        /* Experience Section */
-        .timeline {
-            position: relative;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
-            height: 100%;
-            background: var(--accent-color);
-            opacity: 0.3;
-        }
-
-        .timeline-item {
-            display: flex;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .timeline-item:nth-child(odd) {
-            flex-direction: row;
-        }
-
-        .timeline-item:nth-child(even) {
-            flex-direction: row-reverse;
-        }
-
-        .timeline-content {
-            width: 45%;
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
-        }
-
-        .timeline-content:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
-        }
-
-        .timeline-dot {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 20px;
-            height: 20px;
-            background: var(--accent-color);
-            border-radius: 50%;
-            border: 4px solid white;
-            box-shadow: 0 0 0 4px var(--accent-color);
-            z-index: 1;
-        }
-
-        .timeline-date {
-            display: inline-block;
-            background: var(--gradient-1);
-            color: white;
-            padding: 0.3rem 1rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .timeline-content h4 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            color: var(--primary-color);
-        }
-
-        .timeline-content h5 {
-            color: var(--accent-color);
-            font-size: 0.95rem;
-            font-weight: 500;
-            margin-bottom: 1rem;
-        }
-
-        .timeline-content p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            line-height: 1.7;
-        }
-
-        .timeline-content ul {
-            list-style: none;
-            padding: 0;
-            margin-top: 1rem;
-        }
-
-        .timeline-content ul li {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            padding-left: 1.5rem;
-            position: relative;
-            margin-bottom: 0.5rem;
-        }
-
-        .timeline-content ul li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            color: var(--accent-color);
-        }
-
-        /* Education Section */
-        .education-card {
-            background: white;
-            border-radius: 20px;
-            padding: 3rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .education-icon {
-            width: 100px;
-            height: 100px;
-            background: var(--gradient-1);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2.5rem;
-            flex-shrink: 0;
-        }
-
-        .education-details h4 {
-            font-size: 1.3rem;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .education-details h5 {
-            color: var(--accent-color);
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-        }
-
-        .education-details p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        .education-badge {
-            display: inline-block;
-            background: rgba(59, 130, 246, 0.1);
-            color: var(--accent-color);
-            padding: 0.3rem 1rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-top: 0.5rem;
-        }
-
-        /* Certificates Gallery */
-        .certificates-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .certificate-item {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .certificate-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-        }
-
-        .certificate-item img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .certificate-item:hover img {
-            transform: scale(1.05);
-        }
-
-        .certificate-info {
-            padding: 1.5rem;
-            text-align: center;
-        }
-
-        .certificate-info h5 {
-            font-size: 1rem;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .certificate-info p {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-
-        /* Lightbox */
-        .lightbox {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.95);
-            z-index: 9999;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-        }
-
-        .lightbox.active {
-            display: flex;
-        }
-
-        .lightbox img {
-            max-width: 90%;
-            max-height: 90vh;
-            border-radius: 10px;
-            cursor: default;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: 2rem;
-            right: 2rem;
-            color: white;
-            font-size: 2rem;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-        }
-
-        .lightbox-close:hover {
-            transform: rotate(90deg);
-            background: rgba(255,255,255,0.2);
-        }
-
-        /* Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .project-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
-        }
-
-        .project-image {
-            height: 200px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .project-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .project-card:hover .project-image img {
-            transform: scale(1.1);
-        }
-
-        .project-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to top, rgba(15, 23, 42, 0.8), transparent);
-            display: flex;
-            align-items: flex-end;
-            padding: 1.5rem;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .project-card:hover .project-overlay {
-            opacity: 1;
-        }
-
-        .project-overlay span {
-            color: var(--accent-color);
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .project-content {
-            padding: 2rem;
-        }
-
-        .project-content h4 {
-            font-size: 1.1rem;
-            margin-bottom: 0.8rem;
-            color: var(--primary-color);
-        }
-
-        .project-content p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-
-        .project-tags {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        .project-tag {
-            background: rgba(59, 130, 246, 0.1);
-            color: var(--accent-color);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 500;
-        }
-
-        /* Language Section */
-        .languages-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .language-card {
-            background: white;
-            border-radius: 20px;
-            padding: 2.5rem;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
-        }
-
-        .language-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
-        }
-
-        .language-level {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .language-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #e2e8f0;
-        }
-
-        .language-dot.filled {
-            background: var(--accent-color);
-        }
-
-        .language-card h4 {
-            font-size: 1.2rem;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .language-card p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        /* Recommendations */
-        .recommendations-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-        }
-
-        .recommendation-card {
-            background: white;
-            border-radius: 20px;
-            padding: 2.5rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .recommendation-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
-        }
-
-        .recommendation-card::before {
-            content: '"';
-            position: absolute;
-            top: 1rem;
-            left: 2rem;
-            font-size: 4rem;
-            color: var(--accent-color);
-            opacity: 0.2;
-            font-family: Georgia, serif;
-            line-height: 1;
-        }
-
-        .recommendation-text {
-            color: var(--text-muted);
-            font-style: italic;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            padding-top: 1rem;
-        }
-
-        .recommendation-author {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .recommendation-avatar {
-            width: 50px;
-            height: 50px;
-            background: var(--gradient-1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 700;
-            font-size: 1.2rem;
-        }
-
-        .recommendation-author h5 {
-            font-size: 1rem;
-            color: var(--primary-color);
-            margin-bottom: 0.2rem;
-        }
-
-        .recommendation-author p {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-
-        /* Contact Section */
-        .contact-wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-        }
-
-        .contact-info {
-            background: var(--primary-color);
-            color: white;
-            padding: 3rem;
-            border-radius: 20px;
-        }
-
-        .contact-info h3 {
-            font-size: 1.8rem;
-            margin-bottom: 2rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .contact-item i {
-            width: 50px;
-            height: 50px;
-            background: rgba(59, 130, 246, 0.2);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent-color);
-            font-size: 1.2rem;
-            flex-shrink: 0;
-        }
-
-        .contact-item h5 {
-            font-size: 1rem;
-            margin-bottom: 0.3rem;
-        }
-
-        .contact-item p {
-            color: rgba(255,255,255,0.7);
-            font-size: 0.9rem;
-            margin: 0;
-        }
-
-        .contact-form {
-            padding: 3rem;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
-        }
-
-        .contact-form h3 {
-            font-size: 1.8rem;
-            margin-bottom: 2rem;
-            color: var(--primary-color);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-            color: var(--text-dark);
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid #e9ecef;
-            border-radius: 12px;
-            font-family: 'Poppins', sans-serif;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--accent-color);
-        }
-
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        .submit-btn {
-            background: var(--gradient-1);
-            color: white;
-            border: none;
-            padding: 1rem 3rem;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            width: 100%;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--primary-color);
-            color: white;
-            padding: 4rem 0 2rem;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-
-        .footer-brand {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 1rem;
-        }
-
-        .footer-brand span {
-            color: var(--accent-color);
-        }
-
-        .footer p {
-            color: rgba(255,255,255,0.6);
-            line-height: 1.7;
-        }
-
-        .footer h5 {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            color: white;
-        }
-
-        .footer-links {
-            list-style: none;
-            padding: 0;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-links a {
-            color: rgba(255,255,255,0.6);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--accent-color);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .social-links a {
-            width: 40px;
-            height: 40px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            background: var(--accent-color);
-            transform: translateY(-3px);
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 2rem;
-            text-align: center;
-            color: rgba(255,255,255,0.4);
-            font-size: 0.9rem;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-
-        .animate-on-scroll.animated {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Scroll to top */
-        .scroll-top {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 50px;
-            height: 50px;
-            background: var(--gradient-1);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            z-index: 999;
-            border: none;
-            font-size: 1.2rem;
-        }
-
-        .scroll-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .scroll-top:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
-        }
-
-        /* Responsive */
-        @media (max-width: 992px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .skills-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .projects-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .contact-wrapper {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .timeline::before {
-                left: 20px;
-            }
-
-            .timeline-item, .timeline-item:nth-child(even) {
-                flex-direction: row;
-                padding-left: 60px;
-            }
-
-            .timeline-content {
-                width: 100%;
-            }
-
-            .timeline-dot {
-                left: 20px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2rem;
-            }
-
-            .hero-section {
-                text-align: center;
-                padding-top: 100px;
-            }
-
-            .hero-description {
-                margin: 0 auto 2rem;
-            }
-
-            .hero-badges {
-                justify-content: center;
-            }
-
-            .hero-btn-outline {
-                margin-left: 0;
-                margin-top: 1rem;
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .certificates-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .recommendations-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .languages-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .education-card {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .about-info-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRTEC - China Rail Transit Engineering Consultancy | Industrial Piping Design</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link href="https://cdn.jsdelivr.net/npm/fontsource-inter@5.0.0/index.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/fontsource-rajdhani@5.0.0/index.css" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#0a1f3d;--navy-light:#132d54;--navy-dark:#061428;
+  --orange:#e8772e;--orange-light:#f5944a;--orange-dark:#c55e1a;
+  --steel:#4a6b8c;--steel-light:#6b8eb0;
+  --bg:#f7f9fc;--white:#ffffff;--text:#1a2332;--text-light:#5a6b7d;
+  --border:#e2e8f0;--shadow:0 4px 24px rgba(10,31,61,0.08);
+  --shadow-lg:0 12px 48px rgba(10,31,61,0.12);
+  --radius:12px;--radius-sm:8px;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Inter',system-ui,-apple-system,sans-serif;color:var(--text);background:var(--bg);line-height:1.6;overflow-x:hidden}
+h1,h2,h3,h4,h5,h6{font-family:'Rajdhani','Inter',sans-serif;font-weight:700;line-height:1.2}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+.container{max-width:1280px;margin:0 auto;padding:0 24px}
+.section{padding:100px 0}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:0.8rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:16px}
+.section-label::before{content:'';width:32px;height:2px;background:var(--orange)}
+.section-title{font-size:clamp(2rem,4vw,3rem);color:var(--navy);margin-bottom:16px}
+.section-subtitle{font-size:1.1rem;color:var(--text-light);max-width:640px;margin-bottom:48px}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;transition:all .3s ease;padding:20px 0}
+.nav.scrolled{background:rgba(10,31,61,0.97);backdrop-filter:blur(12px);padding:12px 0;box-shadow:0 2px 20px rgba(0,0,0,0.15)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:12px;color:var(--white);font-family:'Rajdhani',sans-serif;font-weight:700;font-size:1.5rem}
+.nav-logo-icon{width:44px;height:44px;background:linear-gradient(135deg,var(--orange),var(--orange-dark));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:800;color:var(--white)}
+.nav-logo span{color:var(--orange)}
+.nav-links{display:flex;gap:8px;align-items:center}
+.nav-links a{color:rgba(255,255,255,0.85);font-size:0.9rem;font-weight:500;padding:8px 16px;border-radius:var(--radius-sm);transition:all .2s}
+.nav-links a:hover{color:var(--white);background:rgba(255,255,255,0.08)}
+.nav-cta{background:var(--orange)!important;color:var(--white)!important;font-weight:600!important}
+.nav-cta:hover{background:var(--orange-dark)!important}
+.nav-toggle{display:none;background:none;border:none;color:var(--white);font-size:1.5rem;cursor:pointer}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:var(--navy-dark)}
+.hero-bg{position:absolute;inset:0;background:url('https://image.qwenlm.ai/public_source/8a9f995b-47c7-40db-b960-98e9462c5cf6/131b56f7d-fadf-4bf2-bc0b-7d95954e326e.png') center/cover no-repeat;opacity:0.55}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(6,20,40,0.92) 0%,rgba(10,31,61,0.75) 50%,rgba(10,31,61,0.6) 100%)}
+.hero-content{position:relative;z-index:2;max-width:720px;padding:120px 0 80px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(232,119,46,0.15);border:1px solid rgba(232,119,46,0.3);color:var(--orange-light);padding:8px 20px;border-radius:100px;font-size:0.85rem;font-weight:600;margin-bottom:24px;backdrop-filter:blur(8px)}
+.hero-badge::before{content:'';width:8px;height:8px;background:var(--orange);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.hero h1{font-size:clamp(2.5rem,6vw,4.5rem);color:var(--white);margin-bottom:24px;letter-spacing:-0.02em}
+.hero h1 span{color:var(--orange);display:block}
+.hero p{font-size:1.2rem;color:rgba(255,255,255,0.8);margin-bottom:40px;max-width:560px;line-height:1.7}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:var(--radius-sm);font-weight:600;font-size:0.95rem;transition:all .3s ease;cursor:pointer;border:none}
+.btn-primary{background:var(--orange);color:var(--white)}
+.btn-primary:hover{background:var(--orange-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(232,119,46,0.4)}
+.btn-outline{background:transparent;color:var(--white);border:2px solid rgba(255,255,255,0.3)}
+.btn-outline:hover{border-color:var(--white);background:rgba(255,255,255,0.08)}
+.hero-stats{display:flex;gap:48px;margin-top:64px;padding-top:40px;border-top:1px solid rgba(255,255,255,0.1)}
+.hero-stat-num{font-family:'Rajdhani',sans-serif;font-size:2.5rem;font-weight:700;color:var(--orange)}
+.hero-stat-label{font-size:0.85rem;color:rgba(255,255,255,0.6);margin-top:4px}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-img-wrap{position:relative}
+.about-img{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-lg)}
+.about-img img{width:100%;height:500px;object-fit:cover}
+.about-img-accent{position:absolute;bottom:-20px;right:-20px;width:200px;height:200px;background:linear-gradient(135deg,var(--orange),var(--orange-dark));border-radius:var(--radius);z-index:-1}
+.about-content h2{font-size:clamp(2rem,3.5vw,2.8rem);color:var(--navy);margin-bottom:20px}
+.about-content p{color:var(--text-light);margin-bottom:20px;font-size:1.05rem}
+.about-features{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px}
+.about-feature{display:flex;gap:12px;align-items:flex-start}
+.about-feature-icon{width:40px;height:40px;min-width:40px;background:rgba(232,119,46,0.1);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;color:var(--orange);font-size:1.2rem}
+.about-feature h4{font-size:0.95rem;color:var(--navy);margin-bottom:2px}
+.about-feature p{font-size:0.85rem;color:var(--text-light);margin:0}
+
+/* SERVICES */
+.services{background:var(--white)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.service-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:36px;transition:all .4s ease;position:relative;overflow:hidden}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--orange),var(--orange-light));transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
+.service-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:transparent}
+.service-card:hover::before{transform:scaleX(1)}
+.service-icon{width:56px;height:56px;background:linear-gradient(135deg,var(--navy),var(--navy-light));border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;color:var(--orange);font-size:1.5rem;margin-bottom:24px}
+.service-card h3{font-size:1.25rem;color:var(--navy);margin-bottom:12px}
+.service-card p{color:var(--text-light);font-size:0.95rem;line-height:1.6}
+
+/* SECTORS */
+.sectors-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.sector-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:28px;transition:all .3s ease;text-align:center}
+.sector-card:hover{border-color:var(--orange);transform:translateY(-4px);box-shadow:var(--shadow)}
+.sector-icon{width:64px;height:64px;margin:0 auto 16px;background:linear-gradient(135deg,rgba(232,119,46,0.1),rgba(232,119,46,0.05));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.8rem}
+.sector-card h4{font-size:1.05rem;color:var(--navy);margin-bottom:8px}
+.sector-card p{font-size:0.85rem;color:var(--text-light)}
+
+/* PROJECTS */
+.projects{background:var(--navy);color:var(--white)}
+.projects .section-title{color:var(--white)}
+.projects .section-subtitle{color:rgba(255,255,255,0.7)}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:24px}
+.project-card{background:var(--navy-light);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius);overflow:hidden;transition:all .4s ease}
+.project-card:hover{transform:translateY(-4px);border-color:rgba(232,119,46,0.3);box-shadow:0 12px 40px rgba(0,0,0,0.3)}
+.project-img{height:220px;overflow:hidden;position:relative}
+.project-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.project-card:hover .project-img img{transform:scale(1.05)}
+.project-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,31,61,0.9) 0%,transparent 60%);display:flex;align-items:flex-end;padding:20px}
+.project-tag{background:var(--orange);color:var(--white);padding:4px 12px;border-radius:100px;font-size:0.75rem;font-weight:600}
+.project-body{padding:24px}
+.project-body h3{font-size:1.15rem;margin-bottom:8px;color:var(--white)}
+.project-meta{display:flex;gap:16px;margin-bottom:12px;font-size:0.85rem;color:rgba(255,255,255,0.6)}
+.project-meta span{display:flex;align-items:center;gap:4px}
+.project-body p{font-size:0.9rem;color:rgba(255,255,255,0.7);line-height:1.6}
+
+/* STATS */
+.stats{background:linear-gradient(135deg,var(--orange),var(--orange-dark));padding:80px 0}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;text-align:center}
+.stat-num{font-family:'Rajdhani',sans-serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:700;color:var(--white);line-height:1}
+.stat-label{font-size:0.95rem;color:rgba(255,255,255,0.9);margin-top:8px;font-weight:500}
+
+/* TEAM */
+.team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px}
+.team-card{background:var(--white);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:all .3s ease}
+.team-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.team-img{height:320px;overflow:hidden}
+.team-img img{width:100%;height:100%;object-fit:cover}
+.team-body{padding:24px;text-align:center}
+.team-body h3{font-size:1.2rem;color:var(--navy);margin-bottom:4px}
+.team-role{color:var(--orange);font-weight:600;font-size:0.9rem;margin-bottom:8px}
+.team-desc{font-size:0.9rem;color:var(--text-light)}
+
+/* CONTACT */
+.contact{background:var(--white)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px}
+.contact-info{display:flex;flex-direction:column;gap:24px}
+.contact-item{display:flex;gap:16px;align-items:flex-start}
+.contact-icon{width:48px;height:48px;min-width:48px;background:linear-gradient(135deg,var(--navy),var(--navy-light));border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;color:var(--orange);font-size:1.2rem}
+.contact-item h4{font-size:1rem;color:var(--navy);margin-bottom:4px}
+.contact-item p{font-size:0.95rem;color:var(--text-light)}
+.contact-form{background:var(--bg);padding:40px;border-radius:var(--radius);border:1px solid var(--border)}
+.form-group{margin-bottom:20px}
+.form-group label{display:block;font-size:0.9rem;font-weight:600;color:var(--navy);margin-bottom:8px}
+.form-group input,.form-group textarea,.form-group select{width:100%;padding:12px 16px;border:1px solid var(--border);border-radius:var(--radius-sm);font-family:inherit;font-size:0.95rem;background:var(--white);transition:all .2s}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 3px rgba(232,119,46,0.1)}
+.form-group textarea{resize:vertical;min-height:120px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+/* FOOTER */
+.footer{background:var(--navy-dark);color:rgba(255,255,255,0.7);padding:80px 0 0}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;padding-bottom:60px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.footer-brand h3{font-family:'Rajdhani',sans-serif;font-size:1.5rem;color:var(--white);margin-bottom:16px}
+.footer-brand h3 span{color:var(--orange)}
+.footer-brand p{font-size:0.9rem;line-height:1.7;margin-bottom:20px}
+.footer-social{display:flex;gap:12px}
+.footer-social a{width:36px;height:36px;background:rgba(255,255,255,0.08);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;color:var(--white);transition:all .2s}
+.footer-social a:hover{background:var(--orange)}
+.footer-col h4{color:var(--white);font-size:1rem;margin-bottom:20px}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:10px}
+.footer-col a{font-size:0.9rem;transition:color .2s}
+.footer-col a:hover{color:var(--orange)}
+.footer-bottom{padding:24px 0;text-align:center;font-size:0.85rem}
+
+/* ANIMATIONS */
+.fade-up{opacity:0;transform:translateY(30px);transition:all .6s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:968px){
+  .about-grid,.contact-grid{grid-template-columns:1fr;gap:40px}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .hero-stats{gap:24px;flex-wrap:wrap}
+}
+@media(max-width:768px){
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--navy);flex-direction:column;padding:16px;gap:4px}
+  .nav-links.open{display:flex}
+  .nav-toggle{display:block}
+  .section{padding:60px 0}
+  .hero-content{padding:100px 0 60px}
+  .about-features{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .projects-grid{grid-template-columns:1fr}
+}
+</style>
 </head>
 <body>
-    <!-- Loader -->
-    <div class="loader" id="loader">
-        <div class="loader-spinner"></div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#home" class="nav-logo">
+      <div class="nav-logo-icon">CR</div>
+      CR<span>TEC</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#sectors">Sectors</a>
+      <a href="#projects">Projects</a>
+      <a href="#team">Team</a>
+      <a href="#contact" class="nav-cta">Contact Us</a>
     </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+  </div>
+</nav>
 
-    <!-- Lightbox -->
-    <div class="lightbox" id="lightbox">
-        <span class="lightbox-close">&times;</span>
-        <img src="" alt="Certificate Preview" id="lightbox-img">
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">Industrial Piping Design Excellence</div>
+      <h1>Engineering the Future of <span>Industrial Plants</span></h1>
+      <p>CRTEC Industrial Piping Design Team delivers comprehensive 3D plant modeling, piping engineering, and stress analysis solutions for chemical, petrochemical, pharmaceutical, and energy sectors across Ethiopia and beyond.</p>
+      <div class="hero-actions">
+        <a href="#services" class="btn btn-primary">Explore Services →</a>
+        <a href="#projects" class="btn btn-outline">View Projects</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num" data-count="17">0</div>
+          <div class="hero-stat-label">Projects Delivered</div>
+        </div>
+        <div>
+          <div class="hero-stat-num" data-count="100">0</div>
+          <div class="hero-stat-label">K+ Man-Hours</div>
+        </div>
+        <div>
+          <div class="hero-stat-num" data-count="16">0</div>
+          <div class="hero-stat-label">Expert Engineers</div>
+        </div>
+        <div>
+          <div class="hero-stat-num" data-count="17">0</div>
+          <div class="hero-stat-label">Global Clients</div>
+        </div>
+      </div>
     </div>
+  </div>
+</section>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg fixed-top" id="navbar">
-        <div class="container">
-            <a class="navbar-brand" href="#home">ABDU <span>DEMLE</span></a>
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="nav-menu" id="navMenu">
-                <a href="#home" class="nav-link active">Home</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#skills" class="nav-link">Skills</a>
-                <a href="#experience" class="nav-link">Experience</a>
-                <a href="#education" class="nav-link">Education</a>
-                <a href="#projects" class="nav-link">Projects</a>
-                <a href="#contact" class="nav-link">Contact</a>
-            </div>
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap fade-up">
+        <div class="about-img">
+          <img src="https://image.qwenlm.ai/public_source/8a9f995b-47c7-40db-b960-98e9462c5cf6/1035edddb-d6f6-4e94-b0a3-d982e9356a3a.png" alt="CRTEC Engineering Team">
         </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero-section" id="home">
-        <div class="floating-shapes">
-            <div class="shape shape-1"></div>
-            <div class="shape shape-2"></div>
-            <div class="shape shape-3"></div>
+        <div class="about-img-accent"></div>
+      </div>
+      <div class="about-content fade-up">
+        <div class="section-label">About CRTEC</div>
+        <h2>Specialized Engineering & 3D Plant Design Excellence</h2>
+        <p>CRTEC Industrial Piping Design Team is a specialized engineering and 3D plant design department based in Addis Ababa, Ethiopia, delivering comprehensive engineering solutions for the chemical, petrochemical, pharmaceutical, fertilizer, energy, and industrial manufacturing sectors.</p>
+        <p>In collaboration with Hebei Yingke Petrochemical Engineering Co., Ltd., we provide end-to-end engineering support ranging from process-oriented piping design and detailed 3D plant modeling to engineering documentation and project execution support.</p>
+        <div class="about-features">
+          <div class="about-feature">
+            <div class="about-feature-icon">⚙</div>
+            <div><h4>International Standards</h4><p>ASME B31.3, CAESAR II</p></div>
+          </div>
+          <div class="about-feature">
+            <div class="about-feature-icon"></div>
+            <div><h4>Local Accessibility</h4><p>Based in Addis Ababa</p></div>
+          </div>
+          <div class="about-feature">
+            <div class="about-feature-icon">📐</div>
+            <div><h4>Advanced Tools</h4><p>AVEVA PDMS/E3D</p></div>
+          </div>
+          <div class="about-feature">
+            <div class="about-feature-icon">✓</div>
+            <div><h4>Cost Effective</h4><p>High quality, lower cost</p></div>
+          </div>
         </div>
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 hero-content">
-                    <p class="hero-subtitle">Hello! I'm</p>
-                    <h1 class="hero-title">Abdu Demle Melaku<br><span>Mechanical Engineer</span></h1>
-                    <p class="hero-description">Dedicated Mechanical Engineer with expertise in 3D plant design, piping systems, and industrial machinery development. Proficient in AVEVA PDMS, E3D, SolidWorks, and AutoCAD.</p>
-                    <div>
-                        <a href="#contact" class="hero-btn">Get In Touch</a>
-                        <a href="#projects" class="hero-btn hero-btn-outline">View Projects</a>
-                    </div>
-                    <div class="hero-badges">
-                        <span class="hero-badge"><i class="fas fa-map-marker-alt"></i> Addis Ababa, Ethiopia</span>
-                        <span class="hero-badge"><i class="fas fa-graduation-cap"></i> GPA: 3.89</span>
-                    </div>
-                </div>
-                <div class="col-lg-6 hero-image">
-                    <div class="hero-image-wrapper">
-                        <img src="https://res.cloudinary.com/de5casjbu/image/upload/v1777020284/Abdu_photo_zbhh02.jpg">
-                    </div>
-                </div>
-            </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section services" id="services">
+  <div class="container">
+    <div class="fade-up" style="text-align:center;max-width:700px;margin:0 auto 60px">
+      <div class="section-label" style="justify-content:center">Core Services</div>
+      <h2 class="section-title">Comprehensive Engineering Solutions</h2>
+      <p class="section-subtitle" style="margin:0 auto">From 3D plant modeling to piping stress analysis, we deliver end-to-end engineering services for industrial projects worldwide.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card fade-up">
+        <div class="service-icon">🏭</div>
+        <h3>3D Plant Modeling & Digital Engineering</h3>
+        <p>Complete plant, workshop, structural steel, equipment, walls, floors, and roof modeling using AVEVA PDMS/E3D, including plant digitization and Digital Twin development.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">🔧</div>
+        <h3>Piping Engineering & Stress Analysis</h3>
+        <p>3D pipe routing based on P&IDs, piping layout optimization, pipe support design, flexibility studies, and third-party piping stress analysis using CAESAR II.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">📋</div>
+        <h3>Engineering Documentation</h3>
+        <p>Preparation of isometric drawings, pipe layouts, general arrangement (GA) drawings, Material Take-Offs (MTO), anti-corrosion and insulation schedules using AutoCAD.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">⛽</div>
+        <h3>Fuel Terminal & Tank Farm Engineering</h3>
+        <p>Engineering design, layout development, piping systems, storage facilities, and associated infrastructure for fuel terminals and tank farms.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">🔄</div>
+        <h3>Plant Modification & Brownfield Engineering</h3>
+        <p>Debottlenecking, revamp studies, brownfield modifications, expansion projects, and fit-for-service evaluations of existing industrial facilities.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">📊</div>
+        <h3>Tender Evaluation & Technical Consultancy</h3>
+        <p>Independent technical tender evaluation, design review, scope verification, contract assessment, and owners engineering services for petrochemical projects.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">🤝</div>
+        <h3>EPC & Project Support Services</h3>
+        <p>Engineering support for EPC contractors including design review, procurement support, installation oversight, commissioning, and turnkey project execution.</p>
+      </div>
+      <div class="service-card fade-up">
+        <div class="service-icon">👥</div>
+        <h3>Engineering Outsourcing & Resource Augmentation</h3>
+        <p>Provision of dedicated engineering teams and specialized design resources for international engineering companies, consultants, and industrial project developers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTORS -->
+<section class="section" id="sectors">
+  <div class="container">
+    <div class="fade-up" style="text-align:center;max-width:700px;margin:0 auto 60px">
+      <div class="section-label" style="justify-content:center">Industry Sectors</div>
+      <h2 class="section-title">Sectors We Serve</h2>
+      <p class="section-subtitle" style="margin:0 auto">Delivering specialized engineering solutions across diverse industrial sectors with proven expertise.</p>
+    </div>
+    <div class="sectors-grid">
+      <div class="sector-card fade-up">
+        <div class="sector-icon">🌾</div>
+        <h4>Fertilizer & Agriculture</h4>
+        <p>Urea, potash fertilizer, calcium chloride, soil remediation</p>
+      </div>
+      <div class="sector-card fade-up">
+        <div class="sector-icon">️</div>
+        <h4>New Materials</h4>
+        <p>FDCA, lithium hexafluorophosphate, specialty diamines</p>
+      </div>
+      <div class="sector-card fade-up">
+        <div class="sector-icon">🧪</div>
+        <h4>Fine Chemicals</h4>
+        <p>Propionic acid, melamine polyphosphate, phenylhydrazine</p>
+      </div>
+      <div class="sector-card fade-up">
+        <div class="sector-icon">💊</div>
+        <h4>Pharmaceuticals</h4>
+        <p>Pepsin, pancreatin, biotech production facilities</p>
+      </div>
+      <div class="sector-card fade-up">
+        <div class="sector-icon">⚡</div>
+        <h4>Energy & Utilities</h4>
+        <p>Steam generation, nitric acid waste heat recovery</p>
+      </div>
+      <div class="sector-card fade-up">
+        <div class="sector-icon">🏗️</div>
+        <h4>Chlor-Alkali & PVC</h4>
+        <p>Caustic soda, PVC oxychlorination plants</p>
+      </div>
+      <div class="sector-card fade-up">
+        <div class="sector-icon">🏛️</div>
+        <h4>Construction Chemicals</h4>
+        <p>Concrete admixtures, water reducing agents</p>
+      </div>
+      <div class="sector-card fade-up">
+        <div class="sector-icon">🔬</div>
+        <h4>Advanced Materials</h4>
+        <p>Diketopyrrolopyrrole, crude anthracene</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section projects" id="projects">
+  <div class="container">
+    <div class="fade-up" style="text-align:center;max-width:700px;margin:0 auto 60px">
+      <div class="section-label" style="justify-content:center">Project Portfolio</div>
+      <h2 class="section-title">Featured Projects</h2>
+      <p class="section-subtitle" style="margin:0 auto">A selection of our 17 successfully delivered industrial projects across multiple sectors and capacities.</p>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card fade-up">
+        <div class="project-img">
+          <img src="https://image.qwenlm.ai/public_source/8a9f995b-47c7-40db-b960-98e9462c5cf6/13be20c4e-7b97-4fcb-a1ff-d7f98d13a7fa.png" alt="YUNTH Urea Plant">
+          <div class="project-overlay"><span class="project-tag">Fertilizer</span></div>
         </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="section" id="about">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <h2>About Me</h2>
-                <p>Dedicated Mechanical Engineer with a solid foundation in engineering principles</p>
-            </div>
-            <div class="about-content">
-                <div class="about-image animate-on-scroll">
-                    <img src="https://image.qwenlm.ai/public_source/697b547d-6135-4657-a279-18612e6a9321/1fbe3d767-4e72-443d-9d2e-3d3339b5e303.png" alt="About Abdu Demle">
-                </div>
-                <div class="about-text animate-on-scroll">
-                    <h3>My Name is Abdu Demle Melaku</h3>
-                    <p>I am a dedicated Mechanical Engineer from Ethiopia with hands-on experience in 3D plant design, piping systems, and industrial machinery development. I am proficient in AVEVA PDMS, E3D, SolidWorks, AutoCAD, and Navisworks.</p>
-                    <p>With a proven ability to design, analyze, and optimize complex mechanical systems, I specialize in preparing isometric and General Arrangement drawings, performing clash detection, and coordinating across disciplines. I was recognized for innovation, precision, and strong problem-solving abilities — recipient of the Best Academic Achievement Medal from Wollo University.</p>
-                    <div class="about-info-grid">
-                        <div class="about-info-item">
-                            <i class="fas fa-user"></i>
-                            <div>
-                                <strong>Name:</strong>
-                                <span>Abdu Demle Melaku</span>
-                            </div>
-                        </div>
-                        <div class="about-info-item">
-                            <i class="fas fa-calendar"></i>
-                            <div>
-                                <strong>Birthday:</strong>
-                                <span>14 August 2000</span>
-                            </div>
-                        </div>
-                        <div class="about-info-item">
-                            <i class="fas fa-envelope"></i>
-                            <div>
-                                <strong>Email:</strong>
-                                <span>abdudemle0899@gmail.com</span>
-                            </div>
-                        </div>
-                        <div class="about-info-item">
-                            <i class="fas fa-phone"></i>
-                            <div>
-                                <strong>Phone:</strong>
-                                <span>(+251) 910298713</span>
-                            </div>
-                        </div>
-                        <div class="about-info-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div>
-                                <strong>Location:</strong>
-                                <span>Addis Ababa, Ethiopia</span>
-                            </div>
-                        </div>
-                        <div class="about-info-item">
-                            <i class="fas fa-flag"></i>
-                            <div>
-                                <strong>Nationality:</strong>
-                                <span>Ethiopian</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="social-links" style="margin-top: 2rem;">
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="#"><i class="fab fa-telegram-plane"></i></a>
-                        <a href="mailto:abdudemle0899@gmail.com"><i class="fas fa-envelope"></i></a>
-                    </div>
-                </div>
-            </div>
+        <div class="project-body">
+          <h3>YUNTH — Urea Production Plant</h3>
+          <div class="project-meta">
+            <span>📍 Qinghai Yuntianhua</span>
+            <span> 600,000 t/yr</span>
+          </div>
+          <p>Large-scale urea fertilizer production facility with 25% design contribution. One of the largest capacity projects in our portfolio.</p>
         </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section class="section section-light" id="skills">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <h2>My Skills</h2>
-                <p>Professional technical skills and software proficiencies</p>
-            </div>
-            <div class="skills-grid">
-                <div class="skill-card animate-on-scroll">
-                    <div class="skill-icon">
-                        <i class="fas fa-cube"></i>
-                    </div>
-                    <h4>AVEVA PDMS / E3D</h4>
-                    <p>Advanced 3D plant design and piping layout using AVEVA PDMS and E3D software</p>
-                    <div class="skill-progress">
-                        <div class="skill-bar">
-                            <div class="skill-bar-fill" style="--width: 95%"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-card animate-on-scroll">
-                    <div class="skill-icon">
-                        <i class="fas fa-drafting-compass"></i>
-                    </div>
-                    <h4>AutoCAD</h4>
-                    <p>Advanced knowledge of AutoCAD for 2D drafting and technical drawing preparation</p>
-                    <div class="skill-progress">
-                        <div class="skill-bar">
-                            <div class="skill-bar-fill" style="--width: 90%"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-card animate-on-scroll">
-                    <div class="skill-icon">
-                        <i class="fas fa-cogs"></i>
-                    </div>
-                    <h4>SolidWorks</h4>
-                    <p>3D modeling, assembly design, and mechanical component development</p>
-                    <div class="skill-progress">
-                        <div class="skill-bar">
-                            <div class="skill-bar-fill" style="--width: 88%"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-card animate-on-scroll">
-                    <div class="skill-icon">
-                        <i class="fas fa-search"></i>
-                    </div>
-                    <h4>Navisworks</h4>
-                    <p>Clash detection, model coordination, and project review using Navisworks</p>
-                    <div class="skill-progress">
-                        <div class="skill-bar">
-                            <div class="skill-bar-fill" style="--width: 85%"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-card animate-on-scroll">
-                    <div class="skill-icon">
-                        <i class="fas fa-industry"></i>
-                    </div>
-                    <h4>CNC Operations</h4>
-                    <p>CNC laser machine operation and industrial equipment maintenance</p>
-                    <div class="skill-progress">
-                        <div class="skill-bar">
-                            <div class="skill-bar-fill" style="--width: 80%"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-card animate-on-scroll">
-                    <div class="skill-icon">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <h4>Microsoft Office</h4>
-                    <p>Proficient in Word, Excel, PowerPoint, and Access for documentation and reporting</p>
-                    <div class="skill-progress">
-                        <div class="skill-bar">
-                            <div class="skill-bar-fill" style="--width: 92%"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      </div>
+      <div class="project-card fade-up">
+        <div class="project-img">
+          <img src="https://image.qwenlm.ai/public_source/8a9f995b-47c7-40db-b960-98e9462c5cf6/1ddb9cebc-9411-4340-b409-be80db450dcd.png" alt="QIXIANG Steam Plant">
+          <div class="project-overlay"><span class="project-tag">Energy</span></div>
         </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section class="section" id="experience">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <h2>Work Experience</h2>
-                <p>Professional journey in mechanical engineering and design</p>
-            </div>
-            <div class="timeline">
-                <div class="timeline-item animate-on-scroll">
-                    <div class="timeline-content">
-                        <span class="timeline-date">June 2024 - Present</span>
-                        <h4>Piping Design Engineer</h4>
-                        <h5>CRTEC – Seconded to Hebei Enco Petrochemical Engineering Co. Ltd.</h5>
-                        <ul>
-                            <li>Designed and modified pipeline layouts using AVEVA PDMS, E3D, and Navisworks</li>
-                            <li>Prepared isometric and General Arrangement (GA) drawings for pipelines and equipment</li>
-                            <li>Coordinated with civil, structural, and instrumentation teams to meet project specifications</li>
-                            <li>Performed clash detection and optimized routing to reduce material waste</li>
-                            <li>Ensured compliance with international engineering codes and standards</li>
-                        </ul>
-                    </div>
-                    <div class="timeline-dot"></div>
-                </div>
-                <div class="timeline-item animate-on-scroll">
-                    <div class="timeline-content">
-                        <span class="timeline-date">Jan 2024 - June 2024</span>
-                        <h4>Industrial Machinery Designer</h4>
-                        <h5>ZG Industrial Automation</h5>
-                        <ul>
-                            <li>Designed industrial machinery using AutoCAD, SolidWorks, and CAM software</li>
-                            <li>Operated CNC laser machines and performed maintenance on various industrial equipment</li>
-                        </ul>
-                    </div>
-                    <div class="timeline-dot"></div>
-                </div>
-                <div class="timeline-item animate-on-scroll">
-                    <div class="timeline-content">
-                        <span class="timeline-date">Oct 2022 - Dec 2022</span>
-                        <h4>Engineering Intern</h4>
-                        <h5>Tikurabay Transport S.C</h5>
-                        <ul>
-                            <li>Designed and fabricated an engine crane utilizing both mechanical and hydraulic principles</li>
-                        </ul>
-                    </div>
-                    <div class="timeline-dot"></div>
-                </div>
-            </div>
+        <div class="project-body">
+          <h3>QIXIANG — Steam Generation</h3>
+          <div class="project-meta">
+            <span>📍 Zibo Qixiang Tengda</span>
+            <span>⚖ 3,360,000 t/yr</span>
+          </div>
+          <p>Major steam generation facility with 75% design contribution. High-capacity energy infrastructure for chemical production.</p>
         </div>
-    </section>
-
-    <!-- Education Section -->
-    <section class="section section-light" id="education">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <h2>Education</h2>
-                <p>Academic background and qualifications</p>
-            </div>
-            <div class="education-card animate-on-scroll">
-                <div class="education-icon">
-                    <i class="fas fa-graduation-cap"></i>
-                </div>
-                <div class="education-details">
-                    <h4>Mechanical Engineering (Design Engineering)</h4>
-                    <h5>Wollo University</h5>
-                    <p>September 2018 - September 2023 | Final Grade: 3.89/4.00 | EQF Level 6</p>
-                    <p><strong>Thesis:</strong> Design and Fabricate Hydraulic and Mechanical System Engine Crane Machine</p>
-                    <span class="education-badge"><i class="fas fa-medal"></i> Best Academic Achievement Medal</span>
-                </div>
-            </div>
-            
-            <!-- Certificates Gallery -->
-            <div class="section-header animate-on-scroll" style="margin-top: 4rem;">
-                <h2>Certificates & Awards</h2>
-                <p>Professional certifications and academic achievements</p>
-            </div>
-            <div class="certificates-grid">
-                <div class="certificate-item animate-on-scroll" data-src="https://image.qwenlm.ai/public_source/697b547d-6135-4657-a279-18612e6a9321/1d7feb2c4-c65e-4152-98da-898e9adbd0ac.png">
-                    <img src="https://image.qwenlm.ai/public_source/697b547d-6135-4657-a279-18612e6a9321/1d7feb2c4-c65e-4152-98da-898e9adbd0ac.png" alt="Best Academic Achievement">
-                    <div class="certificate-info">
-                        <h5>Best Academic Achievement</h5>
-                        <p>Wollo University - Sept 2023</p>
-                    </div>
-                </div>
-                <div class="certificate-item animate-on-scroll" data-src="https://image.qwenlm.ai/public_source/697b547d-6135-4657-a279-18612e6a9321/19512e333-6b01-417c-8d09-d280bf495407.png">
-                    <img src="https://image.qwenlm.ai/public_source/697b547d-6135-4657-a279-18612e6a9321/19512e333-6b01-417c-8d09-d280bf495407.png" alt="CCNA Certificate">
-                    <div class="certificate-info">
-                        <h5>CCNAv7: Introduction to Networks</h5>
-                        <p>Cisco Networking Academy - Feb 2023</p>
-                    </div>
-                </div>
-                <div class="certificate-item animate-on-scroll" data-src="https://image.qwenlm.ai/public_source/697b547d-6135-4657-a279-18612e6a9321/11d5d6389-f0b5-4b7b-8f0c-b5fd6f4abb30.png">
-                    <img src="https://image.qwenlm.ai/public_source/697b547d-6135-4657-a279-18612e6a9321/11d5d6389-f0b5-4b7b-8f0c-b5fd6f4abb30.png" alt="English Certificate">
-                    <div class="certificate-info">
-                        <h5>English Language Certificate</h5>
-                        <p>Kenny American Language Center - Oct 2018</p>
-                    </div>
-                </div>
-                <div class="certificate-item animate-on-scroll" data-src="https://image.qwenlm.ai/public_source/697b547d-6135-4657-a279-18612e6a9321/12f27e610-0772-4638-82f1-639d7fcb6948.png">
-                    <img src="https://image.qwenlm.ai/public_source/697b547d-6135-4657-a279-18612e6a9321/12f27e610-0772-4638-82f1-639d7fcb6948.png" alt="Internship Certificate">
-                    <div class="certificate-info">
-                        <h5>Certificate of Recognition</h5>
-                        <p>Tikur Abay Transport - Feb 2023</p>
-                    </div>
-                </div>
-            </div>
+      </div>
+      <div class="project-card fade-up">
+        <div class="project-img">
+          <img src="https://image.qwenlm.ai/public_source/8a9f995b-47c7-40db-b960-98e9462c5cf6/101ca3bda-fe83-412c-9bfc-0bf8226507d6.png" alt="HUAYI PVC Plant">
+          <div class="project-overlay"><span class="project-tag">Chlor-Alkali</span></div>
         </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section class="section" id="projects">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <h2>Key Projects</h2>
-                <p>Notable engineering projects and accomplishments</p>
-            </div>
-            <div class="projects-grid">
-                <div class="project-card animate-on-scroll">
-                    <div class="project-image">
-                        <img src="https://image.qwenlm.ai/public_source/697b547d-6135-4657-a279-18612e6a9321/1d7feb2c4-c65e-4152-98da-898e9adbd0ac.png" alt="Pipeline Design">
-                        <div class="project-overlay">
-                            <span>Piping Design</span>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h4>Pipeline Layout Design</h4>
-                        <p>Designed and modified pipeline layouts using AVEVA PDMS, E3D, and Navisworks for petrochemical engineering projects.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">AVEVA PDMS</span>
-                            <span class="project-tag">E3D</span>
-                            <span class="project-tag">Navisworks</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card animate-on-scroll">
-                    <div class="project-image">
-                        <img src="https://image.qwenlm.ai/public_source/697b547d-6135-4657-a279-18612e6a9321/19512e333-6b01-417c-8d09-d280bf495407.png" alt="Engine Crane">
-                        <div class="project-overlay">
-                            <span>Machine Design</span>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h4>Hydraulic Engine Crane</h4>
-                        <p>Designed and fabricated an engine crane utilizing both mechanical and hydraulic principles as a graduation thesis project.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">SolidWorks</span>
-                            <span class="project-tag">Hydraulics</span>
-                            <span class="project-tag">Fabrication</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card animate-on-scroll">
-                    <div class="project-image">
-                        <img src="https://image.qwenlm.ai/public_source/697b547d-6135-4657-a279-18612e6a9321/11d5d6389-f0b5-4b7b-8f0c-b5fd6f4abb30.png" alt="Industrial Machinery">
-                        <div class="project-overlay">
-                            <span>Industrial Design</span>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h4>Industrial Machinery Design</h4>
-                        <p>Designed industrial machinery using AutoCAD, SolidWorks, and CAM software for manufacturing applications.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">AutoCAD</span>
-                            <span class="project-tag">SolidWorks</span>
-                            <span class="project-tag">CAM</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card animate-on-scroll">
-                    <div class="project-image">
-                        <img src="https://image.qwenlm.ai/public_source/697b547d-6135-4657-a279-18612e6a9321/12f27e610-0772-4638-82f1-639d7fcb6948.png" alt="GA Drawings">
-                        <div class="project-overlay">
-                            <span>Technical Drawing</span>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h4>Isometric & GA Drawings</h4>
-                        <p>Prepared detailed isometric and General Arrangement drawings for pipelines and equipment in petrochemical projects.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Isometric</span>
-                            <span class="project-tag">GA Drawings</span>
-                            <span class="project-tag">AutoCAD</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card animate-on-scroll">
-                    <div class="project-image">
-                        <img src="https://image.qwenlm.ai/public_source/697b547d-6135-4657-a279-18612e6a9321/1c6284e32-3cb8-49d2-af33-51e8e067b690.png" alt="Clash Detection">
-                        <div class="project-overlay">
-                            <span>Coordination</span>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h4>Clash Detection & Optimization</h4>
-                        <p>Performed clash detection using Navisworks and optimized routing to reduce material waste in complex projects.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Navisworks</span>
-                            <span class="project-tag">Clash Detection</span>
-                            <span class="project-tag">Optimization</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card animate-on-scroll">
-                    <div class="project-image">
-                        <img src="https://image.qwenlm.ai/public_source/697b547d-6135-4657-a279-18612e6a9321/1fbe3d767-4e72-443d-9d2e-3d3339b5e303.png" alt="CNC Operations">
-                        <div class="project-overlay">
-                            <span>Manufacturing</span>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h4>CNC Laser Operations</h4>
-                        <p>Operated CNC laser machines and performed maintenance on various industrial equipment at ZG Industrial Automation.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">CNC</span>
-                            <span class="project-tag">Laser</span>
-                            <span class="project-tag">Maintenance</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="project-body">
+          <h3>HUAYI — Caustic Soda & PVC</h3>
+          <div class="project-meta">
+            <span>📍 Shanghaichem Engineering</span>
+            <span>⚖ 1,300,000 t/yr</span>
+          </div>
+          <p>Major chlor-alkali and PVC oxychlorination complex with 60% design contribution. One of the most complex projects delivered.</p>
         </div>
-    </section>
-
-    <!-- Languages Section -->
-    <section class="section section-light" id="languages">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <h2>Languages</h2>
-                <p>Language proficiency levels</p>
-            </div>
-            <div class="languages-grid">
-                <div class="language-card animate-on-scroll">
-                    <h4>Amharic</h4>
-                    <p>Mother Tongue</p>
-                    <div class="language-level">
-                        <div class="language-dot filled"></div>
-                        <div class="language-dot filled"></div>
-                        <div class="language-dot filled"></div>
-                        <div class="language-dot filled"></div>
-                        <div class="language-dot filled"></div>
-                    </div>
-                </div>
-                <div class="language-card animate-on-scroll">
-                    <h4>English</h4>
-                    <p>Proficient User</p>
-                    <div class="language-level">
-                        <div class="language-dot filled"></div>
-                        <div class="language-dot filled"></div>
-                        <div class="language-dot filled"></div>
-                        <div class="language-dot filled"></div>
-                        <div class="language-dot"></div>
-                    </div>
-                    <p style="margin-top: 1rem; font-size: 0.85rem;">Reading: C2 | Listening: C2 | Writing: C1 | Speaking: C1</p>
-                </div>
-            </div>
+      </div>
+      <div class="project-card fade-up">
+        <div class="project-img">
+          <img src="https://image.qwenlm.ai/public_source/8a9f995b-47c7-40db-b960-98e9462c5cf6/116e57787-daff-4e88-9770-7d3d41ba8782.png" alt="BINGSUAN Propionic Acid">
+          <div class="project-overlay"><span class="project-tag">Fine Chemicals</span></div>
         </div>
-    </section>
-
-    <!-- Recommendations Section -->
-    <section class="section" id="recommendations">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <h2>Recommendations</h2>
-                <p>What people say about my work</p>
-            </div>
-            <div class="recommendations-grid">
-                <div class="recommendation-card animate-on-scroll">
-                    <p class="recommendation-text">I have known him for five years as a standout student in the School of Mechanical and Chemical Engineering. He was a top scorer with exceptional practical skills, combining academic excellence with innovative problem-solving. I highly recommend him for his dedication, expertise, and strong work ethic.</p>
-                    <div class="recommendation-author">
-                        <div class="recommendation-avatar">JM</div>
-                        <div>
-                            <h5>Mr. Jemal Mohammed</h5>
-                            <p>Mechanical Engineering Department Head, Wollo University</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="recommendation-card animate-on-scroll">
-                    <p class="recommendation-text">Motivated mechanical engineering graduate with a strong ability to learn and solve problems systematically. Excellent communication and teamwork skills, recognized for dedication and moral values. Committed to community-based problem-solving.</p>
-                    <div class="recommendation-author">
-                        <div class="recommendation-avatar">HM</div>
-                        <div>
-                            <h5>Mr. Habtamu Mulatu</h5>
-                            <p>Lecturer, Wollo University</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="project-body">
+          <h3>BINGSUAN — Propionic Acid Plant</h3>
+          <div class="project-meta">
+            <span>📍 Lanzhou Aigmed</span>
+            <span>⚖ 5,000 t/yr</span>
+          </div>
+          <p>Complete 100% design contribution for synthetic biotechnology propionic acid production facility.</p>
         </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="section section-light" id="contact">
-        <div class="container">
-            <div class="section-header animate-on-scroll">
-                <h2>Get In Touch</h2>
-                <p>Ready to contribute technical excellence to a dynamic engineering team</p>
-            </div>
-            <div class="contact-wrapper">
-                <div class="contact-info animate-on-scroll">
-                    <h3>Contact Information</h3>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h5>Address</h5>
-                            <p>Addis Ababa, Megenagna, 1000<br>Addis Ababa, Ethiopia</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone-alt"></i>
-                        <div>
-                            <h5>Phone</h5>
-                            <p>(+251) 910298713</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h5>Email</h5>
-                            <p>abdudemle0899@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-passport"></i>
-                        <div>
-                            <h5>Passport</h5>
-                            <p>EP8051795</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-briefcase"></i>
-                        <div>
-                            <h5>Current Position</h5>
-                            <p>Piping Design Engineer at CRTEC<br>(Seconded to Hebei Enco Petrochemical)</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-form animate-on-scroll">
-                    <h3>Send a Message</h3>
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Your Name</label>
-                            <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Your Email</label>
-                            <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" class="form-control" placeholder="Enter subject" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" class="form-control" placeholder="Write your message here..." required></textarea>
-                        </div>
-                        <button type="submit" class="submit-btn">Send Message <i class="fas fa-paper-plane"></i></button>
-                    </form>
-                </div>
-            </div>
+      </div>
+      <div class="project-card fade-up">
+        <div class="project-img">
+          <img src="https://image.qwenlm.ai/public_source/8a9f995b-47c7-40db-b960-98e9462c5cf6/131b56f7d-fadf-4bf2-bc0b-7d95954e326e.png" alt="HNLC PVC Resin">
+          <div class="project-overlay"><span class="project-tag">PVC</span></div>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <div class="footer-brand">ABDU <span>DEMLE</span></div>
-                    <p>Dedicated Mechanical Engineer with expertise in 3D plant design, piping systems, and industrial machinery development. Ready to contribute technical excellence to a dynamic engineering team.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="#"><i class="fab fa-telegram-plane"></i></a>
-                        <a href="mailto:abdudemle0899@gmail.com"><i class="fas fa-envelope"></i></a>
-                    </div>
-                </div>
-                <div>
-                    <h5>Quick Links</h5>
-                    <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About Me</a></li>
-                        <li><a href="#skills">Skills</a></li>
-                        <li><a href="#experience">Experience</a></li>
-                        <li><a href="#education">Education</a></li>
-                        <li><a href="#projects">Projects</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h5>Technical Skills</h5>
-                    <ul class="footer-links">
-                        <li><a href="#">AVEVA PDMS / E3D</a></li>
-                        <li><a href="#">AutoCAD</a></li>
-                        <li><a href="#">SolidWorks</a></li>
-                        <li><a href="#">Navisworks</a></li>
-                        <li><a href="#">CNC Operations</a></li>
-                        <li><a href="#">Microsoft Office</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h5>Contact</h5>
-                    <ul class="footer-links">
-                        <li><a href="mailto:abdudemle0899@gmail.com">abdudemle0899@gmail.com</a></li>
-                        <li><a href="tel:+251910298713">(+251) 910298713</a></li>
-                        <li><a href="#">Addis Ababa, Ethiopia</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>Copyright &copy; 2026 Abdu Demle Melaku. All rights reserved.</p>
-            </div>
+        <div class="project-body">
+          <h3>HNLC — PVC Resin & Acetylene</h3>
+          <div class="project-meta">
+            <span>📍 Henan Lianchuang</span>
+            <span>⚖ 200,000 t/yr</span>
+          </div>
+          <p>Full design contribution for PVC resin and acetylene production facility with complete piping engineering scope.</p>
         </div>
-    </footer>
+      </div>
+      <div class="project-card fade-up">
+        <div class="project-img">
+          <img src="https://image.qwenlm.ai/public_source/8a9f995b-47c7-40db-b960-98e9462c5cf6/1b2d03a01-dbda-4d87-9847-36ff0c7220f6.png" alt="XINGFA FDCA">
+          <div class="project-overlay"><span class="project-tag">New Materials</span></div>
+        </div>
+        <div class="project-body">
+          <h3>XINGFA — FDCA Production</h3>
+          <div class="project-meta">
+            <span>📍 Hubei Jixing Chemical</span>
+            <span>⚖ 100 t/yr</span>
+          </div>
+          <p>2,5-Furandicarboxylic acid (FDCA) new materials facility with 100% design contribution for sustainable polymer precursor.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Scroll to Top -->
-    <button class="scroll-top" id="scrollTop">
-        <i class="fas fa-chevron-up"></i>
-    </button>
+<!-- STATS -->
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="fade-up">
+        <div class="stat-num" data-count="17">0</div>
+        <div class="stat-label">Industrial Projects</div>
+      </div>
+      <div class="fade-up">
+        <div class="stat-num" data-count="100">0</div>
+        <div class="stat-label">Thousand+ Man-Hours</div>
+      </div>
+      <div class="fade-up">
+        <div class="stat-num" data-count="16">0</div>
+        <div class="stat-label">Expert Engineers</div>
+      </div>
+      <div class="fade-up">
+        <div class="stat-num" data-count="9">0</div>
+        <div class="stat-label">Trainee Engineers</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <script>
-        // Loader
-        window.addEventListener('load', () => {
-            document.getElementById('loader').classList.add('hidden');
-        });
+<!-- TEAM -->
+<section class="section" id="team">
+  <div class="container">
+    <div class="fade-up" style="text-align:center;max-width:700px;margin:0 auto 60px">
+      <div class="section-label" style="justify-content:center">Our Team</div>
+      <h2 class="section-title">Leadership & Expertise</h2>
+      <p class="section-subtitle" style="margin:0 auto">Led by experienced professionals combining international engineering expertise with local industry knowledge.</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card fade-up">
+        <div class="team-img">
+          <img src="https://image.qwenlm.ai/public_source/8a9f995b-47c7-40db-b960-98e9462c5cf6/12ed3bda5-6107-47c8-8aa7-337bb963bafb.png" alt="Abdu Demle Melaku">
+        </div>
+        <div class="team-body">
+          <h3>Abdu Demle Melaku</h3>
+          <div class="team-role">Lead Piping Design Engineer</div>
+          <p class="team-desc">BSc in Mechanical Engineering with specialized expertise in industrial piping design, 3D plant modeling, and project execution for chemical and petrochemical facilities.</p>
+        </div>
+      </div>
+      <div class="team-card fade-up">
+        <div class="team-img">
+          <img src="https://image.qwenlm.ai/public_source/8a9f995b-47c7-40db-b960-98e9462c5cf6/1035edddb-d6f6-4e94-b0a3-d982e9356a3a.png" alt="Engineering Team">
+        </div>
+        <div class="team-body">
+          <h3>Engineering Team</h3>
+          <div class="team-role">16 Engineers + 9 Trainees</div>
+          <p class="team-desc">A multidisciplinary team of specialized engineers proficient in AVEVA PDMS/E3D, CAESAR II, AutoCAD, and international engineering standards.</p>
+        </div>
+      </div>
+      <div class="team-card fade-up">
+        <div class="team-img">
+          <img src="https://image.qwenlm.ai/public_source/8a9f995b-47c7-40db-b960-98e9462c5cf6/1ddb9cebc-9411-4340-b409-be80db450dcd.png" alt="Technical Partners">
+        </div>
+        <div class="team-body">
+          <h3>Hebei Yingke Partnership</h3>
+          <div class="team-role">Strategic Engineering Partner</div>
+          <p class="team-desc">Collaboration with Hebei Yingke Petrochemical Engineering Co., Ltd. brings international project experience and engineering standards to every assignment.</p>
+        </div>
+      </div>
+    </div>
+    <div class="fade-up" style="margin-top:60px;background:var(--bg);border-radius:var(--radius);padding:40px;border:1px solid var(--border)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;text-align:center">
+        <div>
+          <div style="font-size:2rem;margin-bottom:8px">🎓</div>
+          <h4 style="color:var(--navy);font-size:1rem">BSc Mechanical Engineering</h4>
+          <p style="font-size:0.85rem;color:var(--text-light)">Hawassa University</p>
+        </div>
+        <div>
+          <div style="font-size:2rem;margin-bottom:8px"></div>
+          <h4 style="color:var(--navy);font-size:1rem">ASME B31.3 Certified</h4>
+          <p style="font-size:0.85rem;color:var(--text-light)">Process Piping Standard</p>
+        </div>
+        <div>
+          <div style="font-size:2rem;margin-bottom:8px"></div>
+          <h4 style="color:var(--navy);font-size:1rem">AVEVA PDMS/E3D</h4>
+          <p style="font-size:0.85rem;color:var(--text-light)">3D Plant Modeling</p>
+        </div>
+        <div>
+          <div style="font-size:2rem;margin-bottom:8px">🔬</div>
+          <h4 style="color:var(--navy);font-size:1rem">CAESAR II</h4>
+          <p style="font-size:0.85rem;color:var(--text-light)">Piping Stress Analysis</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        // Navigation
-        const navbar = document.getElementById('navbar');
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navMenu = document.getElementById('navMenu');
-        const navLinks = document.querySelectorAll('.nav-link');
+<!-- CONTACT -->
+<section class="section contact" id="contact">
+  <div class="container">
+    <div class="fade-up" style="text-align:center;max-width:700px;margin:0 auto 60px">
+      <div class="section-label" style="justify-content:center">Get In Touch</div>
+      <h2 class="section-title">Contact Us</h2>
+      <p class="section-subtitle" style="margin:0 auto">Ready to start your next industrial project? Reach out to our team for engineering consultation and support.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info fade-up">
+        <div class="contact-item">
+          <div class="contact-icon"></div>
+          <div>
+            <h4>Office Address</h4>
+            <p>Yeka Sub-City, Woreda 08, Megenogna<br>Addis Ababa, Ethiopia</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🌐</div>
+          <div>
+            <h4>Website</h4>
+            <p>www.crtec-et.com</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"></div>
+          <div>
+            <h4>Email</h4>
+            <p>info@crtec-et.com</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🕐</div>
+          <div>
+            <h4>Working Hours</h4>
+            <p>Monday – Friday: 8:30 AM – 5:30 PM<br>Saturday: 9:00 AM – 1:00 PM</p>
+          </div>
+        </div>
+        <div style="margin-top:24px;border-radius:var(--radius);overflow:hidden;height:240px;background:var(--navy-light)">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.5!2d38.79!3d9.03!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOcKwMDEnNDguMCJOIDM4wrA0NycyNC4wIkU!5e0!3m2!1sen!2set!4v1" width="100%" height="100%" style="border:0" allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+      <div class="contact-form fade-up">
+        <form id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Full Name *</label>
+              <input type="text" required placeholder="Your name">
+            </div>
+            <div class="form-group">
+              <label>Email *</label>
+              <input type="email" required placeholder="your@email.com">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Company</label>
+              <input type="text" placeholder="Your company">
+            </div>
+            <div class="form-group">
+              <label>Service Required</label>
+              <select>
+                <option>3D Plant Modeling</option>
+                <option>Piping Engineering</option>
+                <option>Stress Analysis</option>
+                <option>Engineering Documentation</option>
+                <option>Tank Farm Engineering</option>
+                <option>Brownfield Engineering</option>
+                <option>Tender Evaluation</option>
+                <option>EPC Support</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Project Details *</label>
+            <textarea required placeholder="Tell us about your project requirements..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Send Message →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
 
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>CR<span>TEC</span></h3>
+        <p>China Rail Transit Engineering Consultancy — Industrial Piping Design Team. Delivering safe, efficient, and high-quality engineering solutions that meet international standards.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="Twitter">𝕏</a>
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Email">@</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">3D Plant Modeling</a></li>
+          <li><a href="#services">Piping Engineering</a></li>
+          <li><a href="#services">Stress Analysis</a></li>
+          <li><a href="#services">Documentation</a></li>
+          <li><a href="#services">EPC Support</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li>Yeka Sub-City, Woreda 08</li>
+          <li>Megenogna, Addis Ababa</li>
+          <li>Ethiopia</li>
+          <li>www.crtec-et.com</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 CRTEC Industrial Piping Design Team. All rights reserved. | In collaboration with Hebei Yingke Petrochemical Engineering Co., Ltd.</p>
+    </div>
+  </div>
+</footer>
 
-            // Scroll to top button
-            const scrollTop = document.getElementById('scrollTop');
-            if (window.scrollY > 500) {
-                scrollTop.classList.add('visible');
-            } else {
-                scrollTop.classList.remove('visible');
-            }
+<script>
+// Nav scroll effect
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>50)});
 
-            // Active nav link based on scroll position
-            const sections = document.querySelectorAll('section[id]');
-            let currentSection = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 100;
-                if (window.scrollY >= sectionTop) {
-                    currentSection = section.getAttribute('id');
-                }
-            });
+// Mobile menu toggle
+const navToggle=document.getElementById('navToggle');
+const navLinks=document.getElementById('navLinks');
+navToggle.addEventListener('click',()=>navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
 
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + currentSection) {
-                    link.classList.add('active');
-                }
-            });
-        });
+// Fade-up on scroll
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}});
+},{threshold:0.1});
+document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
 
-        mobileMenuBtn.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
+// Counter animation
+const counterObserver=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const el=e.target;
+      const target=parseInt(el.dataset.count);
+      let current=0;
+      const increment=target/60;
+      const timer=setInterval(()=>{
+        current+=increment;
+        if(current>=target){current=target;clearInterval(timer)}
+        el.textContent=Math.floor(current);
+      },25);
+      counterObserver.unobserve(el);
+    }
+  });
+},{threshold:0.5});
+document.querySelectorAll('[data-count]').forEach(el=>counterObserver.observe(el));
 
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-            });
-        });
+// Form submit
+document.getElementById('contactForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  const btn=this.querySelector('button');
+  const original=btn.textContent;
+  btn.textContent='Message Sent ✓';
+  btn.style.background='#10b981';
+  setTimeout(()=>{btn.textContent=original;btn.style.background='';this.reset()},2500);
+});
 
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Scroll to top
-        document.getElementById('scrollTop').addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-
-        // Lightbox for certificates
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightbox-img');
-        const lightboxClose = document.querySelector('.lightbox-close');
-        const certificateItems = document.querySelectorAll('.certificate-item');
-
-        certificateItems.forEach(item => {
-            item.addEventListener('click', () => {
-                const imgSrc = item.getAttribute('data-src');
-                lightboxImg.src = imgSrc;
-                lightbox.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            });
-        });
-
-        lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) {
-                lightbox.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
-
-        lightboxClose.addEventListener('click', () => {
-            lightbox.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-                lightbox.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
-
-        // Scroll Animation
-        const animateOnScroll = () => {
-            const elements = document.querySelectorAll('.animate-on-scroll');
-            elements.forEach(el => {
-                const rect = el.getBoundingClientRect();
-                if (rect.top < window.innerHeight - 100) {
-                    el.classList.add('animated');
-                }
-            });
-        };
-
-        window.addEventListener('scroll', animateOnScroll);
-        animateOnScroll();
-
-        // Skill Bars Animation
-        const animateSkillBars = () => {
-            const skillBars = document.querySelectorAll('.skill-bar-fill');
-            skillBars.forEach(bar => {
-                const rect = bar.getBoundingClientRect();
-                if (rect.top < window.innerHeight && !bar.classList.contains('animated')) {
-                    bar.classList.add('animated');
-                }
-            });
-        };
-
-        window.addEventListener('scroll', animateSkillBars);
-        animateSkillBars();
-
-        // Contact Form
-        document.getElementById('contactForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const btn = e.target.querySelector('.submit-btn');
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
-            btn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
-            setTimeout(() => {
-                btn.innerHTML = originalText;
-                btn.style.background = '';
-                e.target.reset();
-            }, 3000);
-        });
-    </script>
+// Smooth reveal on load
+window.addEventListener('load',()=>{document.body.style.opacity='1'});
+</script>
 </body>
 </html>
 
