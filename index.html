@@ -3,188 +3,207 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CRTEC - China Rail Transit Engineering Consultancy | Industrial Piping Design</title>
-<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<title>Abdu Demle Melaku | Piping Design Engineer</title>
 <link href="https://cdn.jsdelivr.net/npm/fontsource-inter@5.0.0/index.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/fontsource-rajdhani@5.0.0/index.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/fontsource-jetbrains-mono@5.0.0/index.css" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --navy:#0a1f3d;--navy-light:#132d54;--navy-dark:#061428;
-  --orange:#e8772e;--orange-light:#f5944a;--orange-dark:#c55e1a;
-  --steel:#4a6b8c;--steel-light:#6b8eb0;
-  --bg:#f7f9fc;--white:#ffffff;--text:#1a2332;--text-light:#5a6b7d;
-  --border:#e2e8f0;--shadow:0 4px 24px rgba(10,31,61,0.08);
-  --shadow-lg:0 12px 48px rgba(10,31,61,0.12);
+  --bg:#0a0e1a;--bg-alt:#0f1525;--card:#141b2d;--card-hover:#1a2340;
+  --cyan:#06d6d6;--cyan-dim:rgba(6,214,214,0.15);--cyan-glow:rgba(6,214,214,0.4);
+  --amber:#f59e0b;--amber-dim:rgba(245,158,11,0.15);
+  --text:#e2e8f0;--text-dim:#94a3b8;--text-bright:#f8fafc;
+  --border:rgba(148,163,184,0.1);--border-light:rgba(148,163,184,0.2);
   --radius:12px;--radius-sm:8px;
+  --shadow:0 10px 40px rgba(0,0,0,0.4);
 }
-html{scroll-behavior:smooth;font-size:16px}
-body{font-family:'Inter',system-ui,-apple-system,sans-serif;color:var(--text);background:var(--bg);line-height:1.6;overflow-x:hidden}
-h1,h2,h3,h4,h5,h6{font-family:'Rajdhani','Inter',sans-serif;font-weight:700;line-height:1.2}
-a{text-decoration:none;color:inherit}
-img{max-width:100%;display:block}
-.container{max-width:1280px;margin:0 auto;padding:0 24px}
-.section{padding:100px 0}
-.section-label{display:inline-flex;align-items:center;gap:8px;font-size:0.8rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:16px}
-.section-label::before{content:'';width:32px;height:2px;background:var(--orange)}
-.section-title{font-size:clamp(2rem,4vw,3rem);color:var(--navy);margin-bottom:16px}
-.section-subtitle{font-size:1.1rem;color:var(--text-light);max-width:640px;margin-bottom:48px}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+h1,h2,h3,h4,h5{font-family:'Rajdhani',sans-serif;font-weight:700;line-height:1.15}
+a{color:inherit;text-decoration:none}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+.section{padding:100px 0;position:relative}
+.section-label{display:inline-flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:var(--cyan);letter-spacing:2px;text-transform:uppercase;margin-bottom:16px}
+.section-label::before{content:'';width:40px;height:1px;background:var(--cyan)}
+.section-title{font-size:clamp(2rem,4vw,3rem);color:var(--text-bright);margin-bottom:20px}
+.section-title span{color:var(--cyan)}
 
 /* NAV */
-.nav{position:fixed;top:0;left:0;right:0;z-index:1000;transition:all .3s ease;padding:20px 0}
-.nav.scrolled{background:rgba(10,31,61,0.97);backdrop-filter:blur(12px);padding:12px 0;box-shadow:0 2px 20px rgba(0,0,0,0.15)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;transition:all .3s ease}
+.nav.scrolled{background:rgba(10,14,26,0.92);backdrop-filter:blur(20px);padding:14px 0;border-bottom:1px solid var(--border)}
 .nav-inner{display:flex;align-items:center;justify-content:space-between}
-.nav-logo{display:flex;align-items:center;gap:12px;color:var(--white);font-family:'Rajdhani',sans-serif;font-weight:700;font-size:1.5rem}
-.nav-logo-icon{width:44px;height:44px;background:linear-gradient(135deg,var(--orange),var(--orange-dark));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:800;color:var(--white)}
-.nav-logo span{color:var(--orange)}
+.nav-logo{font-family:'Rajdhani',sans-serif;font-weight:700;font-size:1.4rem;color:var(--text-bright)}
+.nav-logo span{color:var(--cyan)}
 .nav-links{display:flex;gap:8px;align-items:center}
-.nav-links a{color:rgba(255,255,255,0.85);font-size:0.9rem;font-weight:500;padding:8px 16px;border-radius:var(--radius-sm);transition:all .2s}
-.nav-links a:hover{color:var(--white);background:rgba(255,255,255,0.08)}
-.nav-cta{background:var(--orange)!important;color:var(--white)!important;font-weight:600!important}
-.nav-cta:hover{background:var(--orange-dark)!important}
-.nav-toggle{display:none;background:none;border:none;color:var(--white);font-size:1.5rem;cursor:pointer}
+.nav-links a{color:var(--text-dim);font-size:0.9rem;font-weight:500;padding:8px 16px;border-radius:var(--radius-sm);transition:all .2s}
+.nav-links a:hover{color:var(--cyan);background:var(--cyan-dim)}
+.nav-cta{background:transparent!important;border:1px solid var(--cyan)!important;color:var(--cyan)!important}
+.nav-cta:hover{background:var(--cyan)!important;color:var(--bg)!important}
+.nav-toggle{display:none;background:none;border:none;color:var(--text-bright);font-size:1.5rem;cursor:pointer}
 
 /* HERO */
-.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:var(--navy-dark)}
-.hero-bg{position:absolute;inset:0;background:url('https://image.qwenlm.ai/public_source/8a9f995b-47c7-40db-b960-98e9462c5cf6/131b56f7d-fadf-4bf2-bc0b-7d95954e326e.png') center/cover no-repeat;opacity:0.55}
-.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(6,20,40,0.92) 0%,rgba(10,31,61,0.75) 50%,rgba(10,31,61,0.6) 100%)}
-.hero-content{position:relative;z-index:2;max-width:720px;padding:120px 0 80px}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(232,119,46,0.15);border:1px solid rgba(232,119,46,0.3);color:var(--orange-light);padding:8px 20px;border-radius:100px;font-size:0.85rem;font-weight:600;margin-bottom:24px;backdrop-filter:blur(8px)}
-.hero-badge::before{content:'';width:8px;height:8px;background:var(--orange);border-radius:50%;animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
-.hero h1{font-size:clamp(2.5rem,6vw,4.5rem);color:var(--white);margin-bottom:24px;letter-spacing:-0.02em}
-.hero h1 span{color:var(--orange);display:block}
-.hero p{font-size:1.2rem;color:rgba(255,255,255,0.8);margin-bottom:40px;max-width:560px;line-height:1.7}
-.hero-actions{display:flex;gap:16px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:var(--radius-sm);font-weight:600;font-size:0.95rem;transition:all .3s ease;cursor:pointer;border:none}
-.btn-primary{background:var(--orange);color:var(--white)}
-.btn-primary:hover{background:var(--orange-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(232,119,46,0.4)}
-.btn-outline{background:transparent;color:var(--white);border:2px solid rgba(255,255,255,0.3)}
-.btn-outline:hover{border-color:var(--white);background:rgba(255,255,255,0.08)}
-.hero-stats{display:flex;gap:48px;margin-top:64px;padding-top:40px;border-top:1px solid rgba(255,255,255,0.1)}
-.hero-stat-num{font-family:'Rajdhani',sans-serif;font-size:2.5rem;font-weight:700;color:var(--orange)}
-.hero-stat-label{font-size:0.85rem;color:rgba(255,255,255,0.6);margin-top:4px}
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:120px 0 80px}
+.hero-bg{position:absolute;inset:0;background:url('https://image.qwenlm.ai/public_source/8a9f995b-47c7-40db-b960-98e9462c5cf6/1a794580a-e810-42a3-9b9f-a0af7758a339.png') center/cover;opacity:0.15}
+.hero-bg::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 0%,var(--bg) 70%)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(6,214,214,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(6,214,214,0.03) 1px,transparent 1px);background-size:60px 60px}
+.hero-content{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1.2fr;gap:60px;align-items:center}
+.hero-img-wrap{position:relative;max-width:420px;margin:0 auto}
+.hero-img{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:3/4;background:var(--card)}
+.hero-img img{width:100%;height:100%;object-fit:cover}
+.hero-img::before{content:'';position:absolute;inset:0;border:2px solid var(--cyan);border-radius:var(--radius);z-index:2;pointer-events:none}
+.hero-img-accent{position:absolute;top:20px;left:20px;right:-20px;bottom:-20px;border:1px solid var(--cyan-dim);border-radius:var(--radius);z-index:-1}
+.hero-badge{position:absolute;bottom:-15px;right:-15px;background:var(--card);border:1px solid var(--border-light);padding:12px 20px;border-radius:var(--radius-sm);z-index:3;display:flex;align-items:center;gap:10px}
+.hero-badge-dot{width:10px;height:10px;background:#10b981;border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(16,185,129,0.5)}50%{box-shadow:0 0 0 8px rgba(16,185,129,0)}}
+.hero-badge-text{font-size:0.85rem;color:var(--text-bright);font-weight:600}
+.hero-text .greeting{font-family:'JetBrains Mono',monospace;color:var(--cyan);font-size:1rem;margin-bottom:16px}
+.hero-text h1{font-size:clamp(2.5rem,6vw,4.5rem);color:var(--text-bright);margin-bottom:8px;letter-spacing:-0.02em}
+.hero-text h1 span{display:block;color:var(--text-dim);font-weight:500}
+.hero-text .tagline{font-size:1.15rem;color:var(--text-dim);margin:20px 0 32px;max-width:500px}
+.hero-stats{display:flex;gap:32px;margin-bottom:32px;flex-wrap:wrap}
+.hero-stat{padding:16px 20px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);min-width:120px}
+.hero-stat-num{font-family:'Rajdhani',sans-serif;font-size:2rem;font-weight:700;color:var(--cyan)}
+.hero-stat-label{font-size:0.8rem;color:var(--text-dim);margin-top:2px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--radius-sm);font-weight:600;font-size:0.9rem;transition:all .3s ease;cursor:pointer;border:none;font-family:inherit}
+.btn-primary{background:var(--cyan);color:var(--bg)}
+.btn-primary:hover{background:#08f0f0;transform:translateY(-2px);box-shadow:0 8px 24px var(--cyan-glow)}
+.btn-outline{background:transparent;color:var(--text-bright);border:1px solid var(--border-light)}
+.btn-outline:hover{border-color:var(--cyan);color:var(--cyan)}
 
 /* ABOUT */
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-.about-img-wrap{position:relative}
-.about-img{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-lg)}
-.about-img img{width:100%;height:500px;object-fit:cover}
-.about-img-accent{position:absolute;bottom:-20px;right:-20px;width:200px;height:200px;background:linear-gradient(135deg,var(--orange),var(--orange-dark));border-radius:var(--radius);z-index:-1}
-.about-content h2{font-size:clamp(2rem,3.5vw,2.8rem);color:var(--navy);margin-bottom:20px}
-.about-content p{color:var(--text-light);margin-bottom:20px;font-size:1.05rem}
-.about-features{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px}
-.about-feature{display:flex;gap:12px;align-items:flex-start}
-.about-feature-icon{width:40px;height:40px;min-width:40px;background:rgba(232,119,46,0.1);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;color:var(--orange);font-size:1.2rem}
-.about-feature h4{font-size:0.95rem;color:var(--navy);margin-bottom:2px}
-.about-feature p{font-size:0.85rem;color:var(--text-light);margin:0}
+.about-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:80px;align-items:center}
+.about-img{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);position:relative}
+.about-img img{width:100%;height:480px;object-fit:cover}
+.about-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 0%,transparent 30%)}
+.about-content h2{font-size:clamp(2rem,3.5vw,2.8rem);color:var(--text-bright);margin-bottom:20px}
+.about-content h2 span{color:var(--cyan)}
+.about-content p{color:var(--text-dim);margin-bottom:16px;font-size:1.05rem}
+.about-info{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px}
+.about-info-item{display:flex;gap:12px;align-items:center;padding:12px;background:var(--card);border-radius:var(--radius-sm);border:1px solid var(--border)}
+.about-info-icon{width:36px;height:36px;background:var(--cyan-dim);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;color:var(--cyan);font-size:1rem}
+.about-info-label{font-size:0.75rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px}
+.about-info-value{font-size:0.9rem;color:var(--text-bright);font-weight:600}
 
-/* SERVICES */
-.services{background:var(--white)}
-.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
-.service-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:36px;transition:all .4s ease;position:relative;overflow:hidden}
-.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--orange),var(--orange-light));transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
-.service-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:transparent}
-.service-card:hover::before{transform:scaleX(1)}
-.service-icon{width:56px;height:56px;background:linear-gradient(135deg,var(--navy),var(--navy-light));border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;color:var(--orange);font-size:1.5rem;margin-bottom:24px}
-.service-card h3{font-size:1.25rem;color:var(--navy);margin-bottom:12px}
-.service-card p{color:var(--text-light);font-size:0.95rem;line-height:1.6}
+/* EXPERIENCE TIMELINE */
+.experience{background:var(--bg-alt)}
+.timeline{position:relative;max-width:900px;margin:0 auto}
+.timeline::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--cyan),transparent);transform:translateX(-50%)}
+.timeline-item{position:relative;margin-bottom:40px;width:50%;padding:0 40px}
+.timeline-item:nth-child(odd){left:0;text-align:right}
+.timeline-item:nth-child(even){left:50%}
+.timeline-dot{position:absolute;top:20px;width:16px;height:16px;background:var(--cyan);border-radius:50%;border:3px solid var(--bg);box-shadow:0 0 0 4px var(--cyan-dim)}
+.timeline-item:nth-child(odd) .timeline-dot{right:-8px}
+.timeline-item:nth-child(even) .timeline-dot{left:-8px}
+.timeline-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px;transition:all .3s ease}
+.timeline-card:hover{border-color:var(--cyan);transform:translateY(-4px);box-shadow:0 10px 30px rgba(6,214,214,0.1)}
+.timeline-date{font-family:'JetBrains Mono',monospace;color:var(--cyan);font-size:0.85rem;margin-bottom:8px}
+.timeline-card h3{font-size:1.3rem;color:var(--text-bright);margin-bottom:4px}
+.timeline-card .company{color:var(--amber);font-weight:600;margin-bottom:12px;font-size:0.95rem}
+.timeline-card ul{list-style:none}
+.timeline-card li{color:var(--text-dim);font-size:0.9rem;margin-bottom:8px;padding-left:16px;position:relative}
+.timeline-card li::before{content:'▸';position:absolute;left:0;color:var(--cyan)}
+.timeline-item:nth-child(odd) .timeline-card li{padding-left:0;padding-right:16px}
+.timeline-item:nth-child(odd) .timeline-card li::before{left:auto;right:0}
 
-/* SECTORS */
-.sectors-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
-.sector-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:28px;transition:all .3s ease;text-align:center}
-.sector-card:hover{border-color:var(--orange);transform:translateY(-4px);box-shadow:var(--shadow)}
-.sector-icon{width:64px;height:64px;margin:0 auto 16px;background:linear-gradient(135deg,rgba(232,119,46,0.1),rgba(232,119,46,0.05));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.8rem}
-.sector-card h4{font-size:1.05rem;color:var(--navy);margin-bottom:8px}
-.sector-card p{font-size:0.85rem;color:var(--text-light)}
+/* EDUCATION */
+.edu-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:40px;display:grid;grid-template-columns:auto 1fr auto;gap:32px;align-items:center;max-width:900px;margin:0 auto}
+.edu-icon{width:80px;height:80px;background:linear-gradient(135deg,var(--cyan-dim),rgba(6,214,214,0.05));border-radius:var(--radius);display:flex;align-items:center;justify-content:center;font-size:2rem}
+.edu-info h3{font-size:1.5rem;color:var(--text-bright);margin-bottom:4px}
+.edu-info .school{color:var(--cyan);font-weight:600;margin-bottom:8px}
+.edu-info p{color:var(--text-dim);font-size:0.9rem}
+.edu-award{background:var(--amber-dim);border:1px solid rgba(245,158,11,0.3);padding:12px 20px;border-radius:var(--radius-sm);text-align:center}
+.edu-award-label{font-size:0.7rem;color:var(--amber);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.edu-award-value{font-size:1.5rem;font-family:'Rajdhani',sans-serif;font-weight:700;color:var(--amber)}
+
+/* SKILLS */
+.skills{background:var(--bg-alt)}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px}
+.skill-category{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;transition:all .3s ease}
+.skill-category:hover{border-color:var(--cyan);transform:translateY(-4px)}
+.skill-category-header{display:flex;align-items:center;gap:12px;margin-bottom:24px}
+.skill-category-icon{width:44px;height:44px;background:var(--cyan-dim);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;color:var(--cyan);font-size:1.3rem}
+.skill-category h3{font-size:1.2rem;color:var(--text-bright)}
+.skill-item{margin-bottom:16px}
+.skill-header{display:flex;justify-content:space-between;margin-bottom:8px}
+.skill-name{font-size:0.9rem;color:var(--text);font-weight:500}
+.skill-level{font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:var(--cyan)}
+.skill-bar{height:6px;background:rgba(148,163,184,0.1);border-radius:3px;overflow:hidden}
+.skill-fill{height:100%;background:linear-gradient(90deg,var(--cyan),#08f0f0);border-radius:3px;width:0;transition:width 1.5s ease}
 
 /* PROJECTS */
-.projects{background:var(--navy);color:var(--white)}
-.projects .section-title{color:var(--white)}
-.projects .section-subtitle{color:rgba(255,255,255,0.7)}
 .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:24px}
-.project-card{background:var(--navy-light);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius);overflow:hidden;transition:all .4s ease}
-.project-card:hover{transform:translateY(-4px);border-color:rgba(232,119,46,0.3);box-shadow:0 12px 40px rgba(0,0,0,0.3)}
+.project-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:all .4s ease}
+.project-card:hover{transform:translateY(-6px);border-color:var(--cyan);box-shadow:0 20px 40px rgba(0,0,0,0.4)}
 .project-img{height:220px;overflow:hidden;position:relative}
 .project-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
-.project-card:hover .project-img img{transform:scale(1.05)}
-.project-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,31,61,0.9) 0%,transparent 60%);display:flex;align-items:flex-end;padding:20px}
-.project-tag{background:var(--orange);color:var(--white);padding:4px 12px;border-radius:100px;font-size:0.75rem;font-weight:600}
+.project-card:hover .project-img img{transform:scale(1.08)}
+.project-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,14,26,0.95) 0%,transparent 60%);display:flex;align-items:flex-end;padding:20px}
+.project-tag{background:var(--cyan);color:var(--bg);padding:4px 12px;border-radius:100px;font-size:0.75rem;font-weight:700;font-family:'JetBrains Mono',monospace}
 .project-body{padding:24px}
-.project-body h3{font-size:1.15rem;margin-bottom:8px;color:var(--white)}
-.project-meta{display:flex;gap:16px;margin-bottom:12px;font-size:0.85rem;color:rgba(255,255,255,0.6)}
-.project-meta span{display:flex;align-items:center;gap:4px}
-.project-body p{font-size:0.9rem;color:rgba(255,255,255,0.7);line-height:1.6}
-
-/* STATS */
-.stats{background:linear-gradient(135deg,var(--orange),var(--orange-dark));padding:80px 0}
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;text-align:center}
-.stat-num{font-family:'Rajdhani',sans-serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:700;color:var(--white);line-height:1}
-.stat-label{font-size:0.95rem;color:rgba(255,255,255,0.9);margin-top:8px;font-weight:500}
-
-/* TEAM */
-.team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px}
-.team-card{background:var(--white);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:all .3s ease}
-.team-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
-.team-img{height:320px;overflow:hidden}
-.team-img img{width:100%;height:100%;object-fit:cover}
-.team-body{padding:24px;text-align:center}
-.team-body h3{font-size:1.2rem;color:var(--navy);margin-bottom:4px}
-.team-role{color:var(--orange);font-weight:600;font-size:0.9rem;margin-bottom:8px}
-.team-desc{font-size:0.9rem;color:var(--text-light)}
+.project-body h3{font-size:1.2rem;color:var(--text-bright);margin-bottom:8px}
+.project-meta{display:flex;gap:16px;margin-bottom:12px;font-size:0.85rem;color:var(--text-dim)}
+.project-body p{font-size:0.9rem;color:var(--text-dim);line-height:1.6}
 
 /* CONTACT */
-.contact{background:var(--white)}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px}
-.contact-info{display:flex;flex-direction:column;gap:24px}
-.contact-item{display:flex;gap:16px;align-items:flex-start}
-.contact-icon{width:48px;height:48px;min-width:48px;background:linear-gradient(135deg,var(--navy),var(--navy-light));border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;color:var(--orange);font-size:1.2rem}
-.contact-item h4{font-size:1rem;color:var(--navy);margin-bottom:4px}
-.contact-item p{font-size:0.95rem;color:var(--text-light)}
-.contact-form{background:var(--bg);padding:40px;border-radius:var(--radius);border:1px solid var(--border)}
+.contact{background:var(--bg-alt)}
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:60px}
+.contact-info{display:flex;flex-direction:column;gap:20px}
+.contact-item{display:flex;gap:16px;align-items:flex-start;padding:20px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);transition:all .3s ease}
+.contact-item:hover{border-color:var(--cyan);transform:translateX(4px)}
+.contact-icon{width:48px;height:48px;min-width:48px;background:var(--cyan-dim);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;color:var(--cyan);font-size:1.2rem}
+.contact-item h4{font-size:0.8rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.contact-item p{font-size:1rem;color:var(--text-bright);font-weight:500}
+.contact-form{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:40px}
 .form-group{margin-bottom:20px}
-.form-group label{display:block;font-size:0.9rem;font-weight:600;color:var(--navy);margin-bottom:8px}
-.form-group input,.form-group textarea,.form-group select{width:100%;padding:12px 16px;border:1px solid var(--border);border-radius:var(--radius-sm);font-family:inherit;font-size:0.95rem;background:var(--white);transition:all .2s}
-.form-group input:focus,.form-group textarea:focus,.form-group select:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 3px rgba(232,119,46,0.1)}
+.form-group label{display:block;font-size:0.85rem;font-weight:600;color:var(--text-bright);margin-bottom:8px}
+.form-group input,.form-group textarea{width:100%;padding:14px 16px;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm);font-family:inherit;font-size:0.95rem;color:var(--text-bright);transition:all .2s}
+.form-group input:focus,.form-group textarea:focus{outline:none;border-color:var(--cyan);box-shadow:0 0 0 3px var(--cyan-dim)}
 .form-group textarea{resize:vertical;min-height:120px}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 
 /* FOOTER */
-.footer{background:var(--navy-dark);color:rgba(255,255,255,0.7);padding:80px 0 0}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;padding-bottom:60px;border-bottom:1px solid rgba(255,255,255,0.08)}
-.footer-brand h3{font-family:'Rajdhani',sans-serif;font-size:1.5rem;color:var(--white);margin-bottom:16px}
-.footer-brand h3 span{color:var(--orange)}
-.footer-brand p{font-size:0.9rem;line-height:1.7;margin-bottom:20px}
-.footer-social{display:flex;gap:12px}
-.footer-social a{width:36px;height:36px;background:rgba(255,255,255,0.08);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;color:var(--white);transition:all .2s}
-.footer-social a:hover{background:var(--orange)}
-.footer-col h4{color:var(--white);font-size:1rem;margin-bottom:20px}
+.footer{background:var(--bg);border-top:1px solid var(--border);padding:60px 0 24px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.footer-brand h3{font-family:'Rajdhani',sans-serif;font-size:1.5rem;color:var(--text-bright);margin-bottom:12px}
+.footer-brand h3 span{color:var(--cyan)}
+.footer-brand p{color:var(--text-dim);font-size:0.9rem;max-width:320px}
+.footer-col h4{color:var(--text-bright);font-size:1rem;margin-bottom:16px}
 .footer-col ul{list-style:none}
 .footer-col li{margin-bottom:10px}
-.footer-col a{font-size:0.9rem;transition:color .2s}
-.footer-col a:hover{color:var(--orange)}
-.footer-bottom{padding:24px 0;text-align:center;font-size:0.85rem}
+.footer-col a{color:var(--text-dim);font-size:0.9rem;transition:color .2s}
+.footer-col a:hover{color:var(--cyan)}
+.footer-social{display:flex;gap:10px;margin-top:16px}
+.footer-social a{width:40px;height:40px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;color:var(--text-dim);transition:all .2s}
+.footer-social a:hover{background:var(--cyan);color:var(--bg);border-color:var(--cyan)}
+.footer-bottom{padding-top:24px;border-top:1px solid var(--border);text-align:center;font-size:0.85rem;color:var(--text-dim)}
 
 /* ANIMATIONS */
-.fade-up{opacity:0;transform:translateY(30px);transition:all .6s ease}
+.fade-up{opacity:0;transform:translateY(30px);transition:all .7s ease}
 .fade-up.visible{opacity:1;transform:translateY(0)}
 
 /* RESPONSIVE */
 @media(max-width:968px){
-  .about-grid,.contact-grid{grid-template-columns:1fr;gap:40px}
-  .stats-grid{grid-template-columns:repeat(2,1fr)}
-  .footer-grid{grid-template-columns:1fr 1fr}
-  .hero-stats{gap:24px;flex-wrap:wrap}
+  .hero-content,.about-grid,.contact-grid{grid-template-columns:1fr;gap:40px}
+  .hero-img-wrap{max-width:320px}
+  .timeline::before{left:20px}
+  .timeline-item{width:100%;left:0!important;padding-left:50px;padding-right:0;text-align:left!important}
+  .timeline-item:nth-child(odd) .timeline-card li{padding-left:16px;padding-right:0}
+  .timeline-item:nth-child(odd) .timeline-card li::before{left:0;right:auto}
+  .timeline-dot{left:12px!important;right:auto!important}
+  .edu-card{grid-template-columns:1fr;text-align:center}
+  .footer-grid{grid-template-columns:1fr}
 }
 @media(max-width:768px){
-  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--navy);flex-direction:column;padding:16px;gap:4px}
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--bg);flex-direction:column;padding:16px;border-bottom:1px solid var(--border)}
   .nav-links.open{display:flex}
   .nav-toggle{display:block}
   .section{padding:60px 0}
-  .hero-content{padding:100px 0 60px}
-  .about-features{grid-template-columns:1fr}
-  .form-row{grid-template-columns:1fr}
-  .footer-grid{grid-template-columns:1fr}
+  .hero{padding:100px 0 60px}
+  .hero-stats{gap:16px}
+  .hero-stat{min-width:100px;padding:12px 16px}
+  .about-info,.form-row{grid-template-columns:1fr}
   .projects-grid{grid-template-columns:1fr}
 }
 </style>
@@ -194,18 +213,15 @@ img{max-width:100%;display:block}
 <!-- NAV -->
 <nav class="nav" id="nav">
   <div class="container nav-inner">
-    <a href="#home" class="nav-logo">
-      <div class="nav-logo-icon">CR</div>
-      CR<span>TEC</span>
-    </a>
+    <a href="#home" class="nav-logo">Abdu<span>.</span></a>
     <div class="nav-links" id="navLinks">
       <a href="#home">Home</a>
       <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#sectors">Sectors</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
-      <a href="#team">Team</a>
-      <a href="#contact" class="nav-cta">Contact Us</a>
+      <a href="#contact" class="nav-cta">Contact</a>
     </div>
     <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
   </div>
@@ -214,31 +230,44 @@ img{max-width:100%;display:block}
 <!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
   <div class="container">
     <div class="hero-content">
-      <div class="hero-badge">Industrial Piping Design Excellence</div>
-      <h1>Engineering the Future of <span>Industrial Plants</span></h1>
-      <p>CRTEC Industrial Piping Design Team delivers comprehensive 3D plant modeling, piping engineering, and stress analysis solutions for chemical, petrochemical, pharmaceutical, and energy sectors across Ethiopia and beyond.</p>
-      <div class="hero-actions">
-        <a href="#services" class="btn btn-primary">Explore Services →</a>
-        <a href="#projects" class="btn btn-outline">View Projects</a>
+      <div class="hero-img-wrap fade-up">
+        <div class="hero-img">
+          <img src="https://image.qwenlm.ai/public_source/8a9f995b-47c7-40db-b960-98e9462c5cf6/1b17d976a-1efb-4f39-8174-291c73da5eb0.png" alt="Abdu Demle Melaku">
+        </div>
+        <div class="hero-img-accent"></div>
+        <div class="hero-badge">
+          <div class="hero-badge-dot"></div>
+          <div class="hero-badge-text">Available for work</div>
+        </div>
       </div>
-      <div class="hero-stats">
-        <div>
-          <div class="hero-stat-num" data-count="17">0</div>
-          <div class="hero-stat-label">Projects Delivered</div>
+      <div class="hero-text fade-up">
+        <div class="greeting">&gt; Hello, my name is</div>
+        <h1>Abdu Demle Melaku<span>Piping Design Engineer</span></h1>
+        <p class="tagline">Mechanical Engineer specializing in petrochemical piping design with 2+ years of hands-on experience using AVEVA PDMS, E3D, Paragon, and Navisworks. Currently leading piping design teams at CRTEC, delivering complex industrial projects across Ethiopia and beyond.</p>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-num" data-count="17">0</div>
+            <div class="hero-stat-label">Projects</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num" data-count="100">0</div>
+            <div class="hero-stat-label">K+ Man-Hours</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">3.89</div>
+            <div class="hero-stat-label">CGPA</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num" data-count="2">0</div>
+            <div class="hero-stat-label">Years Exp.</div>
+          </div>
         </div>
-        <div>
-          <div class="hero-stat-num" data-count="100">0</div>
-          <div class="hero-stat-label">K+ Man-Hours</div>
-        </div>
-        <div>
-          <div class="hero-stat-num" data-count="16">0</div>
-          <div class="hero-stat-label">Expert Engineers</div>
-        </div>
-        <div>
-          <div class="hero-stat-num" data-count="17">0</div>
-          <div class="hero-stat-label">Global Clients</div>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Get In Touch →</a>
+          <a href="#projects" class="btn btn-outline">View Projects</a>
         </div>
       </div>
     </div>
@@ -249,33 +278,43 @@ img{max-width:100%;display:block}
 <section class="section" id="about">
   <div class="container">
     <div class="about-grid">
-      <div class="about-img-wrap fade-up">
-        <div class="about-img">
-          <img src="https://image.qwenlm.ai/public_source/8a9f995b-47c7-40db-b960-98e9462c5cf6/1035edddb-d6f6-4e94-b0a3-d982e9356a3a.png" alt="CRTEC Engineering Team">
-        </div>
-        <div class="about-img-accent"></div>
+      <div class="about-img fade-up">
+        <img src="https://image.qwenlm.ai/public_source/8a9f995b-47c7-40db-b960-98e9462c5cf6/12a8faa2f-19d4-4bb8-8ac1-76933120adff.png" alt="Engineering workspace">
       </div>
       <div class="about-content fade-up">
-        <div class="section-label">About CRTEC</div>
-        <h2>Specialized Engineering & 3D Plant Design Excellence</h2>
-        <p>CRTEC Industrial Piping Design Team is a specialized engineering and 3D plant design department based in Addis Ababa, Ethiopia, delivering comprehensive engineering solutions for the chemical, petrochemical, pharmaceutical, fertilizer, energy, and industrial manufacturing sectors.</p>
-        <p>In collaboration with Hebei Yingke Petrochemical Engineering Co., Ltd., we provide end-to-end engineering support ranging from process-oriented piping design and detailed 3D plant modeling to engineering documentation and project execution support.</p>
-        <div class="about-features">
-          <div class="about-feature">
-            <div class="about-feature-icon">⚙</div>
-            <div><h4>International Standards</h4><p>ASME B31.3, CAESAR II</p></div>
+        <div class="section-label">About Me</div>
+        <h2>Engineering the <span>Future</span> of Industrial Plants</h2>
+        <p>I'm a Mechanical Engineer specializing in petrochemical piping design with 2+ years of hands-on experience using AVEVA PDMS, E3D, Paragon, and Navisworks. I'm skilled in 3D plant modeling, piping component database development, pipe specification building (SPECON), isometric drawing preparation, and clash detection.</p>
+        <p>Currently serving as Piping Designer and Team Leader at CRTEC, I manage piping design deliverables for petrochemical projects following international engineering standards. Previously, I designed and managed two complete industrial machines from concept to fabrication at ZG Industrial Automation.</p>
+        <p>I'm an academic topper with CGPA 3.89 and Best Academic Achievement Medal from Wollo University, and I'm seeking international opportunities in oil & gas and petrochemical engineering.</p>
+        <div class="about-info">
+          <div class="about-info-item">
+            <div class="about-info-icon">📍</div>
+            <div>
+              <div class="about-info-label">Location</div>
+              <div class="about-info-value">Addis Ababa, Ethiopia</div>
+            </div>
           </div>
-          <div class="about-feature">
-            <div class="about-feature-icon"></div>
-            <div><h4>Local Accessibility</h4><p>Based in Addis Ababa</p></div>
+          <div class="about-info-item">
+            <div class="about-info-icon">🎂</div>
+            <div>
+              <div class="about-info-label">Born</div>
+              <div class="about-info-value">August 14, 2000</div>
+            </div>
           </div>
-          <div class="about-feature">
-            <div class="about-feature-icon">📐</div>
-            <div><h4>Advanced Tools</h4><p>AVEVA PDMS/E3D</p></div>
+          <div class="about-info-item">
+            <div class="about-info-icon"></div>
+            <div>
+              <div class="about-info-label">Email</div>
+              <div class="about-info-value">abdudemle0899@gmail.com</div>
+            </div>
           </div>
-          <div class="about-feature">
-            <div class="about-feature-icon">✓</div>
-            <div><h4>Cost Effective</h4><p>High quality, lower cost</p></div>
+          <div class="about-info-item">
+            <div class="about-info-icon">📱</div>
+            <div>
+              <div class="about-info-label">Phone</div>
+              <div class="about-info-value">(+251) 910 298 713</div>
+            </div>
           </div>
         </div>
       </div>
@@ -283,142 +322,220 @@ img{max-width:100%;display:block}
   </div>
 </section>
 
-<!-- SERVICES -->
-<section class="section services" id="services">
+<!-- EXPERIENCE -->
+<section class="section experience" id="experience">
   <div class="container">
     <div class="fade-up" style="text-align:center;max-width:700px;margin:0 auto 60px">
-      <div class="section-label" style="justify-content:center">Core Services</div>
-      <h2 class="section-title">Comprehensive Engineering Solutions</h2>
-      <p class="section-subtitle" style="margin:0 auto">From 3D plant modeling to piping stress analysis, we deliver end-to-end engineering services for industrial projects worldwide.</p>
+      <div class="section-label" style="justify-content:center">Career Path</div>
+      <h2 class="section-title">Work <span>Experience</span></h2>
+      <p style="color:var(--text-dim)">My professional journey in mechanical and piping engineering.</p>
     </div>
-    <div class="services-grid">
-      <div class="service-card fade-up">
-        <div class="service-icon">🏭</div>
-        <h3>3D Plant Modeling & Digital Engineering</h3>
-        <p>Complete plant, workshop, structural steel, equipment, walls, floors, and roof modeling using AVEVA PDMS/E3D, including plant digitization and Digital Twin development.</p>
+    <div class="timeline">
+      <div class="timeline-item fade-up">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-date">Jun 2024 — Present</div>
+          <h3>Piping Design Engineer & Team Leader</h3>
+          <div class="company">China Rail Transit Engineering Consultancy (CRTEC)</div>
+          <ul>
+            <li>Designed piping systems from P&IDs using AVEVA E3D, PDMS, and Navisworks</li>
+            <li>Built piping component databases using AVEVA Paragon and SPECON per ASME B16 standards</li>
+            <li>Produced isometric drawings, BOM, weld mapping, and GA drawings for piping installation</li>
+            <li>Modeled equipment structures, platforms, supports, and racks in 3D plant environment</li>
+            <li>Positioned and aligned major equipment: pumps, reactors, towers, vessels, and heat exchangers</li>
+            <li>Prepared MTO reports for procurement and construction</li>
+            <li>Performed clash detection and participated in design reviews</li>
+            <li>Led piping design team coordinating with multidisciplinary teams across 15+ completed petrochemical projects</li>
+          </ul>
+        </div>
       </div>
-      <div class="service-card fade-up">
-        <div class="service-icon">🔧</div>
-        <h3>Piping Engineering & Stress Analysis</h3>
-        <p>3D pipe routing based on P&IDs, piping layout optimization, pipe support design, flexibility studies, and third-party piping stress analysis using CAESAR II.</p>
-      </div>
-      <div class="service-card fade-up">
-        <div class="service-icon">📋</div>
-        <h3>Engineering Documentation</h3>
-        <p>Preparation of isometric drawings, pipe layouts, general arrangement (GA) drawings, Material Take-Offs (MTO), anti-corrosion and insulation schedules using AutoCAD.</p>
-      </div>
-      <div class="service-card fade-up">
-        <div class="service-icon">⛽</div>
-        <h3>Fuel Terminal & Tank Farm Engineering</h3>
-        <p>Engineering design, layout development, piping systems, storage facilities, and associated infrastructure for fuel terminals and tank farms.</p>
-      </div>
-      <div class="service-card fade-up">
-        <div class="service-icon">🔄</div>
-        <h3>Plant Modification & Brownfield Engineering</h3>
-        <p>Debottlenecking, revamp studies, brownfield modifications, expansion projects, and fit-for-service evaluations of existing industrial facilities.</p>
-      </div>
-      <div class="service-card fade-up">
-        <div class="service-icon">📊</div>
-        <h3>Tender Evaluation & Technical Consultancy</h3>
-        <p>Independent technical tender evaluation, design review, scope verification, contract assessment, and owners engineering services for petrochemical projects.</p>
-      </div>
-      <div class="service-card fade-up">
-        <div class="service-icon">🤝</div>
-        <h3>EPC & Project Support Services</h3>
-        <p>Engineering support for EPC contractors including design review, procurement support, installation oversight, commissioning, and turnkey project execution.</p>
-      </div>
-      <div class="service-card fade-up">
-        <div class="service-icon">👥</div>
-        <h3>Engineering Outsourcing & Resource Augmentation</h3>
-        <p>Provision of dedicated engineering teams and specialized design resources for international engineering companies, consultants, and industrial project developers.</p>
+      <div class="timeline-item fade-up">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-date">Jan 2024 — Jun 2024</div>
+          <h3>Industrial Machinery Designer & Project Manager</h3>
+          <div class="company">ZG Industrial Automation</div>
+          <ul>
+            <li>Designed 2 complete industrial machines from concept to final fabrication using SolidWorks, AutoCAD, and CAM software</li>
+            <li>Served as Project Manager managing full project lifecycle from design approval through fabrication and commissioning</li>
+            <li>Supervised machine operators during fabrication and manufacturing process</li>
+            <li>Operated and programmed CNC laser cutting machines</li>
+            <li>Performed maintenance and troubleshooting on various industrial equipment</li>
+            <li>Coordinated between design, fabrication, and production teams to meet project deadlines</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SECTORS -->
-<section class="section" id="sectors">
+<!-- EDUCATION -->
+<section class="section" id="education">
   <div class="container">
     <div class="fade-up" style="text-align:center;max-width:700px;margin:0 auto 60px">
-      <div class="section-label" style="justify-content:center">Industry Sectors</div>
-      <h2 class="section-title">Sectors We Serve</h2>
-      <p class="section-subtitle" style="margin:0 auto">Delivering specialized engineering solutions across diverse industrial sectors with proven expertise.</p>
+      <div class="section-label" style="justify-content:center">Academic Background</div>
+      <h2 class="section-title">Education & <span>Training</span></h2>
+      <p style="color:var(--text-dim)">Building a strong foundation in mechanical engineering.</p>
     </div>
-    <div class="sectors-grid">
-      <div class="sector-card fade-up">
-        <div class="sector-icon">🌾</div>
-        <h4>Fertilizer & Agriculture</h4>
-        <p>Urea, potash fertilizer, calcium chloride, soil remediation</p>
+    <div class="edu-card fade-up">
+      <div class="edu-icon">🎓</div>
+      <div class="edu-info">
+        <h3>BSc Mechanical Engineering (Design Engineering)</h3>
+        <div class="school">Wollo University · Kombolcha, Ethiopia</div>
+        <p>Sep 2018 — Sep 2023 · EQF Level 6</p>
+        <p style="margin-top:12px"><strong>Thesis:</strong> Design and Fabrication of a Hydraulic and Mechanical Engine Crane Machine</p>
+        <p style="margin-top:8px"><strong>Key subjects:</strong> Machine Design, Engineering Mechanics, Fluid Mechanics, Manufacturing Processes, Thermodynamics, CAD/CAM, Engineering Materials, Project Management</p>
       </div>
-      <div class="sector-card fade-up">
-        <div class="sector-icon">️</div>
-        <h4>New Materials</h4>
-        <p>FDCA, lithium hexafluorophosphate, specialty diamines</p>
+      <div class="edu-award">
+        <div class="edu-award-label">CGPA</div>
+        <div class="edu-award-value">3.89/4.00</div>
+        <div class="edu-award-label" style="margin-top:8px">Best Academic Achievement Medal</div>
       </div>
-      <div class="sector-card fade-up">
-        <div class="sector-icon">🧪</div>
-        <h4>Fine Chemicals</h4>
-        <p>Propionic acid, melamine polyphosphate, phenylhydrazine</p>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section skills" id="skills">
+  <div class="container">
+    <div class="fade-up" style="text-align:center;max-width:700px;margin:0 auto 60px">
+      <div class="section-label" style="justify-content:center">Technical Expertise</div>
+      <h2 class="section-title">Skills & <span>Competencies</span></h2>
+      <p style="color:var(--text-dim)">A comprehensive toolkit for industrial piping design and engineering.</p>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-category fade-up">
+        <div class="skill-category-header">
+          <div class="skill-category-icon"></div>
+          <h3>AVEVA Software</h3>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">AVEVA PDMS & E3D</span><span class="skill-level">95%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="95"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">AVEVA Paragon</span><span class="skill-level">90%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">Navisworks</span><span class="skill-level">85%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+        </div>
       </div>
-      <div class="sector-card fade-up">
-        <div class="sector-icon">💊</div>
-        <h4>Pharmaceuticals</h4>
-        <p>Pepsin, pancreatin, biotech production facilities</p>
+      <div class="skill-category fade-up">
+        <div class="skill-category-header">
+          <div class="skill-category-icon"></div>
+          <h3>Design Software</h3>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">AutoCAD</span><span class="skill-level">92%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="92"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">SolidWorks</span><span class="skill-level">88%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="88"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">CAM Software</span><span class="skill-level">80%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
+        </div>
       </div>
-      <div class="sector-card fade-up">
-        <div class="sector-icon">⚡</div>
-        <h4>Energy & Utilities</h4>
-        <p>Steam generation, nitric acid waste heat recovery</p>
+      <div class="skill-category fade-up">
+        <div class="skill-category-header">
+          <div class="skill-category-icon"></div>
+          <h3>Piping Skills</h3>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">Piping Design & Routing</span><span class="skill-level">95%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="95"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">Isometric Drawing</span><span class="skill-level">93%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="93"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">3D Plant Modeling</span><span class="skill-level">95%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="95"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">Clash Detection</span><span class="skill-level">90%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">Material Take-Off (MTO)</span><span class="skill-level">92%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="92"></div></div>
+        </div>
       </div>
-      <div class="sector-card fade-up">
-        <div class="sector-icon">🏗️</div>
-        <h4>Chlor-Alkali & PVC</h4>
-        <p>Caustic soda, PVC oxychlorination plants</p>
-      </div>
-      <div class="sector-card fade-up">
-        <div class="sector-icon">🏛️</div>
-        <h4>Construction Chemicals</h4>
-        <p>Concrete admixtures, water reducing agents</p>
-      </div>
-      <div class="sector-card fade-up">
-        <div class="sector-icon">🔬</div>
-        <h4>Advanced Materials</h4>
-        <p>Diketopyrrolopyrrole, crude anthracene</p>
+      <div class="skill-category fade-up">
+        <div class="skill-category-header">
+          <div class="skill-category-icon">👥</div>
+          <h3>Engineering & Leadership</h3>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">Project Management</span><span class="skill-level">88%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="88"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">Team Leadership</span><span class="skill-level">90%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">Mechanical Engineering</span><span class="skill-level">92%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="92"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">English (C1/C2)</span><span class="skill-level">95%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="95"></div></div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- PROJECTS -->
-<section class="section projects" id="projects">
+<section class="section" id="projects">
   <div class="container">
     <div class="fade-up" style="text-align:center;max-width:700px;margin:0 auto 60px">
-      <div class="section-label" style="justify-content:center">Project Portfolio</div>
-      <h2 class="section-title">Featured Projects</h2>
-      <p class="section-subtitle" style="margin:0 auto">A selection of our 17 successfully delivered industrial projects across multiple sectors and capacities.</p>
+      <div class="section-label" style="justify-content:center">Portfolio</div>
+      <h2 class="section-title">Featured <span>Projects</span></h2>
+      <p style="color:var(--text-dim)">Selected work from 17+ industrial projects delivered at CRTEC.</p>
     </div>
     <div class="projects-grid">
       <div class="project-card fade-up">
         <div class="project-img">
-          <img src="https://image.qwenlm.ai/public_source/8a9f995b-47c7-40db-b960-98e9462c5cf6/13be20c4e-7b97-4fcb-a1ff-d7f98d13a7fa.png" alt="YUNTH Urea Plant">
-          <div class="project-overlay"><span class="project-tag">Fertilizer</span></div>
+          <img src="https://image.qwenlm.ai/public_source/8a9f995b-47c7-40db-b960-98e9462c5cf6/1a794580a-e810-42a3-9b9f-a0af7758a339.png" alt="Petrochemical Plant">
+          <div class="project-overlay"><span class="project-tag">PETROCHEMICAL</span></div>
+        </div>
+        <div class="project-body">
+          <h3>HUAYI — Caustic Soda & PVC Complex</h3>
+          <div class="project-meta">
+            <span>📍 Shanghaichem Engineering</span>
+            <span>⚖ 1,300,000 t/yr</span>
+          </div>
+          <p>Major chlor-alkali and PVC oxychlorination complex with 60% design contribution. Led piping design for one of the most complex projects in portfolio.</p>
+        </div>
+      </div>
+      <div class="project-card fade-up">
+        <div class="project-img">
+          <img src="https://image.qwenlm.ai/public_source/8a9f995b-47c7-40db-b960-98e9462c5cf6/12a8faa2f-19d4-4bb8-8ac1-76933120adff.png" alt="3D Plant Modeling">
+          <div class="project-overlay"><span class="project-tag">FERTILIZER</span></div>
         </div>
         <div class="project-body">
           <h3>YUNTH — Urea Production Plant</h3>
           <div class="project-meta">
             <span>📍 Qinghai Yuntianhua</span>
-            <span> 600,000 t/yr</span>
+            <span>⚖ 600,000 t/yr</span>
           </div>
-          <p>Large-scale urea fertilizer production facility with 25% design contribution. One of the largest capacity projects in our portfolio.</p>
+          <p>Large-scale urea fertilizer production facility with 25% design contribution. One of the largest capacity projects delivered.</p>
         </div>
       </div>
       <div class="project-card fade-up">
         <div class="project-img">
-          <img src="https://image.qwenlm.ai/public_source/8a9f995b-47c7-40db-b960-98e9462c5cf6/1ddb9cebc-9411-4340-b409-be80db450dcd.png" alt="QIXIANG Steam Plant">
-          <div class="project-overlay"><span class="project-tag">Energy</span></div>
+          <img src="https://image.qwenlm.ai/public_source/8a9f995b-47c7-40db-b960-98e9462c5cf6/1830ff951-828e-4788-b3ef-66c26b62968d.png" alt="CAD Piping Design">
+          <div class="project-overlay"><span class="project-tag">ENERGY</span></div>
         </div>
         <div class="project-body">
-          <h3>QIXIANG — Steam Generation</h3>
+          <h3>QIXIANG — Steam Generation Facility</h3>
           <div class="project-meta">
             <span>📍 Zibo Qixiang Tengda</span>
             <span>⚖ 3,360,000 t/yr</span>
@@ -428,149 +545,16 @@ img{max-width:100%;display:block}
       </div>
       <div class="project-card fade-up">
         <div class="project-img">
-          <img src="https://image.qwenlm.ai/public_source/8a9f995b-47c7-40db-b960-98e9462c5cf6/101ca3bda-fe83-412c-9bfc-0bf8226507d6.png" alt="HUAYI PVC Plant">
-          <div class="project-overlay"><span class="project-tag">Chlor-Alkali</span></div>
+          <img src="https://image.qwenlm.ai/public_source/8a9f995b-47c7-40db-b960-98e9462c5cf6/12a8faa2f-19d4-4bb8-8ac1-76933120adff.png" alt="Industrial Machine Design">
+          <div class="project-overlay"><span class="project-tag">MACHINERY</span></div>
         </div>
         <div class="project-body">
-          <h3>HUAYI — Caustic Soda & PVC</h3>
+          <h3>ZG — Industrial Machine Design</h3>
           <div class="project-meta">
-            <span>📍 Shanghaichem Engineering</span>
-            <span>⚖ 1,300,000 t/yr</span>
+            <span>📍 ZG Industrial Automation</span>
+            <span>🔧 2 Complete Machines</span>
           </div>
-          <p>Major chlor-alkali and PVC oxychlorination complex with 60% design contribution. One of the most complex projects delivered.</p>
-        </div>
-      </div>
-      <div class="project-card fade-up">
-        <div class="project-img">
-          <img src="https://image.qwenlm.ai/public_source/8a9f995b-47c7-40db-b960-98e9462c5cf6/116e57787-daff-4e88-9770-7d3d41ba8782.png" alt="BINGSUAN Propionic Acid">
-          <div class="project-overlay"><span class="project-tag">Fine Chemicals</span></div>
-        </div>
-        <div class="project-body">
-          <h3>BINGSUAN — Propionic Acid Plant</h3>
-          <div class="project-meta">
-            <span>📍 Lanzhou Aigmed</span>
-            <span>⚖ 5,000 t/yr</span>
-          </div>
-          <p>Complete 100% design contribution for synthetic biotechnology propionic acid production facility.</p>
-        </div>
-      </div>
-      <div class="project-card fade-up">
-        <div class="project-img">
-          <img src="https://image.qwenlm.ai/public_source/8a9f995b-47c7-40db-b960-98e9462c5cf6/131b56f7d-fadf-4bf2-bc0b-7d95954e326e.png" alt="HNLC PVC Resin">
-          <div class="project-overlay"><span class="project-tag">PVC</span></div>
-        </div>
-        <div class="project-body">
-          <h3>HNLC — PVC Resin & Acetylene</h3>
-          <div class="project-meta">
-            <span>📍 Henan Lianchuang</span>
-            <span>⚖ 200,000 t/yr</span>
-          </div>
-          <p>Full design contribution for PVC resin and acetylene production facility with complete piping engineering scope.</p>
-        </div>
-      </div>
-      <div class="project-card fade-up">
-        <div class="project-img">
-          <img src="https://image.qwenlm.ai/public_source/8a9f995b-47c7-40db-b960-98e9462c5cf6/1b2d03a01-dbda-4d87-9847-36ff0c7220f6.png" alt="XINGFA FDCA">
-          <div class="project-overlay"><span class="project-tag">New Materials</span></div>
-        </div>
-        <div class="project-body">
-          <h3>XINGFA — FDCA Production</h3>
-          <div class="project-meta">
-            <span>📍 Hubei Jixing Chemical</span>
-            <span>⚖ 100 t/yr</span>
-          </div>
-          <p>2,5-Furandicarboxylic acid (FDCA) new materials facility with 100% design contribution for sustainable polymer precursor.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- STATS -->
-<section class="stats">
-  <div class="container">
-    <div class="stats-grid">
-      <div class="fade-up">
-        <div class="stat-num" data-count="17">0</div>
-        <div class="stat-label">Industrial Projects</div>
-      </div>
-      <div class="fade-up">
-        <div class="stat-num" data-count="100">0</div>
-        <div class="stat-label">Thousand+ Man-Hours</div>
-      </div>
-      <div class="fade-up">
-        <div class="stat-num" data-count="16">0</div>
-        <div class="stat-label">Expert Engineers</div>
-      </div>
-      <div class="fade-up">
-        <div class="stat-num" data-count="9">0</div>
-        <div class="stat-label">Trainee Engineers</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TEAM -->
-<section class="section" id="team">
-  <div class="container">
-    <div class="fade-up" style="text-align:center;max-width:700px;margin:0 auto 60px">
-      <div class="section-label" style="justify-content:center">Our Team</div>
-      <h2 class="section-title">Leadership & Expertise</h2>
-      <p class="section-subtitle" style="margin:0 auto">Led by experienced professionals combining international engineering expertise with local industry knowledge.</p>
-    </div>
-    <div class="team-grid">
-      <div class="team-card fade-up">
-        <div class="team-img">
-          <img src="https://image.qwenlm.ai/public_source/8a9f995b-47c7-40db-b960-98e9462c5cf6/12ed3bda5-6107-47c8-8aa7-337bb963bafb.png" alt="Abdu Demle Melaku">
-        </div>
-        <div class="team-body">
-          <h3>Abdu Demle Melaku</h3>
-          <div class="team-role">Lead Piping Design Engineer</div>
-          <p class="team-desc">BSc in Mechanical Engineering with specialized expertise in industrial piping design, 3D plant modeling, and project execution for chemical and petrochemical facilities.</p>
-        </div>
-      </div>
-      <div class="team-card fade-up">
-        <div class="team-img">
-          <img src="https://image.qwenlm.ai/public_source/8a9f995b-47c7-40db-b960-98e9462c5cf6/1035edddb-d6f6-4e94-b0a3-d982e9356a3a.png" alt="Engineering Team">
-        </div>
-        <div class="team-body">
-          <h3>Engineering Team</h3>
-          <div class="team-role">16 Engineers + 9 Trainees</div>
-          <p class="team-desc">A multidisciplinary team of specialized engineers proficient in AVEVA PDMS/E3D, CAESAR II, AutoCAD, and international engineering standards.</p>
-        </div>
-      </div>
-      <div class="team-card fade-up">
-        <div class="team-img">
-          <img src="https://image.qwenlm.ai/public_source/8a9f995b-47c7-40db-b960-98e9462c5cf6/1ddb9cebc-9411-4340-b409-be80db450dcd.png" alt="Technical Partners">
-        </div>
-        <div class="team-body">
-          <h3>Hebei Yingke Partnership</h3>
-          <div class="team-role">Strategic Engineering Partner</div>
-          <p class="team-desc">Collaboration with Hebei Yingke Petrochemical Engineering Co., Ltd. brings international project experience and engineering standards to every assignment.</p>
-        </div>
-      </div>
-    </div>
-    <div class="fade-up" style="margin-top:60px;background:var(--bg);border-radius:var(--radius);padding:40px;border:1px solid var(--border)">
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;text-align:center">
-        <div>
-          <div style="font-size:2rem;margin-bottom:8px">🎓</div>
-          <h4 style="color:var(--navy);font-size:1rem">BSc Mechanical Engineering</h4>
-          <p style="font-size:0.85rem;color:var(--text-light)">Hawassa University</p>
-        </div>
-        <div>
-          <div style="font-size:2rem;margin-bottom:8px"></div>
-          <h4 style="color:var(--navy);font-size:1rem">ASME B31.3 Certified</h4>
-          <p style="font-size:0.85rem;color:var(--text-light)">Process Piping Standard</p>
-        </div>
-        <div>
-          <div style="font-size:2rem;margin-bottom:8px"></div>
-          <h4 style="color:var(--navy);font-size:1rem">AVEVA PDMS/E3D</h4>
-          <p style="font-size:0.85rem;color:var(--text-light)">3D Plant Modeling</p>
-        </div>
-        <div>
-          <div style="font-size:2rem;margin-bottom:8px">🔬</div>
-          <h4 style="color:var(--navy);font-size:1rem">CAESAR II</h4>
-          <p style="font-size:0.85rem;color:var(--text-light)">Piping Stress Analysis</p>
+          <p>Designed and managed 2 complete industrial machines from concept to fabrication using SolidWorks, AutoCAD, and CAM software.</p>
         </div>
       </div>
     </div>
@@ -582,41 +566,45 @@ img{max-width:100%;display:block}
   <div class="container">
     <div class="fade-up" style="text-align:center;max-width:700px;margin:0 auto 60px">
       <div class="section-label" style="justify-content:center">Get In Touch</div>
-      <h2 class="section-title">Contact Us</h2>
-      <p class="section-subtitle" style="margin:0 auto">Ready to start your next industrial project? Reach out to our team for engineering consultation and support.</p>
+      <h2 class="section-title">Let's Work <span>Together</span></h2>
+      <p style="color:var(--text-dim)">Seeking international opportunities in oil & gas and petrochemical engineering. Let's connect.</p>
     </div>
     <div class="contact-grid">
       <div class="contact-info fade-up">
         <div class="contact-item">
-          <div class="contact-icon"></div>
+          <div class="contact-icon">📍</div>
           <div>
-            <h4>Office Address</h4>
-            <p>Yeka Sub-City, Woreda 08, Megenogna<br>Addis Ababa, Ethiopia</p>
+            <h4>Location</h4>
+            <p>Addis Ababa, Megenagna, Ethiopia</p>
           </div>
         </div>
         <div class="contact-item">
-          <div class="contact-icon">🌐</div>
+          <div class="contact-icon">✉</div>
+          <div>
+            <h4>Email</h4>
+            <p>abdudemle0899@gmail.com</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📱</div>
+          <div>
+            <h4>Phone</h4>
+            <p>(+251) 910 298 713</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">💼</div>
+          <div>
+            <h4>LinkedIn</h4>
+            <p>linkedin.com/in/abdu-demle-melaku</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"></div>
           <div>
             <h4>Website</h4>
             <p>www.crtec-et.com</p>
           </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-icon"></div>
-          <div>
-            <h4>Email</h4>
-            <p>info@crtec-et.com</p>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-icon">🕐</div>
-          <div>
-            <h4>Working Hours</h4>
-            <p>Monday – Friday: 8:30 AM – 5:30 PM<br>Saturday: 9:00 AM – 1:00 PM</p>
-          </div>
-        </div>
-        <div style="margin-top:24px;border-radius:var(--radius);overflow:hidden;height:240px;background:var(--navy-light)">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.5!2d38.79!3d9.03!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOcKwMDEnNDguMCJOIDM4wrA0NycyNC4wIkU!5e0!3m2!1sen!2set!4v1" width="100%" height="100%" style="border:0" allowfullscreen loading="lazy"></iframe>
         </div>
       </div>
       <div class="contact-form fade-up">
@@ -631,29 +619,13 @@ img{max-width:100%;display:block}
               <input type="email" required placeholder="your@email.com">
             </div>
           </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label>Company</label>
-              <input type="text" placeholder="Your company">
-            </div>
-            <div class="form-group">
-              <label>Service Required</label>
-              <select>
-                <option>3D Plant Modeling</option>
-                <option>Piping Engineering</option>
-                <option>Stress Analysis</option>
-                <option>Engineering Documentation</option>
-                <option>Tank Farm Engineering</option>
-                <option>Brownfield Engineering</option>
-                <option>Tender Evaluation</option>
-                <option>EPC Support</option>
-                <option>Other</option>
-              </select>
-            </div>
+          <div class="form-group">
+            <label>Subject *</label>
+            <input type="text" required placeholder="What's this about?">
           </div>
           <div class="form-group">
-            <label>Project Details *</label>
-            <textarea required placeholder="Tell us about your project requirements..."></textarea>
+            <label>Message *</label>
+            <textarea required placeholder="Tell me about your project or opportunity..."></textarea>
           </div>
           <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Send Message →</button>
         </form>
@@ -667,47 +639,39 @@ img{max-width:100%;display:block}
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <h3>CR<span>TEC</span></h3>
-        <p>China Rail Transit Engineering Consultancy — Industrial Piping Design Team. Delivering safe, efficient, and high-quality engineering solutions that meet international standards.</p>
+        <h3>Abdu Demle <span>Melaku</span></h3>
+        <p>Mechanical Engineer specializing in petrochemical piping design. Currently leading piping design teams at CRTEC, delivering complex industrial projects worldwide.</p>
         <div class="footer-social">
-          <a href="#" aria-label="LinkedIn">in</a>
-          <a href="#" aria-label="Twitter">𝕏</a>
-          <a href="#" aria-label="Facebook">f</a>
-          <a href="#" aria-label="Email">@</a>
+          <a href="https://www.linkedin.com/in/abdu-demle-melaku-571b0b246" target="_blank" aria-label="LinkedIn">in</a>
+          <a href="mailto:abdudemle0899@gmail.com" aria-label="Email">@</a>
+          <a href="tel:+251910298713" aria-label="Phone">📱</a>
         </div>
       </div>
       <div class="footer-col">
         <h4>Quick Links</h4>
         <ul>
           <li><a href="#home">Home</a></li>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#skills">Skills</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Services</h4>
+        <h4>Expertise</h4>
         <ul>
-          <li><a href="#services">3D Plant Modeling</a></li>
-          <li><a href="#services">Piping Engineering</a></li>
-          <li><a href="#services">Stress Analysis</a></li>
-          <li><a href="#services">Documentation</a></li>
-          <li><a href="#services">EPC Support</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <ul>
-          <li>Yeka Sub-City, Woreda 08</li>
-          <li>Megenogna, Addis Ababa</li>
-          <li>Ethiopia</li>
-          <li>www.crtec-et.com</li>
+          <li><a href="#skills">AVEVA PDMS/E3D</a></li>
+          <li><a href="#skills">Piping Design</a></li>
+          <li><a href="#skills">3D Plant Modeling</a></li>
+          <li><a href="#skills">Isometric Drawing</a></li>
+          <li><a href="#skills">Clash Detection</a></li>
+          <li><a href="#skills">Project Management</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2026 CRTEC Industrial Piping Design Team. All rights reserved. | In collaboration with Hebei Yingke Petrochemical Engineering Co., Ltd.</p>
+      <p>© 2026 Abdu Demle Melaku. All rights reserved. | Designed with precision & passion for engineering.</p>
     </div>
   </div>
 </footer>
@@ -717,7 +681,7 @@ img{max-width:100%;display:block}
 const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>50)});
 
-// Mobile menu toggle
+// Mobile menu
 const navToggle=document.getElementById('navToggle');
 const navLinks=document.getElementById('navLinks');
 navToggle.addEventListener('click',()=>navLinks.classList.toggle('open'));
@@ -729,19 +693,32 @@ const observer=new IntersectionObserver((entries)=>{
 },{threshold:0.1});
 document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
 
+// Skill bars animation
+const skillObserver=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const fills=e.target.querySelectorAll('.skill-fill');
+      fills.forEach(f=>{f.style.width=f.dataset.width+'%'});
+      skillObserver.unobserve(e.target);
+    }
+  });
+},{threshold:0.3});
+document.querySelectorAll('.skill-category').forEach(el=>skillObserver.observe(el));
+
 // Counter animation
 const counterObserver=new IntersectionObserver((entries)=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
       const el=e.target;
       const target=parseInt(el.dataset.count);
+      if(!target)return;
       let current=0;
-      const increment=target/60;
+      const increment=target/50;
       const timer=setInterval(()=>{
         current+=increment;
         if(current>=target){current=target;clearInterval(timer)}
         el.textContent=Math.floor(current);
-      },25);
+      },30);
       counterObserver.unobserve(el);
     }
   });
@@ -758,8 +735,15 @@ document.getElementById('contactForm').addEventListener('submit',function(e){
   setTimeout(()=>{btn.textContent=original;btn.style.background='';this.reset()},2500);
 });
 
-// Smooth reveal on load
-window.addEventListener('load',()=>{document.body.style.opacity='1'});
+// Smooth cursor glow effect on hero
+const hero=document.querySelector('.hero');
+hero.addEventListener('mousemove',(e)=>{
+  const rect=hero.getBoundingClientRect();
+  const x=e.clientX-rect.left;
+  const y=e.clientY-rect.top;
+  hero.style.setProperty('--mx',x+'px');
+  hero.style.setProperty('--my',y+'px');
+});
 </script>
 </body>
 </html>
