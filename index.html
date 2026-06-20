@@ -43,14 +43,14 @@ a{color:inherit;text-decoration:none}
 .nav-cta:hover{background:var(--cyan)!important;color:var(--bg)!important}
 .nav-toggle{display:none;background:none;border:none;color:var(--text-bright);font-size:1.5rem;cursor:pointer}
 
-/* HERO - Full horizontal image display */
-.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:120px 0 80px}
-.hero-bg{position:absolute;inset:0;background:url('https://res.cloudinary.com/de5casjbu/image/upload/v1781868693/Gemini_Generated_Image_q9bke7q9bke7q9bk_hafbep.png') center center/cover no-repeat;opacity:0.35}
-.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,14,26,0.85) 0%,rgba(10,14,26,0.6) 50%,rgba(10,14,26,0.75) 100%)}
+/* HERO - Full horizontal banner display */
+.hero{position:relative;overflow:hidden}
+.hero-banner{width:100%;height:auto;display:block;max-height:520px;object-fit:contain;background:var(--bg-alt)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,14,26,0.88) 0%,rgba(10,14,26,0.55) 50%,rgba(10,14,26,0.75) 100%)}
 .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(6,214,214,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(6,214,214,0.04) 1px,transparent 1px);background-size:60px 60px}
-.hero-content{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1.2fr;gap:60px;align-items:center}
-.hero-img-wrap{position:relative;max-width:400px;margin:0 auto}
-.hero-img{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:3/4;background:var(--card)}
+.hero-content{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1.2fr;gap:60px;align-items:center;padding:80px 0}
+.hero-img-wrap{position:relative;max-width:380px;margin:0 auto}
+.hero-img{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:3/4;background:var(--card);box-shadow:0 20px 60px rgba(0,0,0,0.5)}
 .hero-img img{width:100%;height:100%;object-fit:cover}
 .hero-img::before{content:'';position:absolute;inset:0;border:2px solid var(--cyan);border-radius:var(--radius);z-index:2;pointer-events:none}
 .hero-img-accent{position:absolute;top:20px;left:20px;right:-20px;bottom:-20px;border:1px solid var(--cyan-dim);border-radius:var(--radius);z-index:-1}
@@ -76,7 +76,7 @@ a{color:inherit;text-decoration:none}
 /* ABOUT */
 .about-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:80px;align-items:center}
 .about-img{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);position:relative;background:var(--card)}
-.about-img img{width:100%;height:480px;object-fit:cover;display:block}
+.about-img img{width:100%;height:auto;max-height:520px;object-fit:contain;display:block;background:var(--bg-alt)}
 .about-content h2{font-size:clamp(2rem,3.5vw,2.8rem);color:var(--text-bright);margin-bottom:20px}
 .about-content h2 span{color:var(--cyan)}
 .about-content p{color:var(--text-dim);margin-bottom:16px;font-size:1.02rem}
@@ -152,9 +152,9 @@ a{color:inherit;text-decoration:none}
 .project-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:all .4s ease;position:relative}
 .project-card:hover{transform:translateY(-6px);border-color:var(--cyan);box-shadow:0 20px 40px rgba(0,0,0,0.4)}
 .project-card.hidden{display:none}
-.project-img{height:240px;overflow:hidden;position:relative;background:var(--bg)}
-.project-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
-.project-card:hover .project-img img{transform:scale(1.08)}
+.project-img{height:260px;overflow:hidden;position:relative;background:var(--bg-alt);display:flex;align-items:center;justify-content:center}
+.project-img img{width:100%;height:100%;object-fit:contain;transition:transform .6s ease;padding:8px}
+.project-card:hover .project-img img{transform:scale(1.05)}
 .project-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,14,26,0.95) 0%,transparent 60%);display:flex;align-items:flex-end;justify-content:space-between;padding:20px}
 .project-tag{background:var(--cyan);color:var(--bg);padding:4px 12px;border-radius:100px;font-size:0.72rem;font-weight:700;font-family:'JetBrains Mono',monospace}
 .project-contribution{background:rgba(10,14,26,0.8);border:1px solid var(--cyan);color:var(--cyan);padding:4px 10px;border-radius:100px;font-size:0.72rem;font-weight:700;font-family:'JetBrains Mono',monospace}
@@ -235,7 +235,7 @@ a{color:inherit;text-decoration:none}
   .nav-links.open{display:flex}
   .nav-toggle{display:block}
   .section{padding:60px 0}
-  .hero{padding:100px 0 60px}
+  .hero-content{padding:40px 0}
   .hero-stats{gap:12px}
   .hero-stat{min-width:90px;padding:12px 14px}
   .hero-stat-num{font-size:1.6rem}
@@ -263,15 +263,16 @@ a{color:inherit;text-decoration:none}
   </div>
 </nav>
 
-<!-- HERO -->
+<!-- HERO - Full horizontal banner -->
 <section class="hero" id="home">
-  <div class="hero-bg"></div>
+  <img class="hero-banner" src="https://res.cloudinary.com/de5casjbu/image/upload/v1781868693/Gemini_Generated_Image_q9bke7q9bke7q9bk_hafbep.png" alt="Abdu Demle Melaku - Piping Design Engineer Banner">
+  <div class="hero-overlay"></div>
   <div class="hero-grid"></div>
   <div class="container">
     <div class="hero-content">
       <div class="hero-img-wrap fade-up">
         <div class="hero-img">
-          <img src="https://res.cloudinary.com/de5casjbu/image/upload/v1781868693/Abdu_photo_zbhh02.jpg" alt="Abdu Demle Melaku">
+          <img src="https://res.cloudinary.com/de5casjbu/image/upload/v1777020284/Abdu_photo_zbhh02.jpg" alt="Abdu Demle Melaku">
         </div>
         <div class="hero-img-accent"></div>
         <div class="hero-badge">
@@ -333,15 +334,15 @@ a{color:inherit;text-decoration:none}
             <div><div class="about-info-label">Born</div><div class="about-info-value">August 14, 2000</div></div>
           </div>
           <div class="about-info-item">
-            <div class="about-info-icon"></div>
+            <div class="about-info-icon">✉</div>
             <div><div class="about-info-label">Email</div><div class="about-info-value">abdudemle0899@gmail.com</div></div>
           </div>
           <div class="about-info-item">
-            <div class="about-info-icon">📱</div>
+            <div class="about-info-icon"></div>
             <div><div class="about-info-label">Phone</div><div class="about-info-value">(+251) 910 298 713</div></div>
           </div>
           <div class="about-info-item">
-            <div class="about-info-icon"></div>
+            <div class="about-info-icon">🌍</div>
             <div><div class="about-info-label">Nationality</div><div class="about-info-value">Ethiopian</div></div>
           </div>
           <div class="about-info-item">
@@ -410,7 +411,7 @@ a{color:inherit;text-decoration:none}
       <p class="section-subtitle" style="margin:0 auto">Building a strong foundation in mechanical engineering.</p>
     </div>
     <div class="edu-card fade-up">
-      <div class="edu-icon">🎓</div>
+      <div class="edu-icon"></div>
       <div class="edu-info">
         <h3>BSc Mechanical Engineering (Design Engineering)</h3>
         <div class="school">Wollo University · Kombolcha, Ethiopia</div>
@@ -438,7 +439,7 @@ a{color:inherit;text-decoration:none}
     <div class="skills-grid">
       <div class="skill-category fade-up">
         <div class="skill-category-header">
-          <div class="skill-category-icon"></div>
+          <div class="skill-category-icon">⚙</div>
           <h3>AVEVA Software</h3>
         </div>
         <div class="skill-item"><div class="skill-header"><span class="skill-name">AVEVA PDMS & E3D</span><span class="skill-level">95%</span></div><div class="skill-bar"><div class="skill-fill" data-width="95"></div></div></div>
@@ -447,7 +448,7 @@ a{color:inherit;text-decoration:none}
       </div>
       <div class="skill-category fade-up">
         <div class="skill-category-header">
-          <div class="skill-category-icon"></div>
+          <div class="skill-category-icon">✏</div>
           <h3>Design Software</h3>
         </div>
         <div class="skill-item"><div class="skill-header"><span class="skill-name">AutoCAD</span><span class="skill-level">92%</span></div><div class="skill-bar"><div class="skill-fill" data-width="92"></div></div></div>
@@ -537,7 +538,7 @@ a{color:inherit;text-decoration:none}
         <div class="project-body">
           <h3>YUNTH — Urea Production Plant</h3>
           <div class="project-client">Qinghai Yuntianhua International Fertilizer Co., Ltd</div>
-          <div class="project-meta"><span> Qinghai, China</span><span> 600,000 t/yr</span><span>🔢 ENCOSC26KJ102</span></div>
+          <div class="project-meta"><span>📍 Qinghai, China</span><span> 600,000 t/yr</span><span>🔢 ENCOSC26KJ102</span></div>
           <p>Large-scale urea fertilizer production facility. One of the largest capacity projects in the portfolio with significant piping design contribution for the 600,000 tons/year urea plant.</p>
           <div class="project-products"><span class="product-tag">Urea</span><span class="product-tag">Fertilizer</span></div>
         </div>
@@ -546,13 +547,13 @@ a{color:inherit;text-decoration:none}
       <!-- 2. BINGSUAN -->
       <div class="project-card fade-up" data-sector="chemicals">
         <div class="project-img">
-          <img src="https://res.cloudinary.com/de5casjbu/image/upload/v1781868721/BINGSUAN-1_qbva7e.png" alt="BINGSUAN Propionic Acid">
+          <img src="https://res.cloudinary.com/de5casjbu/image/upload/v1781868721/BINGSUAN_1_qbva7e.png" alt="BINGSUAN Propionic Acid">
           <div class="project-overlay"><span class="project-tag">FINE CHEMICALS</span><span class="project-contribution">100%</span></div>
         </div>
         <div class="project-body">
           <h3>BINGSUAN — Propionic Acid Plant</h3>
           <div class="project-client">Lanzhou Aigmed Synthetic Biotechnology Co., Ltd</div>
-          <div class="project-meta"><span>📍 Lanzhou, China</span><span>⚖ 5,000 t/yr</span><span> ENCOSC26001</span></div>
+          <div class="project-meta"><span>📍 Lanzhou, China</span><span>⚖ 5,000 t/yr</span><span>🔢 ENCOSC26001</span></div>
           <p>Complete 100% design contribution for synthetic biotechnology propionic acid production facility. Full piping engineering scope delivered for this 5,000 tons/year specialty chemical plant.</p>
           <div class="project-products"><span class="product-tag">Propionic Acid</span><span class="product-tag">Biotech</span></div>
         </div>
@@ -561,13 +562,13 @@ a{color:inherit;text-decoration:none}
       <!-- 3. QIXIANG -->
       <div class="project-card fade-up" data-sector="energy">
         <div class="project-img">
-          <img src="https://res.cloudinary.com/de5casjbu/image/upload/v1781868724/QIXANG-1_ojnjoz.png" alt="QIXIANG Steam Plant">
+          <img src="https://res.cloudinary.com/de5casjbu/image/upload/v1781868729/QIXANG-1_ojnjoz.png" alt="QIXIANG Steam Plant">
           <div class="project-overlay"><span class="project-tag">ENERGY</span><span class="project-contribution">75%</span></div>
         </div>
         <div class="project-body">
           <h3>QIXIANG — Steam Generation Facility</h3>
           <div class="project-client">Zibo Qixiang Tengda Chemical Co., Ltd</div>
-          <div class="project-meta"><span>📍 Zibo, China</span><span>⚖ 3,360,000 t/yr</span><span> S20251023</span></div>
+          <div class="project-meta"><span>📍 Zibo, China</span><span>⚖ 3,360,000 t/yr</span><span>🔢 S20251023</span></div>
           <p>Major steam generation facility with 75% design contribution. High-capacity energy infrastructure supporting chemical production operations with 3.36 million tons annual capacity.</p>
           <div class="project-products"><span class="product-tag">Steam</span><span class="product-tag">Energy</span></div>
         </div>
@@ -576,13 +577,13 @@ a{color:inherit;text-decoration:none}
       <!-- 4. YUXIANGHY -->
       <div class="project-card fade-up" data-sector="energy">
         <div class="project-img">
-          <img src="https://res.cloudinary.com/de5casjbu/image/upload/v1781868724/QIXANG-2_uudvq8.jpg" alt="YUXIANGHY Nitric Acid">
+          <img src="https://res.cloudinary.com/de5casjbu/image/upload/v1781868726/QIXANG-2_uudvq8.jpg" alt="YUXIANGHY Nitric Acid">
           <div class="project-overlay"><span class="project-tag">ENERGY</span><span class="project-contribution">100%</span></div>
         </div>
         <div class="project-body">
           <h3>YUXIANGHY — Nitric Acid Waste Heat Recovery</h3>
           <div class="project-client">Xinjiang Yuxiang Poplar Chemical Co., Ltd</div>
-          <div class="project-meta"><span>📍 Xinjiang, China</span><span>🌱 20,000 t CO₂ reduction</span><span> ENCOSC25005</span></div>
+          <div class="project-meta"><span> Xinjiang, China</span><span> 20,000 t CO₂ reduction</span><span>🔢 ENCOSC25005</span></div>
           <p>Complete 100% design for nitric acid waste heat recovery system. Environmental sustainability project reducing 20,000 tons of CO₂ emissions annually through energy recovery technology.</p>
           <div class="project-products"><span class="product-tag">Waste Heat Recovery</span><span class="product-tag">CO₂ Reduction</span></div>
         </div>
@@ -591,13 +592,13 @@ a{color:inherit;text-decoration:none}
       <!-- 5. ARIT -->
       <div class="project-card fade-up" data-sector="construction">
         <div class="project-img">
-          <img src="https://res.cloudinary.com/de5casjbu/image/upload/v1781868720/ARIT-1_m8jdbq.png" alt="ARIT Concrete Admixtures">
+          <img src="https://res.cloudinary.com/de5casjbu/image/upload/v1781868723/ARIT-4_m8jdbq.png" alt="ARIT Concrete Admixtures">
           <div class="project-overlay"><span class="project-tag">CONSTRUCTION</span><span class="project-contribution">100%</span></div>
         </div>
         <div class="project-body">
           <h3>ARIT — Concrete Admixtures Plant</h3>
           <div class="project-client">Linzhi Aolaite New Materials Co., Ltd</div>
-          <div class="project-meta"><span>📍 Linzhi, China</span><span>⚖ 500,000 t/yr</span><span>🔢 ENCOSC25046</span></div>
+          <div class="project-meta"><span>📍 Linzhi, China</span><span> 500,000 t/yr</span><span>🔢 ENCOSC25046</span></div>
           <p>Full 100% design contribution for large-scale concrete admixtures production facility. High-volume chemical manufacturing plant producing 500,000 tons/year of construction chemicals.</p>
           <div class="project-products"><span class="product-tag">Concrete Admixtures</span><span class="product-tag">Water Reducing Agent</span></div>
         </div>
@@ -606,13 +607,13 @@ a{color:inherit;text-decoration:none}
       <!-- 6. SANMING -->
       <div class="project-card fade-up" data-sector="materials">
         <div class="project-img">
-          <img src="https://res.cloudinary.com/de5casjbu/image/upload/v1781868727/SANMING-1_ueu56s.jpg" alt="SANMING Lithium">
+          <img src="https://res.cloudinary.com/de5casjbu/image/upload/v1781868727/SANMING_1_uen56s.jpg" alt="SANMING Lithium">
           <div class="project-overlay"><span class="project-tag">NEW MATERIALS</span><span class="project-contribution">100%</span></div>
         </div>
         <div class="project-body">
           <h3>SANMING — Lithium Hexafluorophosphate</h3>
           <div class="project-client">Fujian Sanming Runxiang New Materials Co., Ltd</div>
-          <div class="project-meta"><span>📍 Fujian, China</span><span>⚖ 50 t/yr</span><span> ENCOSC25061</span></div>
+          <div class="project-meta"><span>📍 Fujian, China</span><span>⚖ 50 t/yr</span><span>🔢 ENCOSC25061</span></div>
           <p>Complete 100% design for lithium hexafluorophosphate production — a critical electrolyte material for lithium-ion batteries. High-value specialty chemical facility for EV battery supply chain.</p>
           <div class="project-products"><span class="product-tag">LiPF₆</span><span class="product-tag">Battery Materials</span></div>
         </div>
@@ -621,13 +622,13 @@ a{color:inherit;text-decoration:none}
       <!-- 7. HAIFENG -->
       <div class="project-card fade-up" data-sector="chemicals">
         <div class="project-img">
-          <img src="https://res.cloudinary.com/de5casjbu/image/upload/v1781868721/HAIFENG_lirwiw.png" alt="HAIFENG Glycol">
+          <img src="https://res.cloudinary.com/de5casjbu/image/upload/v1781868721/HAIFENG_llrwiw.png" alt="HAIFENG Glycol">
           <div class="project-overlay"><span class="project-tag">FINE CHEMICALS</span><span class="project-contribution">100%</span></div>
         </div>
         <div class="project-body">
           <h3>HAIFENG — Triethylene & Tetraethylene Glycol</h3>
           <div class="project-client">Yibin Haifeng Herui Co., Ltd</div>
-          <div class="project-meta"><span> Yibin, China</span><span> 50K + 100K t/yr</span><span>🔢 ENCO25174</span></div>
+          <div class="project-meta"><span>📍 Yibin, China</span><span>⚖ 50K + 100K t/yr</span><span>🔢 ENCO25174</span></div>
           <p>Complete 100% design for dual glycol production: Triethylene Glycol (50,000 t/yr) and Tetraethylene Glycol (100,000 t/yr). Multi-product chemical facility for industrial solvent production.</p>
           <div class="project-products"><span class="product-tag">Triethylene Glycol</span><span class="product-tag">Tetraethylene Glycol</span></div>
         </div>
@@ -642,7 +643,7 @@ a{color:inherit;text-decoration:none}
         <div class="project-body">
           <h3>EZHONG — Potash Fertilizer & Calcium Chloride</h3>
           <div class="project-client">Gubei Ezhong Ecological Agriculture Technology Co., Ltd</div>
-          <div class="project-meta"><span>📍 Gubei, China</span><span>⚖ 80K + 50K t/yr</span><span>🔢 ENCOSC24009</span></div>
+          <div class="project-meta"><span>📍 Gubei, China</span><span> 80K + 50K t/yr</span><span>🔢 ENCOSC24009</span></div>
           <p>Complete 100% design for dual-product agricultural facility: Potash fertilizer (80,000 t/yr) and Calcium chloride (50,000 t/yr). Ecological agriculture focus with sustainable production methods.</p>
           <div class="project-products"><span class="product-tag">Potash Fertilizer</span><span class="product-tag">Calcium Chloride</span></div>
         </div>
@@ -651,13 +652,13 @@ a{color:inherit;text-decoration:none}
       <!-- 9. JSD -->
       <div class="project-card fade-up" data-sector="chemicals">
         <div class="project-img">
-          <img src="https://res.cloudinary.com/de5casjbu/image/upload/v1781868724/JSD-2_jfbttr.jpg" alt="JSD Chemicals">
+          <img src="https://res.cloudinary.com/de5casjbu/image/upload/v1781868730/JSD_kdjjru.png" alt="JSD Chemicals">
           <div class="project-overlay"><span class="project-tag">FINE CHEMICALS</span><span class="project-contribution">100%</span></div>
         </div>
         <div class="project-body">
           <h3>JSD — Melamine Polyphosphate & DPP</h3>
           <div class="project-client">Sichuan Jingshida Technology Co., Ltd</div>
-          <div class="project-meta"><span>📍 Sichuan, China</span><span>⚖ 5K + 3K t/yr</span><span>🔢 ENCOSC24029</span></div>
+          <div class="project-meta"><span> Sichuan, China</span><span> 5K + 3K t/yr</span><span>🔢 ENCOSC24029</span></div>
           <p>Complete 100% design for dual specialty chemical production: Melamine polyphosphate (5,000 t/yr) flame retardant and Diketopyrrolopyrrole (3,000 t/yr) high-performance pigment.</p>
           <div class="project-products"><span class="product-tag">Melamine Polyphosphate</span><span class="product-tag">Diketopyrrolopyrrole</span></div>
         </div>
@@ -672,7 +673,7 @@ a{color:inherit;text-decoration:none}
         <div class="project-body">
           <h3>SHICHENGSHOU — Soil Remediation Agent</h3>
           <div class="project-client">Sichuan Shichengshou Ecological Technology Co., Ltd</div>
-          <div class="project-meta"><span>📍 Sichuan, China</span><span>⚖ 60,000 t/yr</span><span> ENCOSC24062</span></div>
+          <div class="project-meta"><span>📍 Sichuan, China</span><span>⚖ 60,000 t/yr</span><span>🔢 ENCOSC24062</span></div>
           <p>20% design contribution for soil remediation agent production facility. Environmental technology project supporting ecological restoration with 60,000 tons annual capacity.</p>
           <div class="project-products"><span class="product-tag">Soil Remediation</span><span class="product-tag">Ecological</span></div>
         </div>
@@ -687,7 +688,7 @@ a{color:inherit;text-decoration:none}
         <div class="project-body">
           <h3>HNLC — PVC Resin & Acetylene Plant</h3>
           <div class="project-client">Henan Lianchuang Chemical Co., Ltd</div>
-          <div class="project-meta"><span>📍 Henan, China</span><span>⚖ 200,000 t/yr</span><span>🔢 ENCOSC24242</span></div>
+          <div class="project-meta"><span>📍 Henan, China</span><span>⚖ 200,000 t/yr</span><span> ENCOSC24242</span></div>
           <p>Complete 100% design for PVC resin and acetylene production facility. Major chlor-alkali complex with full piping engineering scope for 200,000 tons annual capacity plant.</p>
           <div class="project-products"><span class="product-tag">PVC Resin</span><span class="product-tag">Acetylene</span></div>
         </div>
@@ -696,7 +697,7 @@ a{color:inherit;text-decoration:none}
       <!-- 12. XINGFA -->
       <div class="project-card fade-up" data-sector="materials">
         <div class="project-img">
-          <img src="https://res.cloudinary.com/de5casjbu/image/upload/v1781868727/XINGFA-1_hso8zg.jpg" alt="XINGFA FDCA">
+          <img src="https://res.cloudinary.com/de5casjbu/image/upload/v1781868730/XINGFA-3_u4kvuh.jpg" alt="XINGFA FDCA">
           <div class="project-overlay"><span class="project-tag">NEW MATERIALS</span><span class="project-contribution">100%</span></div>
         </div>
         <div class="project-body">
@@ -726,13 +727,13 @@ a{color:inherit;text-decoration:none}
       <!-- 14. HAILIANG -->
       <div class="project-card fade-up" data-sector="materials">
         <div class="project-img">
-          <img src="https://res.cloudinary.com/de5casjbu/image/upload/v1781868727/XINGFA-2_tx3pzd.jpg" alt="HAILIANG">
+          <img src="https://res.cloudinary.com/de5casjbu/image/upload/v1781868729/XINGFA-2_tx3pzd.jpg" alt="HAILIANG">
           <div class="project-overlay"><span class="project-tag">NEW MATERIALS</span><span class="project-contribution">100%</span></div>
         </div>
         <div class="project-body">
           <h3>HAILIANG — DMTDA & DETDA Diamines</h3>
           <div class="project-client">Shandong Hailiang New Materials Co., Ltd</div>
-          <div class="project-meta"><span>📍 Shandong, China</span><span>⚖ 2.5K + 4K t/yr</span><span>🔢 ENCOSC22004</span></div>
+          <div class="project-meta"><span>📍 Shandong, China</span><span>⚖ 2.5K + 4K t/yr</span><span> ENCOSC22004</span></div>
           <p>Complete 100% design for dual diamine production: Dimethylthiotoluenediamine (2,500 t/yr) and Diethyltoluenediamine (4,000 t/yr). Critical polyurethane curing agents for industrial applications.</p>
           <div class="project-products"><span class="product-tag">DMTDA</span><span class="product-tag">DETDA</span></div>
         </div>
@@ -756,13 +757,13 @@ a{color:inherit;text-decoration:none}
       <!-- 16. SHUZHONG -->
       <div class="project-card fade-up" data-sector="pharma">
         <div class="project-img">
-          <img src="https://res.cloudinary.com/de5casjbu/image/upload/v1781868723/HNLC-1_spvk6o.jpg" alt="SHUZHONG Pharma">
+          <img src="https://res.cloudinary.com/de5casjbu/image/upload/v1781868722/HNLC-1_spvk6o.jpg" alt="SHUZHONG Pharma">
           <div class="project-overlay"><span class="project-tag">PHARMACEUTICALS</span><span class="project-contribution">20%</span></div>
         </div>
         <div class="project-body">
           <h3>SHUZHONG — Pepsin & Pancreatin Production</h3>
           <div class="project-client">Sichuan Shuzhong Pharmaceutical Chemical Co., Ltd</div>
-          <div class="project-meta"><span> Sichuan, China</span><span> 12 + 120 t/yr</span><span>🔢 ENCOSC22108</span></div>
+          <div class="project-meta"><span>📍 Sichuan, China</span><span>⚖ 12 + 120 t/yr</span><span>🔢 ENCOSC22108</span></div>
           <p>20% design contribution for pharmaceutical enzyme production: Pepsin (12 t/yr) and Pancreatin (120 t/yr). Biotech pharmaceutical facility for digestive enzyme manufacturing.</p>
           <div class="project-products"><span class="product-tag">Pepsin</span><span class="product-tag">Pancreatin</span></div>
         </div>
@@ -839,7 +840,7 @@ a{color:inherit;text-decoration:none}
           <div><h4>Location</h4><p>Addis Ababa, Megenagna, Ethiopia</p></div>
         </div>
         <div class="contact-item">
-          <div class="contact-icon"></div>
+          <div class="contact-icon">✉</div>
           <div><h4>Email</h4><p>abdudemle0899@gmail.com</p></div>
         </div>
         <div class="contact-item">
@@ -847,7 +848,7 @@ a{color:inherit;text-decoration:none}
           <div><h4>Phone</h4><p>(+251) 910 298 713</p></div>
         </div>
         <div class="contact-item">
-          <div class="contact-icon"></div>
+          <div class="contact-icon">💼</div>
           <div><h4>LinkedIn</h4><p>linkedin.com/in/abdu-demle-melaku-571b0b246</p></div>
         </div>
         <div class="contact-item">
@@ -880,7 +881,7 @@ a{color:inherit;text-decoration:none}
         <div class="footer-social">
           <a href="https://www.linkedin.com/in/abdu-demle-melaku-571b0b246" target="_blank" aria-label="LinkedIn">in</a>
           <a href="mailto:abdudemle0899@gmail.com" aria-label="Email">@</a>
-          <a href="tel:+251910298713" aria-label="Phone"></a>
+          <a href="tel:+251910298713" aria-label="Phone">📱</a>
         </div>
       </div>
       <div class="footer-col">
