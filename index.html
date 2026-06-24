@@ -1,13 +1,29 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Abdu Demle Melaku | Piping Design Engineer & Team Leader | CRTEC</title>
-<meta name="description" content="Abdu Demle Melaku - Mechanical Engineer specializing in petrochemical piping design with AVEVA PDMS, E3D, Paragon, and Navisworks. Team Leader at CRTEC with 17+ industrial projects.">
+<meta name="description" content="Portfolio of Abdu Demle Melaku, a Mechanical Engineer specializing in petrochemical piping design with AVEVA PDMS, E3D, Paragon, and Navisworks. Team Leader at CRTEC.">
+<meta name="keywords" content="Abdu Demle Melaku, Piping Design Engineer, AVEVA E3D, PDMS, CRTEC, Mechanical Engineer, Petrochemical Design, Ethiopia, Piping Team Leader">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Abdu Demle Melaku | Piping Design Engineer & Team Leader">
+<meta property="og:description" content="Mechanical Engineer specializing in petrochemical piping design. Lead designer on 17+ industrial plants.">
+<meta property="og:image" content="https://res.cloudinary.com/de5casjbu/image/upload/v1782222110/Abdu_photo_jxdvrq.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:title" content="Abdu Demle Melaku | Piping Design Engineer">
+<meta property="twitter:description" content="Mechanical Engineer specializing in petrochemical piping design with AVEVA E3D, PDMS, and Navisworks.">
+<meta property="twitter:image" content="https://res.cloudinary.com/de5casjbu/image/upload/v1782222110/Abdu_photo_jxdvrq.jpg">
+
 <link href="https://cdn.jsdelivr.net/npm/fontsource-inter@5.0.0/index.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/fontsource-rajdhani@5.0.0/index.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/fontsource-jetbrains-mono@5.0.0/index.css" rel="stylesheet">
+
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -59,6 +75,23 @@ h1,h2,h3,h4,h5,h6{
 a{color:inherit;text-decoration:none}
 button{font-family:inherit;cursor:pointer;border:none;background:none}
 img{max-width:100%;display:block}
+
+/* Skip link for Accessibility */
+.skip-link {
+  position: absolute;
+  top: -80px;
+  left: 0;
+  background: var(--cyan);
+  color: var(--bg);
+  padding: 10px 20px;
+  z-index: 2000;
+  transition: top var(--transition-fast);
+  font-weight: bold;
+}
+.skip-link:focus {
+  top: 0;
+}
+
 .container{max-width:1380px;margin:0 auto;padding:0 32px}
 .section{padding:120px 0;position:relative}
 .section-label{
@@ -147,9 +180,11 @@ img{max-width:100%;display:block}
   transition:all var(--transition-fast);
   position:relative;
 }
-.nav-links a:hover{
+.nav-links a:hover,
+.nav-links a:focus-visible{
   color:var(--cyan);
   background:var(--cyan-dim);
+  outline: none;
 }
 .nav-cta{
   background:transparent!important;
@@ -157,7 +192,8 @@ img{max-width:100%;display:block}
   color:var(--cyan)!important;
   font-weight:600!important;
 }
-.nav-cta:hover{
+.nav-cta:hover,
+.nav-cta:focus-visible{
   background:var(--cyan)!important;
   color:var(--bg)!important;
   transform:translateY(-2px);
@@ -374,20 +410,24 @@ img{max-width:100%;display:block}
   background:var(--cyan);
   color:var(--bg);
 }
-.btn-primary:hover{
+.btn-primary:hover,
+.btn-primary:focus-visible{
   background:#33ebff;
   transform:translateY(-3px);
   box-shadow:0 14px 34px var(--cyan-glow);
+  outline: none;
 }
 .btn-outline{
   background:transparent;
   color:var(--text-bright);
   border:1px solid var(--border-light);
 }
-.btn-outline:hover{
+.btn-outline:hover,
+.btn-outline:focus-visible{
   border-color:var(--cyan);
   color:var(--cyan);
   transform:translateY(-3px);
+  outline: none;
 }
 
 /* ==================== ABOUT ==================== */
@@ -759,24 +799,58 @@ img{max-width:100%;display:block}
 }
 
 /* ==================== PROJECTS ==================== */
+.search-filter-wrapper{
+  max-width:940px;
+  margin:0 auto 40px;
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+  align-items:center;
+}
+.search-container{
+  width:100%;
+  position:relative;
+}
+.search-input{
+  width:100%;
+  padding:16px 20px 16px 50px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:100px;
+  color:var(--text-bright);
+  font-family:inherit;
+  font-size:0.95rem;
+  transition:all var(--transition-fast);
+}
+.search-input:focus{
+  outline:none;
+  border-color:var(--cyan);
+  box-shadow:0 0 15px rgba(0,229,255,0.15);
+}
+.search-icon{
+  position:absolute;
+  left:20px;
+  top:50%;
+  transform:translateY(-50%);
+  color:var(--text-dim);
+  pointer-events:none;
+}
 .projects-filter{
   display:flex;
-  gap:12px;
+  gap:10px;
   flex-wrap:wrap;
-  margin-bottom:55px;
   justify-content:center;
 }
 .filter-btn{
-  padding:11px 22px;
+  padding:10px 20px;
   background:var(--card);
   border:1px solid var(--border);
   border-radius:100px;
   color:var(--text-dim);
-  font-size:0.88rem;
+  font-size:0.85rem;
   font-weight:500;
   cursor:pointer;
   transition:all var(--transition-fast);
-  font-family:inherit;
 }
 .filter-btn:hover{
   border-color:var(--cyan);
@@ -824,6 +898,8 @@ img{max-width:100%;display:block}
   transition:transform var(--transition-slow);
 }
 .project-card:hover .project-img img{transform:scale(1.08)}
+
+/* Vector dynamic placeholders for empty-image projects */
 .project-img-placeholder{
   width:100%;
   height:100%;
@@ -832,25 +908,24 @@ img{max-width:100%;display:block}
   flex-direction:column;
   align-items:center;
   justify-content:center;
-  gap:12px;
-  color:var(--text-dim);
+  gap:16px;
+  padding:20px;
 }
-.project-img-placeholder-icon{
-  width:70px;
-  height:70px;
-  background:var(--cyan-dim);
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:1.8rem;
+.project-placeholder-svg{
+  width:64px;
+  height:64px;
   color:var(--cyan);
+  opacity:0.85;
 }
 .project-img-placeholder-text{
   font-family:'JetBrains Mono',monospace;
-  font-size:0.85rem;
+  font-size:0.8rem;
+  color:var(--text-dim);
   letter-spacing:1px;
+  text-transform:uppercase;
+  text-align:center;
 }
+
 .project-overlay{
   position:absolute;
   inset:0;
@@ -934,6 +1009,16 @@ img{max-width:100%;display:block}
 }
 .project-card:hover .project-view-more::after{transform:translateX(5px)}
 
+/* No results state */
+.no-results-msg {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  font-family:'JetBrains Mono',monospace;
+  color:var(--text-dim);
+  display:none;
+}
+
 /* ==================== PROJECT MODAL ==================== */
 .modal-overlay{
   position:fixed;
@@ -966,9 +1051,9 @@ img{max-width:100%;display:block}
 .modal-overlay.active .modal{transform:scale(1) translateY(0)}
 .modal-close{
   position:sticky;
-  top:0;
+  top:22px;
+  right:22px;
   float:right;
-  margin:22px 22px 0 0;
   width:46px;
   height:46px;
   background:var(--card);
@@ -980,7 +1065,7 @@ img{max-width:100%;display:block}
   color:var(--text-bright);
   font-size:1.5rem;
   cursor:pointer;
-  z-index:10;
+  z-index:110;
   transition:all var(--transition-fast);
 }
 .modal-close:hover{
@@ -989,43 +1074,29 @@ img{max-width:100%;display:block}
   border-color:var(--cyan);
   transform:rotate(90deg);
 }
+
+/* Modal Interactive Slideshow */
 .modal-hero{
   position:relative;
   height:440px;
   overflow:hidden;
   background:var(--bg);
 }
+.modal-active-img-wrapper{
+  width:100%;
+  height:100%;
+}
 .modal-hero-img{
   width:100%;
   height:100%;
   object-fit:cover;
 }
-.modal-hero-placeholder{
-  width:100%;
-  height:100%;
-  background:linear-gradient(135deg,var(--bg-elevated),var(--card));
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:16px;
-  color:var(--text-dim);
-}
-.modal-hero-placeholder-icon{
-  width:100px;
-  height:100px;
-  background:var(--cyan-dim);
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:2.5rem;
-  color:var(--cyan);
-}
 .modal-hero-overlay{
   position:absolute;
   inset:0;
   background:linear-gradient(to top,var(--bg-alt) 0%,transparent 60%);
+  z-index:1;
+  pointer-events:none;
 }
 .modal-hero-content{
   position:absolute;
@@ -1033,6 +1104,7 @@ img{max-width:100%;display:block}
   left:44px;
   right:44px;
   z-index:2;
+  pointer-events:none;
 }
 .modal-hero-tag{
   display:inline-block;
@@ -1119,12 +1191,14 @@ img{max-width:100%;display:block}
   line-height:1.7;
 }
 .modal-description ul li::before{
-  content:'';
+  content:'▸';
   position:absolute;
   left:0;
   color:var(--cyan);
   font-weight:bold;
 }
+
+/* Carousel Thumbnail Strip */
 .modal-gallery{margin-bottom:44px}
 .modal-gallery h4{
   font-size:1.35rem;
@@ -1142,22 +1216,24 @@ img{max-width:100%;display:block}
   border-radius:2px;
 }
 .modal-gallery-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-  gap:16px;
+  display:flex;
+  gap:12px;
+  overflow-x:auto;
+  padding-bottom:10px;
 }
 .modal-gallery-item{
+  flex:0 0 120px;
   border-radius:var(--radius-sm);
   overflow:hidden;
   aspect-ratio:4/3;
   background:var(--card);
-  border:1px solid var(--border);
+  border:2px solid var(--border);
   cursor:pointer;
   transition:all var(--transition-fast);
 }
-.modal-gallery-item:hover{
+.modal-gallery-item.active-thumbnail{
   border-color:var(--cyan);
-  transform:scale(1.03);
+  box-shadow:0 0 10px rgba(0,229,255,0.4);
 }
 .modal-gallery-item img{
   width:100%;
@@ -1292,6 +1368,64 @@ img{max-width:100%;display:block}
   margin-top:6px;
 }
 
+/* ==================== FAQ ACCORDION SECTION ==================== */
+.faq {
+  background: var(--bg);
+}
+.faq-list {
+  max-width: 940px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap:16px;
+}
+.faq-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  transition: all var(--transition-fast);
+}
+.faq-item:focus-within, .faq-item:hover {
+  border-color: var(--cyan);
+}
+.faq-question {
+  width: 100%;
+  text-align: left;
+  padding: 24px 32px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-bright);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: color var(--transition-fast);
+}
+.faq-question:focus-visible {
+  outline: 2px solid var(--cyan);
+}
+.faq-icon {
+  font-size: 1.1rem;
+  color: var(--cyan);
+  transition: transform var(--transition-fast);
+}
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s ease;
+  padding: 0 32px;
+  color: var(--text-dim);
+  font-size: 0.98rem;
+  line-height: 1.75;
+}
+.faq-item.active .faq-answer {
+  max-height: 400px;
+  padding-bottom: 24px;
+}
+.faq-item.active .faq-icon {
+  transform: rotate(45deg);
+}
+
 /* ==================== CONTACT ==================== */
 .contact{background:var(--bg-alt)}
 .contact-grid{
@@ -1371,6 +1505,38 @@ img{max-width:100%;display:block}
 }
 .form-group textarea{resize:vertical;min-height:140px}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+
+/* ==================== BACK TO TOP ==================== */
+.back-to-top {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  background: var(--card);
+  color: var(--cyan);
+  border: 1px solid var(--border);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  z-index: 999;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: all var(--transition-fast);
+}
+.back-to-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+.back-to-top:hover {
+  background: var(--cyan);
+  color: var(--bg);
+  border-color: var(--cyan);
+  transform: translateY(-5px);
+}
 
 /* ==================== FOOTER ==================== */
 .footer{
@@ -1485,15 +1651,16 @@ img{max-width:100%;display:block}
   .modal-hero{height:300px}
   .modal-hero-content{left:26px;right:26px;bottom:22px}
   .projects-grid{grid-template-columns:1fr}
-  .modal-gallery-grid{grid-template-columns:1fr 1fr}
   .container{padding:0 22px}
   .modal-contribution{flex-direction:column;text-align:center}
 }
 @media(max-width:480px){
   .hero-text h1{font-size:2.5rem}
   .hero-img-wrap{max-width:290px}
-  .modal-gallery-grid{grid-template-columns:1fr}
-  .section-title{font-size:2rem}
+  .projects-filter{flex-direction:column;width:100%}
+  .filter-btn{width:100%;text-align:center}
+  .container{padding:0 22px}
+  .modal-contribution{flex-direction:column;text-align:center}
 }
 
 /* ==================== SCROLLBAR ==================== */
@@ -1503,13 +1670,43 @@ img{max-width:100%;display:block}
 ::-webkit-scrollbar-thumb:hover{background:var(--cyan)}
 .modal::-webkit-scrollbar{width:8px}
 </style>
+
+<!-- JSON-LD Structured Schema Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Abdu Demle Melaku",
+  "jobTitle": "Piping Design Engineer & Team Leader",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "China Rail Transit Engineering Consultancy (CRTEC)"
+  },
+  "alumniOf": {
+    "@type": "EducationalOrganization",
+    "name": "Wollo University"
+  },
+  "url": "https://www.crtec-et.com",
+  "image": "https://res.cloudinary.com/de5casjbu/image/upload/v1782222110/Abdu_photo_jxdvrq.jpg",
+  "sameAs": [
+    "https://www.linkedin.com/in/abdu-demle-melaku-571b0b246"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Addis Ababa",
+    "addressCountry": "Ethiopia"
+  }
+}
+</script>
 </head>
 <body>
 
+<a href="#main-content" class="skip-link">Skip to Main Content</a>
+
 <!-- ==================== NAVIGATION ==================== -->
-<nav class="nav" id="nav">
+<nav class="nav" id="nav" role="navigation">
   <div class="container nav-inner">
-    <a href="#home" class="nav-logo">
+    <a href="#home" class="nav-logo" aria-label="Abdu Demle Portfolio Home">
       <div class="nav-logo-mark">A</div>
       Abdu<span>.</span>
     </a>
@@ -1521,16 +1718,17 @@ img{max-width:100%;display:block}
       <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
       <a href="#recommendations">Recommendations</a>
+      <a href="#faq">FAQs</a>
       <a href="#contact" class="nav-cta">Contact</a>
     </div>
-    <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
   </div>
 </nav>
 
 <!-- ==================== HERO ==================== -->
-<section class="hero" id="home">
+<header class="hero" id="home">
   <div class="hero-banner-wrap">
-    <img class="hero-banner" src="https://res.cloudinary.com/de5casjbu/image/upload/v1781868693/Gemini_Generated_Image_q9bke7q9bke7q9bk_hafbep.png" alt="Industrial Piping Design Banner">
+    <img class="hero-banner" src="https://res.cloudinary.com/de5casjbu/image/upload/v1781868693/Gemini_Generated_Image_q9bke7q9bke7q9bk_hafbep.png" alt="Industrial petrochemical plant showing piping and pressure vessels">
   </div>
   <div class="hero-overlay"></div>
   <div class="hero-grid"></div>
@@ -1538,7 +1736,8 @@ img{max-width:100%;display:block}
     <div class="hero-content">
       <div class="hero-img-wrap fade-up">
         <div class="hero-img">
-          <img src="https://res.cloudinary.com/de5casjbu/image/upload/v1777020284/Abdu_photo_zbhh02.jpg" alt="Abdu Demle Melaku">
+          <!-- Main Profile Picture from workbook -->
+          <img src="https://res.cloudinary.com/de5casjbu/image/upload/v1782222110/Abdu_photo_jxdvrq.jpg" alt="Abdu Demle Melaku, Piping Design Engineer">
         </div>
         <div class="hero-img-accent"></div>
         <div class="hero-badge">
@@ -1575,14 +1774,16 @@ img{max-width:100%;display:block}
       </div>
     </div>
   </div>
-</section>
+</header>
 
+<main id="main-content">
 <!-- ==================== ABOUT ==================== -->
 <section class="section" id="about">
   <div class="container">
     <div class="about-grid">
       <div class="about-img fade-up">
-        <img src="https://res.cloudinary.com/de5casjbu/image/upload/v1781868693/LINKIDIN_xy3shx.png" alt="Abdu Demle Melaku - LinkedIn Profile">
+        <!-- Business Card Picture from workbook -->
+        <img src="https://res.cloudinary.com/de5casjbu/image/upload/v1782222013/LINKIDIN_xy3shx.jpg" alt="Abdu Demle Melaku LinkedIn Business Card and details">
       </div>
       <div class="about-content fade-up">
         <div class="section-label">About Me</div>
@@ -1592,7 +1793,7 @@ img{max-width:100%;display:block}
         <p>I'm an academic topper with CGPA 3.89 and Best Academic Achievement Medal from Wollo University, and I'm seeking international opportunities in oil & gas and petrochemical engineering.</p>
         <div class="about-info">
           <div class="about-info-item">
-            <div class="about-info-icon"></div>
+            <div class="about-info-icon">📍</div>
             <div><div class="about-info-label">Location</div><div class="about-info-value">Addis Ababa, Ethiopia</div></div>
           </div>
           <div class="about-info-item">
@@ -1779,28 +1980,38 @@ img{max-width:100%;display:block}
     <div class="fade-up" style="text-align:center;max-width:840px;margin:0 auto 55px">
       <div class="section-label" style="justify-content:center">Complete Portfolio</div>
       <h2 class="section-title">All <span>17 Projects</span></h2>
-      <p class="section-subtitle" style="margin:0 auto">Every industrial project I've contributed to at CRTEC — spanning fertilizer, energy, chemicals, pharmaceuticals, new materials, and construction sectors. Click any project to view the full gallery and detailed description.</p>
+      <p class="section-subtitle" style="margin:0 auto">Every industrial project I've contributed to at CRTEC — spanning fertilizer, energy, chemicals, pharmaceuticals, new materials, and construction sectors. Search or filter below to explore details.</p>
     </div>
 
-    <div class="projects-filter fade-up">
-      <button class="filter-btn active" data-filter="all">All (17)</button>
-      <button class="filter-btn" data-filter="fertilizer">Fertilizer</button>
-      <button class="filter-btn" data-filter="energy">Energy</button>
-      <button class="filter-btn" data-filter="chemicals">Chemicals</button>
-      <button class="filter-btn" data-filter="pharma">Pharma</button>
-      <button class="filter-btn" data-filter="materials">New Materials</button>
-      <button class="filter-btn" data-filter="pvc">PVC / Chlor-Alkali</button>
-      <button class="filter-btn" data-filter="construction">Construction</button>
+    <!-- Search and Multi-Filtering System -->
+    <div class="search-filter-wrapper fade-up">
+      <div class="search-container">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="projectSearch" class="search-input" placeholder="Search projects by name, client, capacity, or key products...">
+      </div>
+      <div class="projects-filter">
+        <button class="filter-btn active" data-filter="all">All (17)</button>
+        <button class="filter-btn" data-filter="fertilizer">Fertilizer</button>
+        <button class="filter-btn" data-filter="energy">Energy</button>
+        <button class="filter-btn" data-filter="chemicals">Chemicals</button>
+        <button class="filter-btn" data-filter="pharma">Pharma</button>
+        <button class="filter-btn" data-filter="materials">New Materials</button>
+        <button class="filter-btn" data-filter="pvc">PVC / Chlor-Alkali</button>
+        <button class="filter-btn" data-filter="construction">Construction</button>
+      </div>
     </div>
 
     <div class="projects-grid" id="projectsGrid">
-
-      <!-- 1. YUNTH - NO IMAGE -->
+      <!-- Dynamic list elements computed by script, falls back to structural design -->
+      
+      <!-- 1. YUNTH -->
       <div class="project-card fade-up" data-sector="fertilizer" data-project="yunth">
         <div class="project-img">
           <div class="project-img-placeholder">
-            <div class="project-img-placeholder-icon">🏭</div>
-            <div class="project-img-placeholder-text">YUNTH · UREA PLANT</div>
+            <svg class="project-placeholder-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+            <div class="project-img-placeholder-text">YUNTH · FERTILIZER PLANT</div>
           </div>
           <div class="project-overlay"><span class="project-tag">FERTILIZER</span><span class="project-contribution">25%</span></div>
         </div>
@@ -1817,7 +2028,7 @@ img{max-width:100%;display:block}
       <!-- 2. BINGSUAN -->
       <div class="project-card fade-up" data-sector="chemicals" data-project="bingsuan">
         <div class="project-img">
-          <img src="https://res.cloudinary.com/de5casjbu/image/upload/v1781868721/BINGSUAN_1_qbva7e.png" alt="BINGSUAN Propionic Acid">
+          <img src="https://res.cloudinary.com/de5casjbu/image/upload/v1781868721/BINGSUAN_1_qbva7e.png" alt="BINGSUAN Propionic Acid Plant view">
           <div class="project-overlay"><span class="project-tag">FINE CHEMICALS</span><span class="project-contribution">100%</span></div>
         </div>
         <div class="project-body">
@@ -1833,7 +2044,7 @@ img{max-width:100%;display:block}
       <!-- 3. QIXIANG -->
       <div class="project-card fade-up" data-sector="energy" data-project="qixiang">
         <div class="project-img">
-          <img src="https://res.cloudinary.com/de5casjbu/image/upload/v1781868729/QIXANG-1_ojnjoz.png" alt="QIXIANG Steam Plant">
+          <img src="https://res.cloudinary.com/de5casjbu/image/upload/v1781868729/QIXANG-1_ojnjoz.png" alt="QIXIANG Steam Generation Plant isometric structural model">
           <div class="project-overlay"><span class="project-tag">ENERGY</span><span class="project-contribution">75%</span></div>
         </div>
         <div class="project-body">
@@ -1846,12 +2057,14 @@ img{max-width:100%;display:block}
         </div>
       </div>
 
-      <!-- 4. YUXIANGHY - NO IMAGE -->
+      <!-- 4. YUXIANGHY -->
       <div class="project-card fade-up" data-sector="energy" data-project="yuxianghy">
         <div class="project-img">
           <div class="project-img-placeholder">
-            <div class="project-img-placeholder-icon">⚡</div>
-            <div class="project-img-placeholder-text">YUXIANGHY · WASTE HEAT</div>
+            <svg class="project-placeholder-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+            </svg>
+            <div class="project-img-placeholder-text">YUXIANGHY · HEAT RECOVERY</div>
           </div>
           <div class="project-overlay"><span class="project-tag">ENERGY</span><span class="project-contribution">100%</span></div>
         </div>
@@ -1868,7 +2081,7 @@ img{max-width:100%;display:block}
       <!-- 5. ARIT -->
       <div class="project-card fade-up" data-sector="construction" data-project="arit">
         <div class="project-img">
-          <img src="https://res.cloudinary.com/de5casjbu/image/upload/v1781868723/ARIT-4_m8jdbc.png" alt="ARIT Concrete Admixtures">
+          <img src="https://res.cloudinary.com/de5casjbu/image/upload/v1781868723/ARIT-4_m8jdbc.png" alt="ARIT Concrete Admixtures Plant complex model">
           <div class="project-overlay"><span class="project-tag">CONSTRUCTION</span><span class="project-contribution">100%</span></div>
         </div>
         <div class="project-body">
@@ -1884,13 +2097,13 @@ img{max-width:100%;display:block}
       <!-- 6. SANMING -->
       <div class="project-card fade-up" data-sector="materials" data-project="sanming">
         <div class="project-img">
-          <img src="https://res.cloudinary.com/de5casjbu/image/upload/v1781868727/SANMING_1_uen56s.jpg" alt="SANMING Lithium">
+          <img src="https://res.cloudinary.com/de5casjbu/image/upload/v1781868727/SANMING_1_uen56s.jpg" alt="SANMING Lithium chemical equipment routing">
           <div class="project-overlay"><span class="project-tag">NEW MATERIALS</span><span class="project-contribution">100%</span></div>
         </div>
         <div class="project-body">
           <h3>SANMING — Lithium Hexafluorophosphate</h3>
           <div class="project-client">Fujian Sanming Runxiang New Materials Co., Ltd</div>
-          <div class="project-meta"><span> Fujian, China</span><span> 50 t/yr</span><span>🔢 ENCOSC25061</span></div>
+          <div class="project-meta"><span>📍 Fujian, China</span><span>⚖ 50 t/yr</span><span>🔢 ENCOSC25061</span></div>
           <p>Complete 100% design for lithium hexafluorophosphate production — critical electrolyte for Li-ion batteries.</p>
           <div class="project-products"><span class="product-tag">LiPF₆</span><span class="product-tag">Battery Materials</span></div>
           <div class="project-view-more">View Full Details</div>
@@ -1900,7 +2113,7 @@ img{max-width:100%;display:block}
       <!-- 7. HAIFENG -->
       <div class="project-card fade-up" data-sector="chemicals" data-project="haifeng">
         <div class="project-img">
-          <img src="https://res.cloudinary.com/de5casjbu/image/upload/v1781868721/HAIFENG_llrwiw.png" alt="HAIFENG Glycol">
+          <img src="https://res.cloudinary.com/de5casjbu/image/upload/v1781868721/HAIFENG_llrwiw.png" alt="HAIFENG Glycol plant piping design model">
           <div class="project-overlay"><span class="project-tag">FINE CHEMICALS</span><span class="project-contribution">100%</span></div>
         </div>
         <div class="project-body">
@@ -1913,19 +2126,21 @@ img{max-width:100%;display:block}
         </div>
       </div>
 
-      <!-- 8. EZHONG - NO IMAGE -->
+      <!-- 8. EZHONG -->
       <div class="project-card fade-up" data-sector="fertilizer" data-project="ezhong">
         <div class="project-img">
           <div class="project-img-placeholder">
-            <div class="project-img-placeholder-icon"></div>
-            <div class="project-img-placeholder-text">EZHONG · FERTILIZER</div>
+            <svg class="project-placeholder-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18m9-9H3" />
+            </svg>
+            <div class="project-img-placeholder-text">EZHONG · POTASH FACILITY</div>
           </div>
           <div class="project-overlay"><span class="project-tag">FERTILIZER</span><span class="project-contribution">100%</span></div>
         </div>
         <div class="project-body">
           <h3>EZHONG — Potash Fertilizer & Calcium Chloride</h3>
           <div class="project-client">Gubei Ezhong Ecological Agriculture Technology Co., Ltd</div>
-          <div class="project-meta"><span>📍 Gubei, China</span><span> 80K + 50K t/yr</span><span>🔢 ENCOSC24009</span></div>
+          <div class="project-meta"><span>📍 Gubei, China</span><span>⚖ 80K + 50K t/yr</span><span>🔢 ENCOSC24009</span></div>
           <p>Complete 100% design for dual-product agricultural facility: Potash fertilizer and Calcium chloride.</p>
           <div class="project-products"><span class="product-tag">Potash Fertilizer</span><span class="product-tag">CaCl₂</span></div>
           <div class="project-view-more">View Full Details</div>
@@ -1935,7 +2150,7 @@ img{max-width:100%;display:block}
       <!-- 9. JSD -->
       <div class="project-card fade-up" data-sector="chemicals" data-project="jsd">
         <div class="project-img">
-          <img src="https://res.cloudinary.com/de5casjbu/image/upload/v1781868730/JSD_kdjjru.png" alt="JSD Chemicals">
+          <img src="https://res.cloudinary.com/de5casjbu/image/upload/v1781868730/JSD_kdjjru.png" alt="JSD Melamine Polyphosphate plant 3D model">
           <div class="project-overlay"><span class="project-tag">FINE CHEMICALS</span><span class="project-contribution">100%</span></div>
         </div>
         <div class="project-body">
@@ -1948,12 +2163,14 @@ img{max-width:100%;display:block}
         </div>
       </div>
 
-      <!-- 10. SHICHENGSHOU - NO IMAGE -->
+      <!-- 10. SHICHENGSHOU -->
       <div class="project-card fade-up" data-sector="fertilizer" data-project="shichengshou">
         <div class="project-img">
           <div class="project-img-placeholder">
-            <div class="project-img-placeholder-icon">🌱</div>
-            <div class="project-img-placeholder-text">SHICHENGSHOU · ECO</div>
+            <svg class="project-placeholder-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+            <div class="project-img-placeholder-text">SHICHENGSHOU · ECOLOGICAL</div>
           </div>
           <div class="project-overlay"><span class="project-tag">AGRICULTURE</span><span class="project-contribution">20%</span></div>
         </div>
@@ -1970,7 +2187,7 @@ img{max-width:100%;display:block}
       <!-- 11. HNLC -->
       <div class="project-card fade-up" data-sector="pvc" data-project="hnlc">
         <div class="project-img">
-          <img src="https://res.cloudinary.com/de5casjbu/image/upload/v1781868723/HNLC-2_h8mlsu.jpg" alt="HNLC PVC">
+          <img src="https://res.cloudinary.com/de5casjbu/image/upload/v1781868723/HNLC-2_h8mlsu.jpg" alt="HNLC PVC Resin & Acetylene complex design model">
           <div class="project-overlay"><span class="project-tag">PVC / CHLOR-ALKALI</span><span class="project-contribution">100%</span></div>
         </div>
         <div class="project-body">
@@ -1986,7 +2203,7 @@ img{max-width:100%;display:block}
       <!-- 12. XINGFA -->
       <div class="project-card fade-up" data-sector="materials" data-project="xingfa">
         <div class="project-img">
-          <img src="https://res.cloudinary.com/de5casjbu/image/upload/v1781868730/XINGFA-3_u4kvuh.jpg" alt="XINGFA FDCA">
+          <img src="https://res.cloudinary.com/de5casjbu/image/upload/v1781868730/XINGFA-3_u4kvuh.jpg" alt="XINGFA FDCA organic acid model">
           <div class="project-overlay"><span class="project-tag">NEW MATERIALS</span><span class="project-contribution">100%</span></div>
         </div>
         <div class="project-body">
@@ -1999,30 +2216,34 @@ img{max-width:100%;display:block}
         </div>
       </div>
 
-      <!-- 13. QICHUANG - NO IMAGE -->
+      <!-- 13. QICHUANG -->
       <div class="project-card fade-up" data-sector="chemicals" data-project="qichuang">
         <div class="project-img">
           <div class="project-img-placeholder">
-            <div class="project-img-placeholder-icon">🧪</div>
-            <div class="project-img-placeholder-text">QICHUANG · FINE CHEM</div>
+            <svg class="project-placeholder-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+            </svg>
+            <div class="project-img-placeholder-text">QICHUANG · FINE CHEMICALS</div>
           </div>
           <div class="project-overlay"><span class="project-tag">FINE CHEMICALS</span><span class="project-contribution">20%</span></div>
         </div>
         <div class="project-body">
           <h3>QICHUANG — Fine Chemicals (Phenylhydrazine)</h3>
           <div class="project-client">Wuhai Qichuang New Materials Technology Co., Ltd</div>
-          <div class="project-meta"><span>📍 Wuhai, China</span><span>⚖ 3,000 t/yr</span><span> ENCOSC23059</span></div>
+          <div class="project-meta"><span>📍 Wuhai, China</span><span>⚖ 3,000 t/yr</span><span>🔢 ENCOSC23059</span></div>
           <p>20% design contribution for fine chemicals production including phenylhydrazine. Specialty chemical facility.</p>
           <div class="project-products"><span class="product-tag">Phenylhydrazine</span><span class="product-tag">Fine Chemicals</span></div>
           <div class="project-view-more">View Full Details</div>
         </div>
       </div>
 
-      <!-- 14. HAILIANG - NO IMAGE -->
+      <!-- 14. HAILIANG -->
       <div class="project-card fade-up" data-sector="materials" data-project="hailiang">
         <div class="project-img">
           <div class="project-img-placeholder">
-            <div class="project-img-placeholder-icon">⚗</div>
+            <svg class="project-placeholder-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+            </svg>
             <div class="project-img-placeholder-text">HAILIANG · DIAMINES</div>
           </div>
           <div class="project-overlay"><span class="project-tag">NEW MATERIALS</span><span class="project-contribution">100%</span></div>
@@ -2030,7 +2251,7 @@ img{max-width:100%;display:block}
         <div class="project-body">
           <h3>HAILIANG — DMTDA & DETDA Diamines</h3>
           <div class="project-client">Shandong Hailiang New Materials Co., Ltd</div>
-          <div class="project-meta"><span>📍 Shandong, China</span><span> 2.5K + 4K t/yr</span><span>🔢 ENCOSC22004</span></div>
+          <div class="project-meta"><span>📍 Shandong, China</span><span>⚖ 2.5K + 4K t/yr</span><span>🔢 ENCOSC22004</span></div>
           <p>Complete 100% design for dual diamine production: DMTDA (2,500 t/yr) and DETDA (4,000 t/yr). Polyurethane curing agents.</p>
           <div class="project-products"><span class="product-tag">DMTDA</span><span class="product-tag">DETDA</span></div>
           <div class="project-view-more">View Full Details</div>
@@ -2040,7 +2261,7 @@ img{max-width:100%;display:block}
       <!-- 15. HECHANG -->
       <div class="project-card fade-up" data-sector="materials" data-project="hechang">
         <div class="project-img">
-          <img src="https://res.cloudinary.com/de5casjbu/image/upload/v1781868721/HECHANG-2_i3jpj3.jpg" alt="HECHANG">
+          <img src="https://res.cloudinary.com/de5casjbu/image/upload/v1781868721/HECHANG-2_i3jpj3.jpg" alt="HECHANG Crude Anthracene 3D project workspace">
           <div class="project-overlay"><span class="project-tag">NEW MATERIALS</span><span class="project-contribution">100%</span></div>
         </div>
         <div class="project-body">
@@ -2053,12 +2274,14 @@ img{max-width:100%;display:block}
         </div>
       </div>
 
-      <!-- 16. SHUZHONG - NO IMAGE -->
+      <!-- 16. SHUZHONG -->
       <div class="project-card fade-up" data-sector="pharma" data-project="shuzhong">
         <div class="project-img">
           <div class="project-img-placeholder">
-            <div class="project-img-placeholder-icon">💊</div>
-            <div class="project-img-placeholder-text">SHUZHONG · PHARMA</div>
+            <svg class="project-placeholder-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            <div class="project-img-placeholder-text">SHUZHONG · PHARMA ENZYMES</div>
           </div>
           <div class="project-overlay"><span class="project-tag">PHARMACEUTICALS</span><span class="project-contribution">20%</span></div>
         </div>
@@ -2075,29 +2298,32 @@ img{max-width:100%;display:block}
       <!-- 17. HUAYI -->
       <div class="project-card fade-up" data-sector="pvc" data-project="huayi">
         <div class="project-img">
-          <img src="https://res.cloudinary.com/de5casjbu/image/upload/v1781868723/HUAYI-2_krcym6.jpg" alt="HUAYI Caustic PVC">
+          <img src="https://res.cloudinary.com/de5casjbu/image/upload/v1781868723/HUAYI-2_krcym6.jpg" alt="HUAYI Caustic Soda complex engineering drawing perspective">
           <div class="project-overlay"><span class="project-tag">PVC / CHLOR-ALKALI</span><span class="project-contribution">60%</span></div>
         </div>
         <div class="project-body">
           <h3>HUAYI — Caustic Soda & PVC Oxychlorination</h3>
           <div class="project-client">Shanghaichem Engineering Incorporation</div>
-          <div class="project-meta"><span> Shanghai, China</span><span>⚖ 1,300,000 t/yr</span><span>🔢 0215-20-200-A03-00</span></div>
+          <div class="project-meta"><span>📍 Shanghai, China</span><span>⚖ 1,300,000 t/yr</span><span>🔢 0215-20-200-A03-00</span></div>
           <p>60% design contribution for one of the largest projects. Major chlor-alkali and PVC oxychlorination complex.</p>
           <div class="project-products"><span class="product-tag">Caustic Soda</span><span class="product-tag">PVC</span><span class="product-tag">Oxychlorination</span></div>
           <div class="project-view-more">View Full Details</div>
         </div>
       </div>
 
+      <!-- Empty state markup if search fails -->
+      <div class="no-results-msg" id="noResults">No projects found matching your search.</div>
+
     </div>
   </div>
 </section>
 
 <!-- ==================== PROJECT MODAL ==================== -->
-<div class="modal-overlay" id="projectModal">
+<div class="modal-overlay" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
   <div class="modal">
-    <button class="modal-close" id="modalClose">✕</button>
+    <button class="modal-close" id="modalClose" aria-label="Close dialog">✕</button>
     <div class="modal-hero" id="modalHero">
-      <!-- Dynamic content -->
+      <!-- Dynamic interactive hero with thumbnails strip underneath if multiple photos are present -->
     </div>
     <div class="modal-body">
       <div class="modal-meta-grid" id="modalMeta"></div>
@@ -2146,6 +2372,49 @@ img{max-width:100%;display:block}
   </div>
 </section>
 
+<!-- ==================== FAQ ACCORDION SECTION ==================== -->
+<section class="section faq" id="faq">
+  <div class="container">
+    <div class="fade-up" style="text-align:center;max-width:740px;margin:0 auto 75px">
+      <div class="section-label" style="justify-content:center">FAQ</div>
+      <h2 class="section-title">Common <span>Questions</span></h2>
+      <p class="section-subtitle" style="margin:0 auto">Quick details about my work model, software competence, and engineering standards.</p>
+    </div>
+    
+    <div class="faq-list">
+      <div class="faq-item fade-up">
+        <button class="faq-question" aria-expanded="false">
+          What international engineering design codes do you work with?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>I primarily design to ASME/ANSI standards. This includes ASME B31.3 for process piping, ASME B16.5 for pipe flanges and flanged fittings, and ASME B16.9 for factory-made wrought butt-welding fittings. I ensure that all 3D model specs built via AVEVA Paragon strictly adhere to these criteria.</p>
+        </div>
+      </div>
+
+      <div class="faq-item fade-up">
+        <button class="faq-question" aria-expanded="false">
+          Are you open to remote work or international relocation?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Yes. I am fully open to both international relocation opportunities and remote/hybrid collaboration formats in the oil & gas, chemicals, or energy sectors globally.</p>
+        </div>
+      </div>
+
+      <div class="faq-item fade-up">
+        <button class="faq-question" aria-expanded="false">
+          What is your typical project scope contribution as a team leader at CRTEC?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>At CRTEC, my role ranges from partial design contributions on world-scale complexes to leading 100% of the piping design scope for specialized fine chemical plants. This involves routing, building component catalogs in Paragon, resolving structural clashes in Navisworks, generating detailed ISO drawings, and generating accurate Material Take-Offs (MTO) for structural procurement.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ==================== CONTACT ==================== -->
 <section class="section contact" id="contact">
   <div class="container">
@@ -2180,17 +2449,20 @@ img{max-width:100%;display:block}
       <div class="contact-form fade-up">
         <form id="contactForm">
           <div class="form-row">
-            <div class="form-group"><label>Full Name *</label><input type="text" required placeholder="Your name"></div>
-            <div class="form-group"><label>Email *</label><input type="email" required placeholder="your@email.com"></div>
+            <div class="form-group"><label for="cf-name">Full Name *</label><input type="text" id="cf-name" required placeholder="Your name"></div>
+            <div class="form-group"><label for="cf-email">Email *</label><input type="email" id="cf-email" required placeholder="your@email.com"></div>
           </div>
-          <div class="form-group"><label>Subject *</label><input type="text" required placeholder="What's this about?"></div>
-          <div class="form-group"><label>Message *</label><textarea required placeholder="Tell me about your project or opportunity..."></textarea></div>
+          <div class="form-group"><label for="cf-subject">Subject *</label><input type="text" id="cf-subject" required placeholder="What's this about?"></div>
+          <div class="form-group"><label for="cf-msg">Message *</label><textarea id="cf-msg" required placeholder="Tell me about your project or opportunity..."></textarea></div>
           <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Send Message →</button>
         </form>
       </div>
     </div>
   </div>
 </section>
+</main>
+
+<button class="back-to-top" id="backToTop" aria-label="Scroll to top">↑</button>
 
 <!-- ==================== FOOTER ==================== -->
 <footer class="footer">
@@ -2200,7 +2472,7 @@ img{max-width:100%;display:block}
         <h3>Abdu Demle <span>Melaku</span></h3>
         <p>Mechanical Engineer specializing in petrochemical piping design. Currently leading piping design teams at CRTEC, delivering 17+ industrial projects worldwide.</p>
         <div class="footer-social">
-          <a href="https://www.linkedin.com/in/abdu-demle-melaku-571b0b246" target="_blank" aria-label="LinkedIn">in</a>
+          <a href="https://www.linkedin.com/in/abdu-demle-melaku-571b0b246" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
           <a href="mailto:abdudemle0899@gmail.com" aria-label="Email">@</a>
           <a href="tel:+251910298713" aria-label="Phone">📱</a>
         </div>
@@ -2214,6 +2486,7 @@ img{max-width:100%;display:block}
           <li><a href="#skills">Skills</a></li>
           <li><a href="#projects">Projects (17)</a></li>
           <li><a href="#recommendations">Recommendations</a></li>
+          <li><a href="#faq">FAQs</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
@@ -2239,8 +2512,7 @@ img{max-width:100%;display:block}
 <script>
 // ============================================================
 // PROJECT DATA - Complete details for all 17 projects
-// Each project has its correct images from the workbook
-// Projects without images use styled placeholders
+// Evaluated from provided physical spreadsheets
 // ============================================================
 const projectData = {
   yunth: {
@@ -2811,8 +3083,15 @@ window.addEventListener('scroll', () => {
 
 const navToggle = document.getElementById('navToggle');
 const navLinks = document.getElementById('navLinks');
-navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
-navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+navToggle.addEventListener('click', () => {
+  const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+  navToggle.setAttribute('aria-expanded', !expanded);
+  navLinks.classList.toggle('open');
+});
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  navLinks.classList.remove('open');
+  navToggle.setAttribute('aria-expanded', 'false');
+}));
 
 // ============================================================
 // SCROLL ANIMATIONS
@@ -2849,7 +3128,7 @@ const counterObserver = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) {
       const el = e.target;
-      const target = parseInt(el.dataset.count);
+      const target = parseFloat(el.dataset.count);
       if (!target) return;
       let current = 0;
       const increment = target / 50;
@@ -2859,7 +3138,7 @@ const counterObserver = new IntersectionObserver((entries) => {
           current = target;
           clearInterval(timer);
         }
-        el.textContent = Math.floor(current);
+        el.textContent = target % 1 === 0 ? Math.floor(current) : current.toFixed(2);
       }, 30);
       counterObserver.unobserve(el);
     }
@@ -2868,63 +3147,159 @@ const counterObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
 
 // ============================================================
-// PROJECT FILTERING
+// PROJECTS SYSTEM WITH INTEGRATED LIVE SEARCH & FILTER
 // ============================================================
 const filterBtns = document.querySelectorAll('.filter-btn');
 const projectCards = document.querySelectorAll('.project-card');
+const projectSearch = document.getElementById('projectSearch');
+const noResults = document.getElementById('noResults');
+
+let currentFilter = 'all';
+let searchQuery = '';
+
+function updateFilteredProjects() {
+  let matchedCount = 0;
+  
+  projectCards.forEach(card => {
+    const projectId = card.dataset.project;
+    const data = projectData[projectId];
+    
+    // Check filter match
+    const matchesFilter = (currentFilter === 'all' || card.dataset.sector === currentFilter);
+    
+    // Check search query match
+    let matchesSearch = true;
+    if (searchQuery.trim() !== '' && data) {
+      const q = searchQuery.toLowerCase();
+      const searchableText = [
+        data.title,
+        data.client,
+        data.tag,
+        data.description,
+        ...(data.products || [])
+      ].join(' ').toLowerCase();
+      
+      matchesSearch = searchableText.includes(q);
+    }
+    
+    if (matchesFilter && matchesSearch) {
+      card.classList.remove('hidden');
+      matchedCount++;
+    } else {
+      card.classList.add('hidden');
+    }
+  });
+  
+  noResults.style.display = (matchedCount === 0) ? 'block' : 'none';
+}
+
+// Filter buttons click
 filterBtns.forEach(btn => {
   btn.addEventListener('click', () => {
     filterBtns.forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    const filter = btn.dataset.filter;
-    projectCards.forEach(card => {
-      if (filter === 'all' || card.dataset.sector === filter) {
-        card.classList.remove('hidden');
-      } else {
-        card.classList.add('hidden');
+    currentFilter = btn.dataset.filter;
+    updateFilteredProjects();
+  });
+});
+
+// Search input keyup
+projectSearch.addEventListener('input', (e) => {
+  searchQuery = e.target.value;
+  updateFilteredProjects();
+});
+
+// ============================================================
+// INTERACTIVE PORTFOLIO FAQ ACCORDIONS
+// ============================================================
+document.querySelectorAll('.faq-question').forEach(button => {
+  button.addEventListener('click', () => {
+    const faqItem = button.parentElement;
+    const isExpanded = button.getAttribute('aria-expanded') === 'true';
+    
+    // Close other FAQ items
+    document.querySelectorAll('.faq-item').forEach(item => {
+      if (item !== faqItem) {
+        item.classList.remove('active');
+        item.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
       }
     });
+    
+    faqItem.classList.toggle('active');
+    button.setAttribute('aria-expanded', !isExpanded);
   });
 });
 
 // ============================================================
-// PROJECT MODAL
+// BACK TO TOP BUTTON
+// ============================================================
+const backToTop = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 400) {
+    backToTop.classList.add('visible');
+  } else {
+    backToTop.classList.remove('visible');
+  }
+});
+backToTop.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// ============================================================
+// MODERN PROJECT MODAL SYSTEM (Includes Interactive Slideshow)
 // ============================================================
 const modal = document.getElementById('projectModal');
 const modalClose = document.getElementById('modalClose');
 const modalHero = document.getElementById('modalHero');
 
+function selectActiveSlideshowImage(imgSrc, index) {
+  const activeHeroImg = document.getElementById('modalMainActiveImage');
+  if (activeHeroImg) {
+    activeHeroImg.src = imgSrc;
+  }
+  
+  // Highlight active thumbnail in list
+  document.querySelectorAll('.modal-gallery-item').forEach((item, idx) => {
+    item.classList.toggle('active-thumbnail', idx === index);
+  });
+}
+
 function openProjectModal(projectId) {
   const data = projectData[projectId];
   if (!data) return;
 
-  // Build hero section
+  // Render hero content with a placeholder image container inside modal
   if (data.hasImage) {
     modalHero.innerHTML = `
-      <img class="modal-hero-img" src="${data.heroImg}" alt="${data.title}">
+      <div class="modal-active-img-wrapper">
+        <img class="modal-hero-img" id="modalMainActiveImage" src="${data.heroImg}" alt="${data.title}">
+      </div>
       <div class="modal-hero-overlay"></div>
       <div class="modal-hero-content">
         <span class="modal-hero-tag">${data.tag}</span>
-        <h2 class="modal-hero-title">${data.title}</h2>
+        <h2 class="modal-hero-title" id="modalTitle">${data.title}</h2>
         <div class="modal-hero-client">${data.client}</div>
       </div>
     `;
   } else {
+    // Elegant SVG fallback for projects without photos
     modalHero.innerHTML = `
       <div class="modal-hero-placeholder">
-        <div class="modal-hero-placeholder-icon"></div>
-        <div style="color:var(--text-dim);font-family:'JetBrains Mono',monospace;letter-spacing:2px">${data.tag}</div>
+        <svg class="project-placeholder-svg" style="width: 100px; height: 100px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+        </svg>
+        <div style="color:var(--text-dim);font-family:'JetBrains Mono',monospace;letter-spacing:2px; margin-top: 15px;">${data.tag}</div>
       </div>
       <div class="modal-hero-overlay"></div>
       <div class="modal-hero-content">
         <span class="modal-hero-tag">${data.tag}</span>
-        <h2 class="modal-hero-title">${data.title}</h2>
+        <h2 class="modal-hero-title" id="modalTitle">${data.title}</h2>
         <div class="modal-hero-client">${data.client}</div>
       </div>
     `;
   }
 
-  // Meta grid
+  // Render meta parameters
   const metaHtml = data.meta.map(m => `
     <div class="modal-meta-item">
       <div class="modal-meta-label">${m.label}</div>
@@ -2933,18 +3308,19 @@ function openProjectModal(projectId) {
   `).join('');
   document.getElementById('modalMeta').innerHTML = metaHtml;
 
-  // Description
+  // Render text descriptions
   document.getElementById('modalDescription').innerHTML = data.description;
 
-  // Gallery
+  // Render custom interactive slider carousel underneath description
   if (data.gallery && data.gallery.length > 0) {
     const galleryHtml = data.gallery.map((img, idx) => `
-      <div class="modal-gallery-item" onclick="window.open('${img}', '_blank')">
-        <img src="${img}" alt="${data.title} - View ${idx + 1}">
+      <div class="modal-gallery-item ${idx === 0 ? 'active-thumbnail' : ''}" onclick="selectActiveSlideshowImage('${img}', ${idx})">
+        <img src="${img}" alt="${data.title} thumb ${idx + 1}">
       </div>
     `).join('');
+    
     document.getElementById('modalGallery').innerHTML = `
-      <h4>Project Gallery (${data.gallery.length} Images)</h4>
+      <h4>Project Media (Click thumbnails to switch main screen)</h4>
       <div class="modal-gallery-grid">${galleryHtml}</div>
     `;
     document.getElementById('modalGallery').style.display = 'block';
@@ -2952,14 +3328,14 @@ function openProjectModal(projectId) {
     document.getElementById('modalGallery').style.display = 'none';
   }
 
-  // Products
+  // Render product parameters
   const productsHtml = data.products.map(p => `<span class="modal-product-tag">${p}</span>`).join('');
   document.getElementById('modalProducts').innerHTML = `
     <h4>Products & Outputs</h4>
     <div class="modal-products-list">${productsHtml}</div>
   `;
 
-  // Contribution
+  // Render personal design contributions parameters
   document.getElementById('modalContribution').innerHTML = `
     <div class="modal-contribution-icon">${data.contribution}%</div>
     <div class="modal-contribution-text">
@@ -2970,6 +3346,7 @@ function openProjectModal(projectId) {
 
   modal.classList.add('active');
   document.body.style.overflow = 'hidden';
+  modalClose.focus();
 }
 
 function closeProjectModal() {
@@ -2987,7 +3364,7 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-// Attach click handlers to project cards
+// Click handlers on grid layout components
 projectCards.forEach(card => {
   card.addEventListener('click', (e) => {
     if (e.target.closest('.modal-gallery-item')) return;
@@ -3030,20 +3407,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // ============================================================
-// PARALLAX EFFECT ON HERO
-// ============================================================
-window.addEventListener('scroll', () => {
-  const scrolled = window.pageYOffset;
-  const heroBanner = document.querySelector('.hero-banner');
-  if (heroBanner && scrolled < window.innerHeight) {
-    heroBanner.style.transform = `translateY(${scrolled * 0.3}px)`;
-  }
-});
-
-// ============================================================
 // ACTIVE NAV LINK HIGHLIGHTING
 // ============================================================
-const sections = document.querySelectorAll('section[id]');
+const sections = document.querySelectorAll('section[id], header[id]');
 window.addEventListener('scroll', () => {
   let current = '';
   sections.forEach(section => {
@@ -3059,11 +3425,7 @@ window.addEventListener('scroll', () => {
     }
   });
 });
-
-console.log('Abdu Demle Melaku - Portfolio Website Loaded Successfully');
-console.log('Total Projects: 17');
-console.log('Projects with images: 10 (BINGSUAN, QIXIANG, ARIT, SANMING, HAIFENG, JSD, HNLC, XINGFA, HECHANG, HUAYI)');
-console.log('Projects without images (placeholder): 7 (YUNTH, YUXIANGHY, EZHONG, SHICHENGSHOU, QICHUANG, HAILIANG, SHUZHONG)');
 </script>
 </body>
 </html>
+```
