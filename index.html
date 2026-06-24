@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,8 +29,8 @@
   --bg:#050810;
   --bg-alt:#0a1020;
   --bg-elevated:#0f1629;
-  --card:#111a2e;
-  --card-hover:#162038;
+  --card:rgba(17, 26, 46, 0.75);
+  --card-hover:rgba(22, 32, 56, 0.9);
   --cyan:#00e5ff;
   --cyan-soft:#4dd0e1;
   --cyan-dim:rgba(0,229,255,0.12);
@@ -232,18 +231,14 @@ img{max-width:100%;display:block}
   position:absolute;
   inset:0;
   z-index:1;
-  background:linear-gradient(135deg,rgba(5,8,16,0.94) 0%,rgba(5,8,16,0.78) 40%,rgba(5,8,16,0.88) 100%);
+  background:linear-gradient(135deg,rgba(5,8,16,0.95) 0%,rgba(5,8,16,0.8) 40%,rgba(5,8,16,0.9) 100%);
 }
-.hero-grid{
-  position:absolute;
-  inset:0;
-  z-index:2;
-  background-image:
-    linear-gradient(rgba(0,229,255,0.05) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(0,229,255,0.05) 1px,transparent 1px);
-  background-size:70px 70px;
-  mask-image:radial-gradient(ellipse at center,black 30%,transparent 80%);
-  -webkit-mask-image:radial-gradient(ellipse at center,black 30%,transparent 80%);
+/* CAD Canvas Background overlay */
+#cad-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: auto;
 }
 .hero-content{
   position:relative;
@@ -665,12 +660,13 @@ img{max-width:100%;display:block}
   line-height:1;
 }
 
-/* ==================== SKILLS ==================== */
+/* ==================== SKILLS & COMPETENT TOOL ==================== */
 .skills{background:var(--bg-alt)}
 .skills-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
   gap:28px;
+  margin-bottom: 50px;
 }
 .skill-category{
   background:var(--card);
@@ -734,6 +730,87 @@ img{max-width:100%;display:block}
   border-radius:4px;
   width:0;
   transition:width 1.7s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* ASME INTERACTIVE TOOL STYLING */
+.asme-calculator-box{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:40px;
+  max-width:940px;
+  margin:60px auto 0;
+  box-shadow:var(--shadow);
+}
+.asme-header {
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 20px;
+}
+.asme-header h3 {
+  font-size: 1.6rem;
+  color: var(--text-bright);
+  margin-bottom: 6px;
+}
+.asme-header p {
+  color: var(--text-dim);
+  font-size: 0.92rem;
+}
+.asme-control-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+.asme-group label {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--cyan);
+  font-family:'JetBrains Mono',monospace;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 10px;
+}
+.asme-select {
+  width: 100%;
+  padding: 14px 18px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-bright);
+  font-family: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: border var(--transition-fast);
+}
+.asme-select:focus {
+  outline: none;
+  border-color: var(--cyan);
+}
+.asme-results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+.asme-result-card {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 18px;
+  text-align: center;
+}
+.asme-result-val {
+  font-family:'Rajdhani',sans-serif;
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--cyan);
+  margin-bottom: 4px;
+}
+.asme-result-lbl {
+  font-size: 0.76rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 /* ==================== LANGUAGES ==================== */
@@ -1731,8 +1808,8 @@ img{max-width:100%;display:block}
     <img class="hero-banner" src="https://res.cloudinary.com/de5casjbu/image/upload/v1781868693/Gemini_Generated_Image_q9bke7q9bke7q9bk_hafbep.png" alt="Industrial petrochemical plant showing piping and pressure vessels">
   </div>
   <div class="hero-overlay"></div>
-  <div class="hero-grid"></div>
-  <div class="container">
+  <canvas id="cad-canvas"></canvas>
+  <div class="container" style="position: relative; z-index: 10;">
     <div class="hero-content">
       <div class="hero-img-wrap fade-up">
         <div class="hero-img">
@@ -1945,6 +2022,51 @@ img{max-width:100%;display:block}
       </div>
     </div>
 
+    <!-- ASME INTERACTIVE WIDGET -->
+    <div class="asme-calculator-box fade-up">
+      <div class="asme-header">
+        <h3>🔧 ASME B16.5 Piping Dimension Lookup Tool</h3>
+        <p>An interactive calculator simulating spec routing catalogs. Select nominal parameters to verify flange dimensional standards.</p>
+      </div>
+      <div class="asme-control-grid">
+        <div class="asme-group">
+          <label for="asme-nps">Nominal Pipe Size (NPS)</label>
+          <select id="asme-nps" class="asme-select">
+            <option value="1">1"</option>
+            <option value="2" selected>2"</option>
+            <option value="4">4"</option>
+            <option value="6">6"</option>
+            <option value="8">8"</option>
+          </select>
+        </div>
+        <div class="asme-group">
+          <label for="asme-class">Pressure Class</label>
+          <select id="asme-class" class="asme-select">
+            <option value="150" selected>150#</option>
+            <option value="300">300#</option>
+          </select>
+        </div>
+      </div>
+      <div class="asme-results-grid">
+        <div class="asme-result-card">
+          <div class="asme-result-val" id="res-od">6.00"</div>
+          <div class="asme-result-lbl">Flange OD (O)</div>
+        </div>
+        <div class="asme-result-card">
+          <div class="asme-result-val" id="res-bc">4.75"</div>
+          <div class="asme-result-lbl">Bolt Circle (W)</div>
+        </div>
+        <div class="asme-result-card">
+          <div class="asme-result-val" id="res-holes">4</div>
+          <div class="asme-result-lbl">Bolt Holes</div>
+        </div>
+        <div class="asme-result-card">
+          <div class="asme-result-val" id="res-size">0.75"</div>
+          <div class="asme-result-lbl">Hole Diameter</div>
+        </div>
+      </div>
+    </div>
+
     <div style="margin-top:95px">
       <div class="fade-up" style="text-align:center;max-width:740px;margin:0 auto 55px">
         <div class="section-label" style="justify-content:center">Communication</div>
@@ -2002,7 +2124,6 @@ img{max-width:100%;display:block}
     </div>
 
     <div class="projects-grid" id="projectsGrid">
-      <!-- Dynamic list elements computed by script, falls back to structural design -->
       
       <!-- 1. YUNTH -->
       <div class="project-card fade-up" data-sector="fertilizer" data-project="yunth">
@@ -2323,7 +2444,7 @@ img{max-width:100%;display:block}
   <div class="modal">
     <button class="modal-close" id="modalClose" aria-label="Close dialog">✕</button>
     <div class="modal-hero" id="modalHero">
-      <!-- Dynamic interactive hero with thumbnails strip underneath if multiple photos are present -->
+      <!-- Dynamic interactive hero with thumbnails strip -->
     </div>
     <div class="modal-body">
       <div class="modal-meta-grid" id="modalMeta"></div>
@@ -2511,8 +2632,163 @@ img{max-width:100%;display:block}
 
 <script>
 // ============================================================
+// CAD VECTOR BACKGROUND DRAW ENGINE
+// Renders dynamic coordinate tracking meshes and pipelines
+// ============================================================
+const canvas = document.getElementById('cad-canvas');
+const ctx = canvas.getContext('2d');
+
+let width = canvas.width = window.innerWidth;
+let height = canvas.height = window.innerHeight;
+
+window.addEventListener('resize', () => {
+  width = canvas.width = window.innerWidth;
+  height = canvas.height = window.innerHeight;
+});
+
+const mouse = { x: width / 2, y: height / 2, active: false };
+
+window.addEventListener('mousemove', (e) => {
+  const rect = canvas.getBoundingClientRect();
+  mouse.x = e.clientX - rect.left;
+  mouse.y = e.clientY - rect.top;
+  mouse.active = true;
+});
+
+window.addEventListener('mouseleave', () => {
+  mouse.active = false;
+});
+
+class Node {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+    this.vx = (Math.random() - 0.5) * 0.4;
+    this.vy = (Math.random() - 0.5) * 0.4;
+    this.radius = Math.random() * 1.5 + 1;
+  }
+  update() {
+    this.x += this.vx;
+    this.y += this.vy;
+
+    if (this.x < 0 || this.x > width) this.vx *= -1;
+    if (this.y < 0 || this.y > height) this.vy *= -1;
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(0, 229, 255, 0.4)';
+    ctx.fill();
+  }
+}
+
+const nodes = [];
+const maxNodes = Math.min(80, Math.floor((width * height) / 15000));
+for (let i = 0; i < maxNodes; i++) {
+  nodes.push(new Node(Math.random() * width, Math.random() * height));
+}
+
+function renderCadBackground() {
+  ctx.clearRect(0, 0, width, height);
+
+  // Draw technical drafting axes overlay
+  if (mouse.active) {
+    ctx.strokeStyle = 'rgba(0, 229, 255, 0.08)';
+    ctx.lineWidth = 1;
+    // Horizontal crosshair
+    ctx.beginPath();
+    ctx.moveTo(0, mouse.y);
+    ctx.lineTo(width, mouse.y);
+    ctx.stroke();
+    // Vertical crosshair
+    ctx.beginPath();
+    ctx.moveTo(mouse.x, 0);
+    ctx.lineTo(mouse.x, height);
+    ctx.stroke();
+
+    // Render coordinate text metrics
+    ctx.fillStyle = 'rgba(0, 229, 255, 0.4)';
+    ctx.font = '10px "JetBrains Mono", monospace';
+    ctx.fillText(`X: ${Math.floor(mouse.x)} Y: ${Math.floor(mouse.y)}`, mouse.x + 15, mouse.y - 15);
+  }
+
+  // Handle network links
+  for (let i = 0; i < nodes.length; i++) {
+    const nodeA = nodes[i];
+    nodeA.update();
+    nodeA.draw();
+
+    for (let j = i + 1; j < nodes.length; j++) {
+      const nodeB = nodes[j];
+      const dx = nodeA.x - nodeB.x;
+      const dy = nodeA.y - nodeB.y;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+
+      if (distance < 150) {
+        ctx.beginPath();
+        ctx.moveTo(nodeA.x, nodeA.y);
+        ctx.lineTo(nodeB.x, nodeB.y);
+        ctx.strokeStyle = `rgba(0, 229, 255, ${0.15 * (1 - distance / 150)})`;
+        ctx.lineWidth = 0.8;
+        ctx.stroke();
+      }
+    }
+
+    if (mouse.active) {
+      const dx = nodeA.x - mouse.x;
+      const dy = nodeA.y - mouse.y;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+      if (distance < 200) {
+        ctx.beginPath();
+        ctx.moveTo(nodeA.x, nodeA.y);
+        ctx.lineTo(mouse.x, mouse.y);
+        ctx.strokeStyle = `rgba(0, 229, 255, ${0.2 * (1 - distance / 200)})`;
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
+    }
+  }
+
+  requestAnimationFrame(renderCadBackground);
+}
+renderCadBackground();
+
+
+// ============================================================
+// ASME B16.5 PIPE SPEC SELECTOR ENGINE (LOOKUP)
+// ============================================================
+const asmeData = {
+  "1-150": { od: '4.25"', bc: '3.12"', holes: 4, size: '0.62"' },
+  "1-300": { od: '4.88"', bc: '3.50"', holes: 4, size: '0.75"' },
+  "2-150": { od: '6.00"', bc: '4.75"', holes: 4, size: '0.75"' },
+  "2-300": { od: '6.50"', bc: '5.00"', holes: 8, size: '0.75"' },
+  "4-150": { od: '9.00"', bc: '7.50"', holes: 8, size: '0.75"' },
+  "4-300": { od: '10.00"', bc: '7.88"', holes: 8, size: '0.88"' },
+  "6-150": { od: '11.00"', bc: '9.50"', holes: 8, size: '0.88"' },
+  "6-300": { od: '12.50"', bc: '10.62"', holes: 12, size: '0.88"' },
+  "8-150": { od: '13.50"', bc: '11.75"', holes: 8, size: '0.88"' },
+  "8-300": { od: '15.00"', bc: '13.00"', holes: 12, size: '1.00"' }
+};
+
+const npsSelect = document.getElementById('asme-nps');
+const classSelect = document.getElementById('asme-class');
+
+function updateAsmeCalculations() {
+  const specKey = `${npsSelect.value}-${classSelect.value}`;
+  const spec = asmeData[specKey];
+  if (spec) {
+    document.getElementById('res-od').textContent = spec.od;
+    document.getElementById('res-bc').textContent = spec.bc;
+    document.getElementById('res-holes').textContent = spec.holes;
+    document.getElementById('res-size').textContent = spec.size;
+  }
+}
+npsSelect.addEventListener('change', updateAsmeCalculations);
+classSelect.addEventListener('change', updateAsmeCalculations);
+
+
+// ============================================================
 // PROJECT DATA - Complete details for all 17 projects
-// Evaluated from provided physical spreadsheets
 // ============================================================
 const projectData = {
   yunth: {
@@ -3251,6 +3527,7 @@ backToTop.addEventListener('click', () => {
 const modal = document.getElementById('projectModal');
 const modalClose = document.getElementById('modalClose');
 const modalHero = document.getElementById('modalHero');
+let activeTriggerElement = null; // Store trigger element to restore accessibility focus
 
 function selectActiveSlideshowImage(imgSrc, index) {
   const activeHeroImg = document.getElementById('modalMainActiveImage');
@@ -3264,11 +3541,13 @@ function selectActiveSlideshowImage(imgSrc, index) {
   });
 }
 
-function openProjectModal(projectId) {
+function openProjectModal(projectId, triggerCard) {
   const data = projectData[projectId];
   if (!data) return;
 
-  // Render hero content with a placeholder image container inside modal
+  activeTriggerElement = triggerCard; // Hold reference for keyboard accessibility focus recovery
+
+  // Render hero content inside modal
   if (data.hasImage) {
     modalHero.innerHTML = `
       <div class="modal-active-img-wrapper">
@@ -3282,7 +3561,7 @@ function openProjectModal(projectId) {
       </div>
     `;
   } else {
-    // Elegant SVG fallback for projects without photos
+    // Fallback Vector Blueprint representation for empty structural elements
     modalHero.innerHTML = `
       <div class="modal-hero-placeholder">
         <svg class="project-placeholder-svg" style="width: 100px; height: 100px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
@@ -3311,7 +3590,7 @@ function openProjectModal(projectId) {
   // Render text descriptions
   document.getElementById('modalDescription').innerHTML = data.description;
 
-  // Render custom interactive slider carousel underneath description
+  // Render interactive thumbnails list
   if (data.gallery && data.gallery.length > 0) {
     const galleryHtml = data.gallery.map((img, idx) => `
       <div class="modal-gallery-item ${idx === 0 ? 'active-thumbnail' : ''}" onclick="selectActiveSlideshowImage('${img}', ${idx})">
@@ -3335,7 +3614,7 @@ function openProjectModal(projectId) {
     <div class="modal-products-list">${productsHtml}</div>
   `;
 
-  // Render personal design contributions parameters
+  // Render personal contributions parameters
   document.getElementById('modalContribution').innerHTML = `
     <div class="modal-contribution-icon">${data.contribution}%</div>
     <div class="modal-contribution-text">
@@ -3347,11 +3626,39 @@ function openProjectModal(projectId) {
   modal.classList.add('active');
   document.body.style.overflow = 'hidden';
   modalClose.focus();
+  
+  // Initialize keyboard trapping loop inside dialog elements
+  document.addEventListener('keydown', trapFocus);
 }
 
 function closeProjectModal() {
   modal.classList.remove('active');
   document.body.style.overflow = '';
+  document.removeEventListener('keydown', trapFocus);
+  if (activeTriggerElement) {
+    activeTriggerElement.focus();
+  }
+}
+
+// ARIA Loop trapping focus structure inside modal
+function trapFocus(e) {
+  if (e.key !== 'Tab') return;
+  const focusables = modal.querySelectorAll('button, select, input, textarea, [tabindex="0"]');
+  if (focusables.length === 0) return;
+  const first = focusables[0];
+  const last = focusables[focusables.length - 1];
+  
+  if (e.shiftKey) {
+    if (document.activeElement === first) {
+      last.focus();
+      e.preventDefault();
+    }
+  } else {
+    if (document.activeElement === last) {
+      first.focus();
+      e.preventDefault();
+    }
+  }
 }
 
 modalClose.addEventListener('click', closeProjectModal);
@@ -3364,13 +3671,22 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-// Click handlers on grid layout components
+// Attach click triggers on portfolio grid elements
 projectCards.forEach(card => {
-  card.addEventListener('click', (e) => {
-    if (e.target.closest('.modal-gallery-item')) return;
+  card.setAttribute('tabindex', '0'); // Accessibility tab Index injection
+  
+  const triggerAction = () => {
     const projectId = card.dataset.project;
     if (projectId && projectData[projectId]) {
-      openProjectModal(projectId);
+      openProjectModal(projectId, card);
+    }
+  };
+
+  card.addEventListener('click', triggerAction);
+  card.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      triggerAction();
     }
   });
 });
@@ -3428,4 +3744,3 @@ window.addEventListener('scroll', () => {
 </script>
 </body>
 </html>
-```
